@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLM Meeting Highlights</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f0f2f5;
+      color: #1a1a2e;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0070d2, #032d60);
+      color: white;
+      padding: 40px 32px 32px;
+      text-align: center;
+    }
+
+    header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: 0.5px; }
+    header p.subtitle { margin-top: 10px; font-size: 1rem; opacity: 0.85; letter-spacing: 0.3px; }
+    header p.meta { margin-top: 8px; font-size: 0.82rem; opacity: 0.65; }
+
+    .container {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: 0 20px 60px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 24px;
+      border-bottom: 1px solid #e8edf2;
+    }
+
+    .card-header .icon { font-size: 1.3rem; }
+
+    .card-header h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #032d60;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .card-body { padding: 20px 24px; }
+
+    /* Work Completed */
+    .day-block { margin-bottom: 20px; }
+    .day-block:last-child { margin-bottom: 0; }
+
+    .day-label {
+      display: inline-block;
+      background: #e8f4fd;
+      color: #0070d2;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .day-label.today { background: #d4edda; color: #155724; }
+
+    .day-block ul { list-style: none; padding: 0; }
+
+    .day-block ul li {
+      padding: 6px 0 6px 20px;
+      position: relative;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      border-bottom: 1px solid #f5f5f5;
+      color: #333;
+    }
+
+    .day-block ul li:last-child { border-bottom: none; }
+
+    .day-block ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #28a745;
+      font-weight: bold;
+      font-size: 0.85rem;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    thead tr { background: #032d60; color: white; }
+
+    thead th {
+      padding: 11px 14px;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    tbody tr:nth-child(even) { background: #f7f9fc; }
+    tbody tr:hover { background: #eef4fb; }
+
+    tbody td {
+      padding: 10px 14px;
+      vertical-align: top;
+      line-height: 1.5;
+      border-bottom: 1px solid #e8edf2;
+      color: #333;
+    }
+
+    td.num {
+      text-align: center;
+      font-weight: 700;
+      color: #0070d2;
+      width: 36px;
+    }
+
+    td.owner {
+      white-space: nowrap;
+      font-weight: 600;
+      color: #032d60;
+      width: 180px;
+    }
+
+    td.day-tag {
+      white-space: nowrap;
+      width: 68px;
+    }
+
+    .day-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+      text-transform: uppercase;
+    }
+
+    .day-badge.jun29 { background: #d4edda; color: #155724; }
+    .day-badge.jun25 { background: #e8f4fd; color: #0070d2; }
+
+    /* Priority badges */
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-high   { background: #ffe0e0; color: #c0392b; }
+    .badge-medium { background: #fff3cd; color: #856404; }
+
+    /* Risks */
+    .severity-critical { color: #c0392b; font-weight: 700; }
+    .severity-high     { color: #e67e22; font-weight: 700; }
+    .severity-medium   { color: #856404; font-weight: 600; }
+
+    .status-active { background: #ffe0e0; color: #c0392b; padding: 2px 8px; border-radius: 10px; font-size: 0.78rem; font-weight: 600; }
+    .status-track  { background: #d4edda; color: #155724; padding: 2px 8px; border-radius: 10px; font-size: 0.78rem; font-weight: 600; }
+
+    /* Decisions */
+    .decision-list { list-style: none; padding: 0; }
+    .decision-list li {
+      padding: 8px 0 8px 28px;
+      position: relative;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      border-bottom: 1px solid #f0f0f0;
+      color: #333;
+    }
+    .decision-list li:last-child { border-bottom: none; }
+    .decision-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 4px;
+      color: #0070d2;
+    }
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 24px 14px;
+      border-bottom: 1px solid #e8edf2;
+      background: #f7f9fc;
+    }
+
+    .filter-bar label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #032d60;
+      white-space: nowrap;
+    }
+
+    .filter-bar select {
+      font-size: 0.82rem;
+      padding: 5px 28px 5px 10px;
+      border: 1px solid #c8d6e5;
+      border-radius: 6px;
+      background: white;
+      color: #1a1a2e;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%230070d2'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 9px center;
+      min-width: 200px;
+    }
+
+    .filter-bar select:focus { outline: 2px solid #0070d2; outline-offset: 1px; }
+
+    .filter-count {
+      font-size: 0.78rem;
+      color: #666;
+      margin-left: 4px;
+    }
+
+    tbody tr.hidden { display: none; }
+
+    footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #888;
+      padding: 20px;
+      border-top: 1px solid #e0e0e0;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>CLM Meeting Highlights</h1>
+  <p class="subtitle">Highlights the key notes of last 2 meeting notes</p>
+  <p class="meta">Project CLM Data Migration &nbsp;|&nbsp; Jun 25 &amp; Jun 29, 2026 &nbsp;|&nbsp; Generated: Jun 30, 2026</p>
+</header>
+
+<div class="container">
+
+  <!-- Work Completed -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">&#9989;</span>
+      <h2>Work Completed</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="day-block">
+        <span class="day-label today">Jun 29 &mdash; Most Recent</span>
+        <ul>
+          <li>Adarsh M completed contract backend procedure changes &mdash; scheduled for deployment today</li>
+          <li>Half of agreement backfilling loaded (2K records fixed); reference data backfill complete</li>
+          <li>MuleFlow IDP extraction running in production: ~4,300 PC files + ~2,700 PCA files processed; ~500 failures under investigation</li>
+          <li>Field access + Mule deployment tasks complete (Dil Thapa); App6 SB1 setup remaining</li>
+          <li>DAG setup cloned from reseller by Vinika Gupta; chatter extraction + Oxrocon table entries in progress</li>
+          <li>Architecture technical document started by Arshad for Thursday presentation</li>
+          <li>3 Change Requests confirmed and being created today (Kanika Narula)</li>
+          <li>Middle 3 dev-only sprint stories deferred &mdash; no QA activities currently available</li>
+        </ul>
+      </div>
+
+      <div class="day-block">
+        <span class="day-label">Jun 25</span>
+        <ul>
+          <li>API deployed to production successfully (Sachin Kumar Sahu)</li>
+          <li>UID and production deployment completed despite issues</li>
+          <li>DAG code changes pushed to Airflow; orchestration table updated (Deepa Madhukar Pardeshi)</li>
+          <li>Account and opportunity backfilling complete (RAMAKRISHNA Janga)</li>
+          <li>MuleFlow run list for QA6 environment completed (Dil Thapa)</li>
+          <li>Field access for DMAS/DMS objects identified; Kanika Narula following up for approvals</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- High Priority Action Items -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">&#128308;</span>
+      <h2>High Priority Action Items</h2>
+    </div>
+    <div class="filter-bar">
+      <label for="filter-high">&#128269; Filter by Owner:</label>
+      <select id="filter-high" onchange="filterTable('high-table', this.value, 'count-high')">
+        <option value="">All Owners</option>
+      </select>
+      <span class="filter-count" id="count-high"></span>
+    </div>
+    <div class="card-body">
+      <table id="high-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Day</th>
+            <th>Action</th>
+            <th>Owner</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="num">1</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>DMAS system down since Friday &mdash; unblock backfilling</strong></td>
+            <td class="owner">Dil Thapa</td>
+            <td>DMAS non-functional since Friday afternoon. Agreement loading blocked with &ldquo;operation not in sync&rdquo; and &ldquo;DB sync failed&rdquo; errors. Tag pod team in extended channel for ETA.</td>
+          </tr>
+          <tr>
+            <td class="num">2</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>Contract name 80-char limit &mdash; resolve before production load</strong></td>
+            <td class="owner">Kanika Narula</td>
+            <td>Contract name (Account + SFDC + ISV + PC name) exceeds 80-char target limit. Expected load failure for all such records. Engage CLM team + business to increase limit OR simplify naming logic.</td>
+          </tr>
+          <tr>
+            <td class="num">3</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>Complete agreement + PC/PCA backfilling for E2E readiness</strong></td>
+            <td class="owner">RAMAKRISHNA Janga</td>
+            <td>Half of agreements loaded; remaining blocked by DMAS issue and approval matrix cross-reference ID errors. Must cover root/child/grandchild scenarios before E2E mock (week after next).</td>
+          </tr>
+          <tr>
+            <td class="num">4</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>IDP extraction failures (~500 of ~5,000 files)</strong></td>
+            <td class="owner">Sachin Kumar Sahu</td>
+            <td>Share IDP export with product team for verification. Root cause of ~500 failures (possibly large file size) still TBD.</td>
+          </tr>
+          <tr>
+            <td class="num">5</td>
+            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
+            <td><strong>Obtain assignment agreement list from business before QA regression</strong></td>
+            <td class="owner">The Group</td>
+            <td>Business considering separate October release. Assignment agreements currently migrating as normal partner agreements in E2E. Business must identify and provide list before QA regression mock so exclusion rules can be applied.</td>
+          </tr>
+          <tr>
+            <td class="num">6</td>
+            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
+            <td><strong>File rollup: grandchild &rarr; root link &mdash; design + CR</strong></td>
+            <td class="owner">Sachin + Deepa + Arshad</td>
+            <td>New requirement: grandchild files must also link to root (current logic: child &rarr; root only). First time this design is being done &mdash; classified as a CR. Feasibility study required before implementation. Story to accommodate or create new sprint story.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Medium Priority Action Items -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">&#128993;</span>
+      <h2>Medium Priority Action Items</h2>
+    </div>
+    <div class="filter-bar">
+      <label for="filter-med">&#128269; Filter by Owner:</label>
+      <select id="filter-med" onchange="filterTable('med-table', this.value, 'count-med')">
+        <option value="">All Owners</option>
+      </select>
+      <span class="filter-count" id="count-med"></span>
+    </div>
+    <div class="card-body">
+      <table id="med-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Day</th>
+            <th>Action</th>
+            <th>Owner</th>
+            <th>Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="num">1</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>Deploy contract backend procedure changes</strong></td>
+            <td class="owner">Adarsh M</td>
+            <td>Changes complete; review and deploy today. Connect with Arshad to align on Ironclad new fields not present in reseller Stage 2.</td>
+          </tr>
+          <tr>
+            <td class="num">2</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>Exclusion rules: partner agreement + record type filters</strong></td>
+            <td class="owner">Deepa Madhukar Pardeshi</td>
+            <td>For agreements: filter on partner agreement type. For PC: ISV Force record types. For PCA: partner contract as in-scope PC. Also review grandchild CDL thread and propose solution.</td>
+          </tr>
+          <tr>
+            <td class="num">3</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>App6 SB1 environment setup</strong></td>
+            <td class="owner">Dil Thapa</td>
+            <td>Complete remaining App6 SB1 configuration today.</td>
+          </tr>
+          <tr>
+            <td class="num">4</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>Transformation story (OX62): null-populate missing columns</strong></td>
+            <td class="owner">Jayasudha Murugamanickam</td>
+            <td>Columns not available from source yet &mdash; create in target, populate null. Check field access with Dil for R12 API user. Connect with Arshad + Deepa on related object extraction story (WI-1612).</td>
+          </tr>
+          <tr>
+            <td class="num">5</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>Unpivoted procedure updates</strong></td>
+            <td class="owner">Dwaipayana A B J</td>
+            <td>Waiting on RAMAKRISHNA for final audit-related table. Update unpivoted procedures based on audit proc table results + field mapping sheet.</td>
+          </tr>
+          <tr>
+            <td class="num">6</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>Create 3 Change Requests + tag CLM RD team on all CR threads</strong></td>
+            <td class="owner">Kanika Narula</td>
+            <td>3 CRs confirmed &mdash; create today, link to stories. Tag CLM RD Slack group and full team on every new CR implementation work item.</td>
+          </tr>
+          <tr>
+            <td class="num">7</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>Architecture technical document for Thursday presentation</strong></td>
+            <td class="owner">Syed Arshad Mohiuddin</td>
+            <td>Draft by Wednesday; review with Sachin before Thursday presentation.</td>
+          </tr>
+          <tr>
+            <td class="num">8</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>DAG setup review for chatter story + Oxrocon table entries</strong></td>
+            <td class="owner">Vinika Gupta + Arshad</td>
+            <td>DAG cloned from reseller; remove unused tables. Connect with Arshad this week to review DAG setup before starting runs.</td>
+          </tr>
+          <tr>
+            <td class="num">9</td>
+            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
+            <td><strong>Character limit truncation logic &mdash; technical review required</strong></td>
+            <td class="owner">Sachin + Arshad + Ashto</td>
+            <td>Rohit proposed trimming/truncating string fields where contract name exceeds char limit. End part of string is NOT constant &mdash; logic feasibility must be validated by tech team before implementing. Kanika to reply to Rohit after team confirms.</td>
+          </tr>
+          <tr>
+            <td class="num">10</td>
+            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
+            <td><strong>Metadata setup in DMS for OX production + OXO environments</strong></td>
+            <td class="owner">Dil Thapa</td>
+            <td>appsU83SB1 sandbox demolished; switched to UAT. DMS metadata must be configured for both OX production and OXO. Mandatory fields for object record insertion also to be identified (test via R12 in E2E sandbox).</td>
+          </tr>
+          <tr>
+            <td class="num">11</td>
+            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
+            <td><strong>Field access approval (pending Shya)</strong></td>
+            <td class="owner">Kanika Narula</td>
+            <td>Dedicated resource Shya on leave. Kanika following up for approval. Access required as soon as possible for RAMAKRISHNA to proceed with DMAS field updates.</td>
+          </tr>
+          <tr>
+            <td class="num">12</td>
+            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
+            <td><strong>Approval routing matrix mapping + agreement loading</strong></td>
+            <td class="owner">RAMAKRISHNA Janga</td>
+            <td>Account + opportunity backfill complete. Next: approval matrix mapping (pending access), then agreement loading, then PC/PCA/related objects (chatter included).</td>
+          </tr>
+          <tr>
+            <td class="num">13</td>
+            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
+            <td><strong>Requirement freeze date coordination before each mock</strong></td>
+            <td class="owner">Kanika Narula</td>
+            <td>Freeze was expected by Jun 15 but not met. All changes after freeze treated as CRs. Need to define CR freeze date before each mock (E2E, QA regression) to prevent constant development churn.</td>
+          </tr>
+          <tr>
+            <td class="num">14</td>
+            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
+            <td><strong>Review PA defaults sheet + mapping updates</strong></td>
+            <td class="owner">Team</td>
+            <td>Kanika added a new &ldquo;PA defaults&rdquo; sheet with default values for specific fields (from business via Zhenxin). All highlighted rows in mapping sheet represent changes &mdash; team to review and confirm.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Key Risks & Blockers -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">&#9888;&#65039;</span>
+      <h2>Key Risks &amp; Blockers</h2>
+    </div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Risk / Blocker</th>
+            <th>Severity</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>DMAS down since Friday &mdash; blocks all backfilling and agreement loading</td>
+            <td><span class="severity-critical">Critical</span></td>
+            <td><span class="status-active">Active &mdash; Dil tracking with pod team</span></td>
+          </tr>
+          <tr>
+            <td>Contract name exceeds 80-char target limit &rarr; expected load failures for all such records</td>
+            <td><span class="severity-critical">Critical</span></td>
+            <td><span class="status-active">Active &mdash; needs business/CLM team resolution</span></td>
+          </tr>
+          <tr>
+            <td>E2E mock week after next &mdash; backfill + build must complete this week</td>
+            <td><span class="severity-high">High</span></td>
+            <td><span class="status-active">On track only if DMAS resolves quickly</span></td>
+          </tr>
+          <tr>
+            <td>Assignment agreements not yet identified &mdash; risk of migrating wrong records in current release</td>
+            <td><span class="severity-high">High</span></td>
+            <td><span class="status-active">Awaiting business list before QA regression</span></td>
+          </tr>
+          <tr>
+            <td>File rollup (grandchild &rarr; root) &mdash; new design, no prior implementation; feasibility unconfirmed</td>
+            <td><span class="severity-high">High</span></td>
+            <td><span class="status-active">CR raised; design discussion pending</span></td>
+          </tr>
+          <tr>
+            <td>~500 IDP extraction failures out of ~5,000 files (root cause unknown)</td>
+            <td><span class="severity-medium">Medium</span></td>
+            <td><span class="status-track">Export sharing with product team</span></td>
+          </tr>
+          <tr>
+            <td>Character limit truncation logic &mdash; end of string not constant; logic may not be implementable</td>
+            <td><span class="severity-medium">Medium</span></td>
+            <td><span class="status-active">Tech team review pending</span></td>
+          </tr>
+          <tr>
+            <td>DMAS also blocking Deepa&rsquo;s file/attachment extraction (DB sync failed error)</td>
+            <td><span class="severity-medium">Medium</span></td>
+            <td><span class="status-active">Under investigation</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Key Decisions -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">&#128203;</span>
+      <h2>Key Decisions Aligned</h2>
+    </div>
+    <div class="card-body">
+      <ul class="decision-list">
+        <li><strong>Jun 29</strong> &mdash; IDP extraction results to be shared directly with product team for verification (no further internal refinement first)</li>
+        <li><strong>Jun 29</strong> &mdash; Middle 3 dev-only reporting stories deferred &mdash; no QA activities currently available</li>
+        <li><strong>Jun 29</strong> &mdash; Partial backfilling acceptable for E2E testing &mdash; must cover root/child/grandchild scenarios</li>
+        <li><strong>Jun 29</strong> &mdash; Application description scanning excluded from E2E scope for current release</li>
+        <li><strong>Jun 25</strong> &mdash; Assignment agreements included in E2E scope as standard partner agreements; separate cleanup + October release planned</li>
+        <li><strong>Jun 25</strong> &mdash; File rollup design change classified as a Change Request (new functionality not in original requirements)</li>
+        <li><strong>Jun 25</strong> &mdash; All post-freeze requirement changes treated as CRs; CR freeze date to be defined before each mock</li>
+        <li><strong>Jun 25</strong> &mdash; Truncation logic feasibility requires further technical discussion before implementation</li>
+        <li><strong>Jun 25</strong> &mdash; Future go-lives to be scheduled on Fridays or weekdays (not Saturdays)</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Project CLM Data Migration &nbsp;|&nbsp; DSU Notes: Jun 25 &amp; Jun 29, 2026 &nbsp;|&nbsp; Generated Jun 30, 2026
+</footer>
+
+<script>
+  function populateFilter(tableId, selectId) {
+    var table = document.getElementById(tableId);
+    var select = document.getElementById(selectId);
+    var rows = table.querySelectorAll('tbody tr');
+    var owners = new Set();
+    rows.forEach(function(row) {
+      var cell = row.querySelector('td.owner');
+      if (cell) owners.add(cell.textContent.trim());
+    });
+    Array.from(owners).sort().forEach(function(name) {
+      var opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name;
+      select.appendChild(opt);
+    });
+  }
+
+  function filterTable(tableId, owner, countId) {
+    var table = document.getElementById(tableId);
+    var rows = table.querySelectorAll('tbody tr');
+    var visible = 0;
+    rows.forEach(function(row) {
+      var cell = row.querySelector('td.owner');
+      var match = !owner || (cell && cell.textContent.trim() === owner);
+      row.classList.toggle('hidden', !match);
+      if (match) visible++;
+    });
+    var countEl = document.getElementById(countId);
+    if (owner) {
+      countEl.textContent = visible + ' item' + (visible !== 1 ? 's' : '');
+    } else {
+      countEl.textContent = '';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    populateFilter('high-table', 'filter-high');
+    populateFilter('med-table', 'filter-med');
+  });
+</script>
+</body>
+</html>
