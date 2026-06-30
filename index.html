@@ -58,7 +58,6 @@
 
     .card-body { padding: 20px 24px; }
 
-    /* Work Completed */
     .day-block { margin-bottom: 20px; }
     .day-block:last-child { margin-bottom: 0; }
 
@@ -91,7 +90,7 @@
     .day-block ul li:last-child { border-bottom: none; }
 
     .day-block ul li::before {
-      content: "✓";
+      content: "&#10003;";
       position: absolute;
       left: 0;
       color: #28a745;
@@ -100,50 +99,16 @@
     }
 
     /* Tables */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-    }
-
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
     thead tr { background: #032d60; color: white; }
-
-    thead th {
-      padding: 11px 14px;
-      text-align: left;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-    }
-
+    thead th { padding: 11px 14px; text-align: left; font-weight: 600; letter-spacing: 0.3px; }
     tbody tr:nth-child(even) { background: #f7f9fc; }
     tbody tr:hover { background: #eef4fb; }
+    tbody td { padding: 10px 14px; vertical-align: top; line-height: 1.5; border-bottom: 1px solid #e8edf2; color: #333; }
 
-    tbody td {
-      padding: 10px 14px;
-      vertical-align: top;
-      line-height: 1.5;
-      border-bottom: 1px solid #e8edf2;
-      color: #333;
-    }
-
-    td.num {
-      text-align: center;
-      font-weight: 700;
-      color: #0070d2;
-      width: 36px;
-    }
-
-    td.owner {
-      white-space: nowrap;
-      font-weight: 600;
-      color: #032d60;
-      width: 180px;
-    }
-
-    td.day-tag {
-      white-space: nowrap;
-      width: 68px;
-    }
+    td.num { text-align: center; font-weight: 700; color: #0070d2; width: 36px; }
+    td.owner { white-space: nowrap; font-weight: 600; color: #032d60; width: 180px; }
+    td.day-tag { white-space: nowrap; width: 68px; }
 
     .day-badge {
       display: inline-block;
@@ -153,23 +118,8 @@
       border-radius: 10px;
       text-transform: uppercase;
     }
-
-    .day-badge.jun29 { background: #d4edda; color: #155724; }
-    .day-badge.jun25 { background: #e8f4fd; color: #0070d2; }
-
-    /* Priority badges */
-    .badge {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .badge-high   { background: #ffe0e0; color: #c0392b; }
-    .badge-medium { background: #fff3cd; color: #856404; }
+    .day-badge.jun30 { background: #d4edda; color: #155724; }
+    .day-badge.jun29 { background: #e8f4fd; color: #0070d2; }
 
     /* Risks */
     .severity-critical { color: #c0392b; font-weight: 700; }
@@ -190,12 +140,7 @@
       color: #333;
     }
     .decision-list li:last-child { border-bottom: none; }
-    .decision-list li::before {
-      content: "✔";
-      position: absolute;
-      left: 4px;
-      color: #0070d2;
-    }
+    .decision-list li::before { content: "&#10004;"; position: absolute; left: 4px; color: #0070d2; }
 
     /* Filter bar */
     .filter-bar {
@@ -207,12 +152,7 @@
       background: #f7f9fc;
     }
 
-    .filter-bar label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #032d60;
-      white-space: nowrap;
-    }
+    .filter-bar label { font-size: 0.8rem; font-weight: 600; color: #032d60; white-space: nowrap; }
 
     .filter-bar select {
       font-size: 0.82rem;
@@ -231,13 +171,7 @@
     }
 
     .filter-bar select:focus { outline: 2px solid #0070d2; outline-offset: 1px; }
-
-    .filter-count {
-      font-size: 0.78rem;
-      color: #666;
-      margin-left: 4px;
-    }
-
+    .filter-count { font-size: 0.78rem; color: #666; margin-left: 4px; }
     tbody tr.hidden { display: none; }
 
     footer {
@@ -255,7 +189,7 @@
 <header>
   <h1>CLM Meeting Highlights</h1>
   <p class="subtitle">Highlights the key notes of last 2 meeting notes</p>
-  <p class="meta">Project CLM Data Migration &nbsp;|&nbsp; Jun 25 &amp; Jun 29, 2026 &nbsp;|&nbsp; Generated: Jun 30, 2026</p>
+  <p class="meta">Project CLM Data Migration &nbsp;|&nbsp; Jun 29 &amp; Jun 30, 2026 &nbsp;|&nbsp; Generated: Jun 30, 2026</p>
 </header>
 
 <div class="container">
@@ -269,28 +203,28 @@
     <div class="card-body">
 
       <div class="day-block">
-        <span class="day-label today">Jun 29 &mdash; Most Recent</span>
+        <span class="day-label today">Jun 30 &mdash; Today</span>
         <ul>
-          <li>Adarsh M completed contract backend procedure changes &mdash; scheduled for deployment today</li>
-          <li>Half of agreement backfilling loaded (2K records fixed); reference data backfill complete</li>
-          <li>MuleFlow IDP extraction running in production: ~4,300 PC files + ~2,700 PCA files processed; ~500 failures under investigation</li>
-          <li>Field access + Mule deployment tasks complete (Dil Thapa); App6 SB1 setup remaining</li>
-          <li>DAG setup cloned from reseller by Vinika Gupta; chatter extraction + Oxrocon table entries in progress</li>
-          <li>Architecture technical document started by Arshad for Thursday presentation</li>
-          <li>3 Change Requests confirmed and being created today (Kanika Narula)</li>
-          <li>Middle 3 dev-only sprint stories deferred &mdash; no QA activities currently available</li>
+          <li>Adarsh M: Transformation procedures for "fire and clar" updated with 2 fields; 2 more fields (expected timestamp + created timestamp from partner contract) being added</li>
+          <li>Dil Thapa: Heroku Connect + object access for appsq6 environment completed; password reset emails to team being triggered today</li>
+          <li>Dwaipayana A B J: Updating columns in unpivoted procedures based on RAMAKRISHNA's line creation report queries; expected to complete by EOD</li>
+          <li>RAMAKRISHNA Janga: Story 4 marked ready for review; line-by-line report queries provided to Dwaipayana; story 5 to be marked ready for review today</li>
+          <li>Ajith Kumar: CR 292 &amp; 293 development complete; rightback transformation logic added to Bifrost</li>
+          <li>Vinika Gupta: Extraction part of second story complete; exclusion work in progress today; coordinating with Shubham on stories 1 &amp; 3</li>
+          <li>Arshad: Finalized approach for fetching partner application description from PDF (confirmed with Anu/SOS team); technical design documentation + Stage 2 procedure logic in progress</li>
         </ul>
       </div>
 
       <div class="day-block">
-        <span class="day-label">Jun 25</span>
+        <span class="day-label">Jun 29</span>
         <ul>
-          <li>API deployed to production successfully (Sachin Kumar Sahu)</li>
-          <li>UID and production deployment completed despite issues</li>
-          <li>DAG code changes pushed to Airflow; orchestration table updated (Deepa Madhukar Pardeshi)</li>
-          <li>Account and opportunity backfilling complete (RAMAKRISHNA Janga)</li>
-          <li>MuleFlow run list for QA6 environment completed (Dil Thapa)</li>
-          <li>Field access for DMAS/DMS objects identified; Kanika Narula following up for approvals</li>
+          <li>Adarsh M: Contract backend procedure changes completed &mdash; deployed</li>
+          <li>Half of agreement backfilling loaded (2K records fixed); reference data backfill complete</li>
+          <li>MuleFlow IDP extraction in production: ~4,300 PC files + ~2,700 PCA files processed; ~500 failures under investigation</li>
+          <li>Field access + Mule deployment tasks complete (Dil Thapa); App6 SB1 setup done</li>
+          <li>DAG setup cloned from reseller (Vinika Gupta); chatter extraction + Oxrocon entries in progress</li>
+          <li>Architecture technical document started by Arshad for Thursday presentation</li>
+          <li>3 Change Requests confirmed and created (Kanika Narula)</li>
         </ul>
       </div>
 
@@ -313,56 +247,50 @@
     <div class="card-body">
       <table id="high-table">
         <thead>
-          <tr>
-            <th>#</th>
-            <th>Day</th>
-            <th>Action</th>
-            <th>Owner</th>
-            <th>Context</th>
-          </tr>
+          <tr><th>#</th><th>Day</th><th>Action</th><th>Owner</th><th>Context</th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="num">1</td>
-            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
-            <td><strong>DMAS system down since Friday &mdash; unblock backfilling</strong></td>
+            <td class="day-tag"><span class="day-badge jun30">Jun 30</span></td>
+            <td><strong>Invalid privilege error blocking agreement loading</strong></td>
             <td class="owner">Dil Thapa</td>
-            <td>DMAS non-functional since Friday afternoon. Agreement loading blocked with &ldquo;operation not in sync&rdquo; and &ldquo;DB sync failed&rdquo; errors. Tag pod team in extended channel for ETA.</td>
+            <td>RAMAKRISHNA getting &ldquo;invalid privilege&rdquo; error loading agreements despite R2L user having create access. DMAS data platform sync was fixed but Mule-side error persists. Dil to investigate Mule configuration and review thread with RAMAKRISHNA.</td>
           </tr>
           <tr>
             <td class="num">2</td>
-            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
-            <td><strong>Contract name 80-char limit &mdash; resolve before production load</strong></td>
-            <td class="owner">Kanika Narula</td>
-            <td>Contract name (Account + SFDC + ISV + PC name) exceeds 80-char target limit. Expected load failure for all such records. Engage CLM team + business to increase limit OR simplify naming logic.</td>
+            <td class="day-tag"><span class="day-badge jun30">Jun 30</span></td>
+            <td><strong>File and attachment transformation logic &mdash; unblock Deepa</strong></td>
+            <td class="owner">Deepa Madhukar Pardeshi</td>
+            <td>First time doing file/attachment transformation. Deepa has open questions and needs a connect with Sachin to clarify logic before she can proceed. Sachin not on Jun 30 call &mdash; must follow up separately.</td>
           </tr>
           <tr>
             <td class="num">3</td>
-            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
-            <td><strong>Complete agreement + PC/PCA backfilling for E2E readiness</strong></td>
-            <td class="owner">RAMAKRISHNA Janga</td>
-            <td>Half of agreements loaded; remaining blocked by DMAS issue and approval matrix cross-reference ID errors. Must cover root/child/grandchild scenarios before E2E mock (week after next).</td>
+            <td class="day-tag"><span class="day-badge jun30">Jun 30</span></td>
+            <td><strong>CR 292/293: Stage 2 PC/PCL logic update</strong></td>
+            <td class="owner">Syed Arshad Mohiuddin</td>
+            <td>Existing rightback changes in Bifrost must NOT be reverted. Additional Stage 2 update needed for PC and PCL logic. Arshad and Ajith to meet and decide next steps for implementation.</td>
           </tr>
           <tr>
             <td class="num">4</td>
             <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
-            <td><strong>IDP extraction failures (~500 of ~5,000 files)</strong></td>
-            <td class="owner">Sachin Kumar Sahu</td>
-            <td>Share IDP export with product team for verification. Root cause of ~500 failures (possibly large file size) still TBD.</td>
+            <td><strong>DMAS down since Friday &mdash; complete agreement + PC/PCA backfilling</strong></td>
+            <td class="owner">RAMAKRISHNA Janga</td>
+            <td>Half of agreements loaded; remaining blocked by DMAS/Mule errors and approval matrix cross-reference ID errors. Must cover root/child/grandchild scenarios before E2E mock next week.</td>
           </tr>
           <tr>
             <td class="num">5</td>
-            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
-            <td><strong>Obtain assignment agreement list from business before QA regression</strong></td>
-            <td class="owner">The Group</td>
-            <td>Business considering separate October release. Assignment agreements currently migrating as normal partner agreements in E2E. Business must identify and provide list before QA regression mock so exclusion rules can be applied.</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>Contract name 80-char limit &mdash; resolve before production load</strong></td>
+            <td class="owner">Kanika Narula</td>
+            <td>Contract name (Account + SFDC + ISV + PC name) exceeds 80-char target limit. Expected load failure for all such records. Engage CLM team + business to increase limit or simplify naming logic.</td>
           </tr>
           <tr>
             <td class="num">6</td>
-            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
-            <td><strong>File rollup: grandchild &rarr; root link &mdash; design + CR</strong></td>
-            <td class="owner">Sachin + Deepa + Arshad</td>
-            <td>New requirement: grandchild files must also link to root (current logic: child &rarr; root only). First time this design is being done &mdash; classified as a CR. Feasibility study required before implementation. Story to accommodate or create new sprint story.</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>IDP extraction failures (~500 of ~5,000 files)</strong></td>
+            <td class="owner">Sachin Kumar Sahu</td>
+            <td>~500 failures out of ~7,000 PC + PCA files. Share IDP export with product team for verification. Root cause (possibly large file size) still TBD.</td>
           </tr>
         </tbody>
       </table>
@@ -385,112 +313,106 @@
     <div class="card-body">
       <table id="med-table">
         <thead>
-          <tr>
-            <th>#</th>
-            <th>Day</th>
-            <th>Action</th>
-            <th>Owner</th>
-            <th>Context</th>
-          </tr>
+          <tr><th>#</th><th>Day</th><th>Action</th><th>Owner</th><th>Context</th></tr>
         </thead>
         <tbody>
           <tr>
             <td class="num">1</td>
-            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
-            <td><strong>Deploy contract backend procedure changes</strong></td>
+            <td class="day-tag"><span class="day-badge jun30">Jun 30</span></td>
+            <td><strong>Update procedures with expected + created timestamp fields</strong></td>
             <td class="owner">Adarsh M</td>
-            <td>Changes complete; review and deploy today. Connect with Arshad to align on Ironclad new fields not present in reseller Stage 2.</td>
+            <td>Two extra fields (expected timestamp + created timestamp from partner contract) to be added once confirmed. Query shared in group. Confirm dev work completion with RAMAKRISHNA once done.</td>
           </tr>
           <tr>
             <td class="num">2</td>
-            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
-            <td><strong>Exclusion rules: partner agreement + record type filters</strong></td>
-            <td class="owner">Deepa Madhukar Pardeshi</td>
-            <td>For agreements: filter on partner agreement type. For PC: ISV Force record types. For PCA: partner contract as in-scope PC. Also review grandchild CDL thread and propose solution.</td>
+            <td class="day-tag"><span class="day-badge jun30">Jun 30</span></td>
+            <td><strong>Password reset email thread + appsq6 user access</strong></td>
+            <td class="owner">Dil Thapa</td>
+            <td>Trigger password reset emails to team today and start internal channel thread. Team to monitor emails. Remaining user access provisioning for appsq6 to be completed.</td>
           </tr>
           <tr>
             <td class="num">3</td>
-            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
-            <td><strong>App6 SB1 environment setup</strong></td>
-            <td class="owner">Dil Thapa</td>
-            <td>Complete remaining App6 SB1 configuration today.</td>
+            <td class="day-tag"><span class="day-badge jun30">Jun 30</span></td>
+            <td><strong>Review updated unpivoted procedures with RAMAKRISHNA</strong></td>
+            <td class="owner">Dwaipayana A B J</td>
+            <td>Column updates in unpivoted procedures based on RAMAKRISHNA's line creation report queries. Expected to complete by EOD Jun 30 then review with RAMAKRISHNA.</td>
           </tr>
           <tr>
             <td class="num">4</td>
-            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
-            <td><strong>Transformation story (OX62): null-populate missing columns</strong></td>
-            <td class="owner">Jayasudha Murugamanickam</td>
-            <td>Columns not available from source yet &mdash; create in target, populate null. Check field access with Dil for R12 API user. Connect with Arshad + Deepa on related object extraction story (WI-1612).</td>
+            <td class="day-tag"><span class="day-badge jun30">Jun 30</span></td>
+            <td><strong>Update reseller migration status to null in UAT</strong></td>
+            <td class="owner">Kanika Narula</td>
+            <td>Support case raised for production. Ask MSP to also update reseller delta records' migration status to null in UAT so they can be tracked during UAT mock testing.</td>
           </tr>
           <tr>
             <td class="num">5</td>
-            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
-            <td><strong>Unpivoted procedure updates</strong></td>
-            <td class="owner">Dwaipayana A B J</td>
-            <td>Waiting on RAMAKRISHNA for final audit-related table. Update unpivoted procedures based on audit proc table results + field mapping sheet.</td>
+            <td class="day-tag"><span class="day-badge jun30">Jun 30</span></td>
+            <td><strong>Create unit test document for rightbacks</strong></td>
+            <td class="owner">Ajith Kumar</td>
+            <td>Rightback unstructured data story can be closed once UT document is created. CR 292/293 dev complete; document needed to formally close the story.</td>
           </tr>
           <tr>
             <td class="num">6</td>
-            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
-            <td><strong>Create 3 Change Requests + tag CLM RD team on all CR threads</strong></td>
-            <td class="owner">Kanika Narula</td>
-            <td>3 CRs confirmed &mdash; create today, link to stories. Tag CLM RD Slack group and full team on every new CR implementation work item.</td>
+            <td class="day-tag"><span class="day-badge jun30">Jun 30</span></td>
+            <td><strong>Contract start date + field clarification call</strong></td>
+            <td class="owner">Kanika Narula + Adarsh M + Jayasudha</td>
+            <td>3-person call post-DSU to clarify contract start date, row 9 &amp; 52 fields, and write-back logic for grayed-out root columns. Kanika to post remaining questions to Rohit if needed.</td>
           </tr>
           <tr>
             <td class="num">7</td>
-            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
-            <td><strong>Architecture technical document for Thursday presentation</strong></td>
-            <td class="owner">Syed Arshad Mohiuddin</td>
-            <td>Draft by Wednesday; review with Sachin before Thursday presentation.</td>
+            <td class="day-tag"><span class="day-badge jun30">Jun 30</span></td>
+            <td><strong>Write-back logic for OX62 transformation story</strong></td>
+            <td class="owner">Jayasudha Murugamanickam</td>
+            <td>Check <code>ops_runtime_rightback_log</code> table. Follow reseller stored procedures as guide for partner write-back column implementation. Start date field grayed out for root vs enabled for child &mdash; to be discussed with Arshad separately.</td>
           </tr>
           <tr>
             <td class="num">8</td>
-            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
-            <td><strong>DAG setup review for chatter story + Oxrocon table entries</strong></td>
-            <td class="owner">Vinika Gupta + Arshad</td>
-            <td>DAG cloned from reseller; remove unused tables. Connect with Arshad this week to review DAG setup before starting runs.</td>
+            <td class="day-tag"><span class="day-badge jun30">Jun 30</span></td>
+            <td><strong>Partner application description implementation planning</strong></td>
+            <td class="owner">Syed Arshad Mohiuddin</td>
+            <td>Approach confirmed with Anu/SOS: fetch partner application description from PDF documents. Implementation planning to follow. SOS call moved from Thursday to Monday (Anu unavailable this week).</td>
           </tr>
           <tr>
             <td class="num">9</td>
-            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
-            <td><strong>Character limit truncation logic &mdash; technical review required</strong></td>
-            <td class="owner">Sachin + Arshad + Ashto</td>
-            <td>Rohit proposed trimming/truncating string fields where contract name exceeds char limit. End part of string is NOT constant &mdash; logic feasibility must be validated by tech team before implementing. Kanika to reply to Rohit after team confirms.</td>
+            <td class="day-tag"><span class="day-badge jun30">Jun 30</span></td>
+            <td><strong>All team: update task status to &ldquo;In Progress&rdquo; when logging hours</strong></td>
+            <td class="owner">Team</td>
+            <td>Many tasks still showing &ldquo;Not Started&rdquo; while work is ongoing. Kanika reminded all team members to log hours and update task status accurately for sprint tracking.</td>
           </tr>
           <tr>
             <td class="num">10</td>
-            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
-            <td><strong>Metadata setup in DMS for OX production + OXO environments</strong></td>
-            <td class="owner">Dil Thapa</td>
-            <td>appsU83SB1 sandbox demolished; switched to UAT. DMS metadata must be configured for both OX production and OXO. Mandatory fields for object record insertion also to be identified (test via R12 in E2E sandbox).</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>File rollup: grandchild &rarr; root link &mdash; design + CR</strong></td>
+            <td class="owner">Sachin + Deepa + Arshad</td>
+            <td>New requirement: grandchild files must also link to root (current logic: child &rarr; root only). First time this design is being done &mdash; classified as CR. Feasibility study required before implementation.</td>
           </tr>
           <tr>
             <td class="num">11</td>
-            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
-            <td><strong>Field access approval (pending Shya)</strong></td>
-            <td class="owner">Kanika Narula</td>
-            <td>Dedicated resource Shya on leave. Kanika following up for approval. Access required as soon as possible for RAMAKRISHNA to proceed with DMAS field updates.</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>Architecture technical document for Thursday SOS call</strong></td>
+            <td class="owner">Syed Arshad Mohiuddin</td>
+            <td>Draft by Wednesday; review with Sachin before Thursday. Note: Thursday call now moved to Monday SOS (Anu unavailable). Document still needed.</td>
           </tr>
           <tr>
             <td class="num">12</td>
-            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
-            <td><strong>Approval routing matrix mapping + agreement loading</strong></td>
-            <td class="owner">RAMAKRISHNA Janga</td>
-            <td>Account + opportunity backfill complete. Next: approval matrix mapping (pending access), then agreement loading, then PC/PCA/related objects (chatter included).</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>Exclusion rules: partner agreement + record type filters</strong></td>
+            <td class="owner">Deepa Madhukar Pardeshi</td>
+            <td>For agreements: filter on partner agreement type. For PC: ISV Force record types. For PCA: partner contract as in-scope PC. Also resolve DB sync error blocking file extraction UI submissions.</td>
           </tr>
           <tr>
             <td class="num">13</td>
-            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
-            <td><strong>Requirement freeze date coordination before each mock</strong></td>
-            <td class="owner">Kanika Narula</td>
-            <td>Freeze was expected by Jun 15 but not met. All changes after freeze treated as CRs. Need to define CR freeze date before each mock (E2E, QA regression) to prevent constant development churn.</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>Obtain assignment agreement list from business before QA regression</strong></td>
+            <td class="owner">The Group</td>
+            <td>Business planning separate October release. Assignment agreements migrating as standard partner agreements in E2E. Business must provide list before QA regression so exclusion rules can be applied.</td>
           </tr>
           <tr>
             <td class="num">14</td>
-            <td class="day-tag"><span class="day-badge jun25">Jun 25</span></td>
-            <td><strong>Review PA defaults sheet + mapping updates</strong></td>
-            <td class="owner">Team</td>
-            <td>Kanika added a new &ldquo;PA defaults&rdquo; sheet with default values for specific fields (from business via Zhenxin). All highlighted rows in mapping sheet represent changes &mdash; team to review and confirm.</td>
+            <td class="day-tag"><span class="day-badge jun29">Jun 29</span></td>
+            <td><strong>DAG setup review + chatter extraction + Oxrocon table entries</strong></td>
+            <td class="owner">Vinika Gupta + Arshad</td>
+            <td>DAG cloned from reseller; remove unused tables. Connect with Arshad this week to review DAG setup before starting runs. Chatter extraction and Oxrocon entries ongoing.</td>
           </tr>
         </tbody>
       </table>
@@ -506,17 +428,13 @@
     <div class="card-body">
       <table>
         <thead>
-          <tr>
-            <th>Risk / Blocker</th>
-            <th>Severity</th>
-            <th>Status</th>
-          </tr>
+          <tr><th>Risk / Blocker</th><th>Severity</th><th>Status</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td>DMAS down since Friday &mdash; blocks all backfilling and agreement loading</td>
+            <td>Agreement loading blocked &mdash; invalid privilege error in Mule despite Salesforce access confirmed</td>
             <td><span class="severity-critical">Critical</span></td>
-            <td><span class="status-active">Active &mdash; Dil tracking with pod team</span></td>
+            <td><span class="status-active">Active &mdash; Dil investigating Mule config</span></td>
           </tr>
           <tr>
             <td>Contract name exceeds 80-char target limit &rarr; expected load failures for all such records</td>
@@ -524,9 +442,14 @@
             <td><span class="status-active">Active &mdash; needs business/CLM team resolution</span></td>
           </tr>
           <tr>
-            <td>E2E mock week after next &mdash; backfill + build must complete this week</td>
+            <td>E2E mock coming up &mdash; backfill + build must complete this week; agreement loading still blocked</td>
             <td><span class="severity-high">High</span></td>
-            <td><span class="status-active">On track only if DMAS resolves quickly</span></td>
+            <td><span class="status-active">At risk if Mule issue not resolved quickly</span></td>
+          </tr>
+          <tr>
+            <td>File/attachment transformation logic unclear for Deepa &mdash; blocks last user story</td>
+            <td><span class="severity-high">High</span></td>
+            <td><span class="status-active">Waiting on connect with Sachin</span></td>
           </tr>
           <tr>
             <td>Assignment agreements not yet identified &mdash; risk of migrating wrong records in current release</td>
@@ -534,24 +457,24 @@
             <td><span class="status-active">Awaiting business list before QA regression</span></td>
           </tr>
           <tr>
-            <td>File rollup (grandchild &rarr; root) &mdash; new design, no prior implementation; feasibility unconfirmed</td>
+            <td>File rollup (grandchild &rarr; root) &mdash; new design, feasibility unconfirmed; CR raised</td>
             <td><span class="severity-high">High</span></td>
-            <td><span class="status-active">CR raised; design discussion pending</span></td>
+            <td><span class="status-active">Design discussion pending</span></td>
           </tr>
           <tr>
-            <td>~500 IDP extraction failures out of ~5,000 files (root cause unknown)</td>
+            <td>~500 IDP extraction failures out of ~7,000 files &mdash; root cause unknown</td>
             <td><span class="severity-medium">Medium</span></td>
             <td><span class="status-track">Export sharing with product team</span></td>
           </tr>
           <tr>
-            <td>Character limit truncation logic &mdash; end of string not constant; logic may not be implementable</td>
+            <td>Thursday SOS call canceled (Anu OOO) &mdash; technical design review delayed to Monday</td>
             <td><span class="severity-medium">Medium</span></td>
-            <td><span class="status-active">Tech team review pending</span></td>
+            <td><span class="status-track">Moved to Monday SOS</span></td>
           </tr>
           <tr>
-            <td>DMAS also blocking Deepa&rsquo;s file/attachment extraction (DB sync failed error)</td>
+            <td>Write-back logic: start date field grayed out for root but enabled for child &mdash; behaviour unclear</td>
             <td><span class="severity-medium">Medium</span></td>
-            <td><span class="status-active">Under investigation</span></td>
+            <td><span class="status-active">Separate call with Arshad pending</span></td>
           </tr>
         </tbody>
       </table>
@@ -566,15 +489,17 @@
     </div>
     <div class="card-body">
       <ul class="decision-list">
+        <li><strong>Jun 30</strong> &mdash; Rightback logic for partner stories follows existing reseller store procedure standards</li>
+        <li><strong>Jun 30</strong> &mdash; All team members must update task status to &ldquo;In Progress&rdquo; when logging hours (not leave as &ldquo;Not Started&rdquo;)</li>
+        <li><strong>Jun 30</strong> &mdash; CR 292/293 changes NOT to be reverted; Stage 2 PC/PCL update to be handled as a separate step</li>
+        <li><strong>Jun 30</strong> &mdash; Partner application description: approach confirmed &mdash; fetch from PDF documents (aligned with Anu/SOS team)</li>
+        <li><strong>Jun 30</strong> &mdash; Thursday technical design call canceled; agenda moved to Monday&rsquo;s SOS call (Anu unavailable this week)</li>
         <li><strong>Jun 29</strong> &mdash; IDP extraction results to be shared directly with product team for verification (no further internal refinement first)</li>
-        <li><strong>Jun 29</strong> &mdash; Middle 3 dev-only reporting stories deferred &mdash; no QA activities currently available</li>
         <li><strong>Jun 29</strong> &mdash; Partial backfilling acceptable for E2E testing &mdash; must cover root/child/grandchild scenarios</li>
-        <li><strong>Jun 29</strong> &mdash; Application description scanning excluded from E2E scope for current release</li>
-        <li><strong>Jun 25</strong> &mdash; Assignment agreements included in E2E scope as standard partner agreements; separate cleanup + October release planned</li>
-        <li><strong>Jun 25</strong> &mdash; File rollup design change classified as a Change Request (new functionality not in original requirements)</li>
-        <li><strong>Jun 25</strong> &mdash; All post-freeze requirement changes treated as CRs; CR freeze date to be defined before each mock</li>
-        <li><strong>Jun 25</strong> &mdash; Truncation logic feasibility requires further technical discussion before implementation</li>
-        <li><strong>Jun 25</strong> &mdash; Future go-lives to be scheduled on Fridays or weekdays (not Saturdays)</li>
+        <li><strong>Jun 29</strong> &mdash; Middle 3 dev-only reporting stories deferred &mdash; no QA activities currently available</li>
+        <li><strong>Jun 29</strong> &mdash; Assignment agreements included in E2E as standard partner agreements; separate cleanup + October release planned</li>
+        <li><strong>Jun 29</strong> &mdash; File rollup grandchild&rarr;root classified as Change Request (new functionality not in original requirements)</li>
+        <li><strong>Jun 29</strong> &mdash; CR freeze date to be defined before each mock to prevent constant development churn</li>
       </ul>
     </div>
   </div>
@@ -582,7 +507,7 @@
 </div>
 
 <footer>
-  Project CLM Data Migration &nbsp;|&nbsp; DSU Notes: Jun 25 &amp; Jun 29, 2026 &nbsp;|&nbsp; Generated Jun 30, 2026
+  Project CLM Data Migration &nbsp;|&nbsp; DSU Notes: Jun 29 &amp; Jun 30, 2026 &nbsp;|&nbsp; Generated Jun 30, 2026
 </footer>
 
 <script>
@@ -614,11 +539,7 @@
       if (match) visible++;
     });
     var countEl = document.getElementById(countId);
-    if (owner) {
-      countEl.textContent = visible + ' item' + (visible !== 1 ? 's' : '');
-    } else {
-      countEl.textContent = '';
-    }
+    countEl.textContent = owner ? visible + ' item' + (visible !== 1 ? 's' : '') : '';
   }
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -626,5 +547,6 @@
     populateFilter('med-table', 'filter-med');
   });
 </script>
+
 </body>
 </html>
