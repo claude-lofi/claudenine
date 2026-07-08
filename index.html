@@ -25,19 +25,17 @@
     .section-number { background: #0070d2; color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; }
     .section-body { padding: 20px 24px; }
 
-    /* Day blocks */
     .day-block { margin-bottom: 20px; }
     .day-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 12px; }
-    .day-badge.jul6 { background: #d4edda; color: #155724; }
-    .day-badge.jul2 { background: #e8f4fd; color: #0070d2; }
+    .day-badge.jul7 { background: #d4edda; color: #155724; }
+    .day-badge.jul6 { background: #e8f4fd; color: #0070d2; }
 
     .person-block { margin-bottom: 14px; }
     .person-name { font-weight: 600; font-size: 0.92rem; color: #032d60; margin-bottom: 6px; }
     .bullet-list { list-style: none; padding: 0; }
     .bullet-list li { padding: 4px 0 4px 20px; position: relative; font-size: 0.9rem; line-height: 1.5; color: #444; }
-    .bullet-list li::before { content: "✓"; position: absolute; left: 0; color: #0070d2; font-weight: 700; }
+    .bullet-list li::before { content: "\2713"; position: absolute; left: 0; color: #0070d2; font-weight: 700; }
 
-    /* Tables */
     .filter-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
     .filter-row label { font-size: 0.85rem; font-weight: 600; color: #444; }
     .filter-row select { padding: 6px 10px; border: 1px solid #d0d7de; border-radius: 6px; font-size: 0.85rem; background: white; cursor: pointer; }
@@ -53,8 +51,8 @@
     td.owner { font-weight: 600; color: #032d60; white-space: nowrap; }
 
     .day-pill { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; }
-    .day-pill.jul6 { background: #d4edda; color: #155724; }
-    .day-pill.jul2 { background: #e8f4fd; color: #0070d2; }
+    .day-pill.jul7 { background: #d4edda; color: #155724; }
+    .day-pill.jul6 { background: #e8f4fd; color: #0070d2; }
 
     .sev-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; }
     .sev-high { background: #fde8e8; color: #c0392b; }
@@ -66,11 +64,10 @@
     .status-progress { background: #fef3cd; color: #856404; }
     .status-resolved { background: #d4edda; color: #155724; }
 
-    /* Decisions */
     .decision-list { list-style: none; padding: 0; }
     .decision-list li { padding: 8px 0 8px 20px; position: relative; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; line-height: 1.5; }
     .decision-list li:last-child { border-bottom: none; }
-    .decision-list li::before { content: "✔"; position: absolute; left: 0; color: #0070d2; font-weight: 700; }
+    .decision-list li::before { content: "\2714"; position: absolute; left: 0; color: #0070d2; font-weight: 700; }
     .date-prefix { font-size: 0.78rem; font-weight: 600; color: #0070d2; margin-right: 8px; }
   </style>
 </head>
@@ -79,7 +76,7 @@
 <div class="header">
   <h1>CLM Meeting Highlights</h1>
   <div class="subtitle">Highlights the key notes of last 2 meeting notes</div>
-  <div class="meta">Jul 6, 2026 &bull; Jul 2, 2026 &bull; Generated: Jul 6, 2026</div>
+  <div class="meta">Jul 7, 2026 &bull; Jul 6, 2026 &bull; Generated: Jul 8, 2026</div>
 </div>
 
 <div class="container">
@@ -93,309 +90,240 @@
     <div class="section-body">
 
       <div class="day-block">
-        <span class="day-badge jul6">Jul 6, 2026 — Today</span>
+        <span class="day-badge jul7">Jul 7, 2026 &mdash; Most Recent</span>
 
         <div class="person-block">
-          <div class="person-name">Kanika Narula</div>
+          <div class="person-name">Sowjanya Atchutuni</div>
           <ul class="bullet-list">
-            <li>Led sprint planning, reviewed sprint board and capacity allocation for new sprint</li>
-            <li>Created new stories: DAG creation during data load, rideback verification, Stage 2 data validation, partner mock strategy</li>
-            <li>Updated team capacity planning standard to 12 story points per person per sprint</li>
-            <li>Reassigned and rebalanced workload across team members accounting for upcoming leaves</li>
+            <li>Conducted sprint DSU covering all team updates for [Qualified] Q2C DM sprint</li>
+            <li>Updated sprint board status messages; corrected incorrect Q2C completion status that had been reported</li>
+            <li>Confirmed mock run schedule: Jul 13 (Mon) and Jul 15/16 (tentative) for next week</li>
+            <li>Resolved Workday sync failure strategy: update 17 affected contracts&apos; tax exemption code to &ldquo;exempted&rdquo; and retry sync</li>
+            <li>Scheduled 12:30 call with Sur to debug environmental account sync conflicts with Workday</li>
           </ul>
         </div>
 
         <div class="person-block">
-          <div class="person-name">Syed Arshad Mohiuddin</div>
+          <div class="person-name">Vaishna Nambiar</div>
           <ul class="bullet-list">
-            <li>Finalized data load DAG story (A62 and Ironclad contracts — clone from reseller procedure)</li>
-            <li>Confirmed assignment agreement stories: repurposed reseller delta stories for assignment agreement build</li>
-            <li>Defined Stage 2 validation as high-level review rather than formal QA (no QA document required)</li>
-            <li>Confirmed subsummary feature is out of scope for current sprint due to major requirement gaps</li>
+            <li>Added two additional mock run stories to current sprint for Jul 13 &amp; 15/16 runs</li>
+            <li>Updated deployment story to include both UAT and production deployment on same day</li>
+            <li>Identified 17 contracts with missing tax exemption code causing Workday sync failures; coordinating fix with Shivangi</li>
+            <li>Following up with Dan on pending CR (contract interpretation) and JWT token configuration</li>
           </ul>
         </div>
 
         <div class="person-block">
-          <div class="person-name">RAMAKRISHNA Janga</div>
+          <div class="person-name">Jaya Themaskar</div>
           <ul class="bullet-list">
-            <li>Investigated feed comment backfill failure — CloudHub connectivity error preventing API status updates</li>
-            <li>Proposed manual backfill through archive as alternative; agreed by Sachin and Arshad</li>
-            <li>Will run feed comment loading once through API call to check for errors before manual fallback</li>
+            <li>Started analysis on current contract activation failures; investigating root cause</li>
           </ul>
         </div>
 
         <div class="person-block">
-          <div class="person-name">Vinika Gupta</div>
+          <div class="person-name">Bharathi Subburaj</div>
           <ul class="bullet-list">
-            <li>Confirmed extraction queries and configurations complete for feed comment extraction story</li>
-            <li>Agreed to move story to review after moving extraction to data prep story</li>
-            <li>Assigned to DAG creation story (primary) and audit summary report for execution app</li>
+            <li>Connected with Narville team to obtain JAR and CPS details for API deployment</li>
+            <li>API deployment plan confirmed: UAT + Production on same day (targeting Jul 13/14)</li>
           </ul>
         </div>
 
         <div class="person-block">
-          <div class="person-name">Dwaipayana A B J</div>
+          <div class="person-name">Mayuri Tawale</div>
           <ul class="bullet-list">
-            <li>Assigned to reporting stories — will clone existing reseller SQL logic for partner</li>
-            <li>Tasked with reviewing 3 SQL procedures and consulting RAMAKRISHNA for guidance</li>
-          </ul>
-        </div>
-
-        <div class="person-block">
-          <div class="person-name">Jayasudha Murugamanickam</div>
-          <ul class="bullet-list">
-            <li>Confirmed one record loaded successfully in Stage 2 data load; exclude flag filter causing other records to be filtered</li>
-            <li>Transformation logic validated as functioning correctly for loaded record</li>
+            <li>DQI mock automation progress confirmed; DQI mock largely automated</li>
+            <li>Handed off DQI mock execution knowledge to Aritra Das as backup coverage</li>
           </ul>
         </div>
       </div>
 
       <div class="day-block">
-        <span class="day-badge jul2">Jul 2, 2026</span>
+        <span class="day-badge jul6">Jul 6, 2026</span>
 
         <div class="person-block">
-          <div class="person-name">Adarsh M</div>
+          <div class="person-name">Jaya Themaskar</div>
           <ul class="bullet-list">
-            <li>Procedure completed; testing by loading data to Stage 2 targeting completion by Jul 2/3</li>
-            <li>Extra columns being added; feed comment updates in progress</li>
+            <li>Completed Airflow Git migration code; data migration in progress, to be finalized after E2E prep</li>
           </ul>
         </div>
 
         <div class="person-block">
-          <div class="person-name">Ajith Kumar</div>
+          <div class="person-name">Sowjanya Atchutuni</div>
           <ul class="bullet-list">
-            <li>Analyzing CR 92–95; CR 94 and 95 completed and implemented in Byfrost; proceeding with Stage 2 table implementation</li>
-            <li>Two new CRs identified: DocuSign Envelope ID and Customer Full Legal Name</li>
+            <li>Completed sprint assignments for all team members; rebalanced post-productivities to Naval Nagar</li>
+            <li>Reduced bug fix/placeholder story from 10 to 5 points for sprint manageability</li>
+            <li>Assigned QA tasks to Mayuri Tawale; MuleSoft code deployment to Bharathi &amp; Naval</li>
+            <li>Assigned DQI mock to Aritra Das &amp; Bharathi; decided additional E2E mocks on Tuesdays &amp; Thursdays next week</li>
           </ul>
         </div>
 
         <div class="person-block">
-          <div class="person-name">Ashutosh Khaitan</div>
+          <div class="person-name">Aritra Das</div>
           <ul class="bullet-list">
-            <li>15 DQIs added to Min table; additional reusable DQIs from reseller being identified</li>
-            <li>QA removal confirmed from CR implementation stories to prevent misclassification</li>
-            <li>Partner contracts marked as ineligible by business — removed from current scope</li>
-            <li>Sahiti confirmed as QA driver; test case review expected by Monday Jul 7</li>
+            <li>Identified database connection issue: plot connections consuming data from QAB instead of production DB; flagged for Shivangi to resolve</li>
           </ul>
         </div>
 
         <div class="person-block">
-          <div class="person-name">RAMAKRISHNA Janga</div>
+          <div class="person-name">Mayuri Tawale</div>
           <ul class="bullet-list">
-            <li>Agreement and partner contact backfilling 80–90% complete; records unable to load marked as "hold"</li>
-            <li>LO picklist values issue: awaiting screenshots from Mark 62 to resolve review status field mismatch</li>
-            <li>Coordinating with Himanshu for parallel sanity testing as backfilling progresses</li>
-          </ul>
-        </div>
-
-        <div class="person-block">
-          <div class="person-name">Shubham Sharma</div>
-          <ul class="bullet-list">
-            <li>Identified Stage 2 DAG failure due to missing columns in agreement table; working to add missing columns</li>
-            <li>Third story marked ready for review; exclusion rules for reseller/partner marked as N/A</li>
-          </ul>
-        </div>
-
-        <div class="person-block">
-          <div class="person-name">Syed Arshad Mohiuddin</div>
-          <ul class="bullet-list">
-            <li>Started unstructured data right-back process (same pattern as partner setup)</li>
-            <li>Architecture document shared for Sachin and Ashutosh review; brief presentation to Zhenxin planned for Monday</li>
-            <li>Customer full legal name logic confirmed: prioritize customer profile value, fallback to partner account value</li>
-          </ul>
-        </div>
-
-        <div class="person-block">
-          <div class="person-name">Dwaipayana A B J</div>
-          <ul class="bullet-list">
-            <li>Queries prepared for two stories; awaiting data population to finalize UT documents</li>
-            <li>Advised to document procedure names and mark stories ready for review</li>
+            <li>Test queries sent to Shivangi for review; waiting for confirmation before moving to ready-for-review</li>
+            <li>Confirmed E2E bug check still pending for A2A scenario</li>
           </ul>
         </div>
       </div>
+
     </div>
   </div>
 
-  <!-- Section 2: High Priority Action Items -->
+  <!-- Section 2: High Priority Items -->
   <div class="section">
     <div class="section-header">
       <div class="section-number">2</div>
-      <h2>High Priority Action Items</h2>
+      <h2>High Priority Items</h2>
     </div>
     <div class="section-body">
       <div class="filter-row">
         <label for="filter-high">Filter by Owner:</label>
         <select id="filter-high" onchange="filterTable('high-table', this.value, 'high-count')">
-          <option value="">All Owners</option>
+          <option value="all">All Owners</option>
         </select>
         <span class="count-badge" id="high-count"></span>
       </div>
       <table id="high-table">
         <thead>
           <tr>
-            <th>#</th>
             <th>Day</th>
-            <th>Action</th>
             <th>Owner</th>
-            <th>Context</th>
+            <th>Item</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
+            <td><span class="day-pill jul7">Jul 7</span></td>
+            <td class="owner">Vaishna Nambiar</td>
+            <td>Update tax exemption code to &ldquo;exempted&rdquo; for 17 contracts and retry Workday sync; notify CN of the change</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill jul7">Jul 7</span></td>
+            <td class="owner">Prathibha Naik</td>
+            <td>Upload qualified contract migration test cases to GA End-to-End details sheet by Wed/Thu (Jul 9/10)</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill jul7">Jul 7</span></td>
+            <td class="owner">Sowjanya Atchutuni</td>
+            <td>Follow up with Shantan (quoting) &amp; Amswini (partner) to get remaining contract migration test cases added</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill jul7">Jul 7</span></td>
+            <td class="owner">Shivangi Tyagi</td>
+            <td>Investigate Workday transaction sync errors &mdash; determine if failures are caused by existing account sync errors or a new issue</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill jul7">Jul 7</span></td>
+            <td class="owner">Bharathi Subburaj</td>
+            <td>Prepare API deployment run list &amp; JAR details with Narville team; target UAT + Prod deployment Jul 13/14</td>
+            <td><span class="status-badge status-progress">In Progress</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill jul7">Jul 7</span></td>
+            <td class="owner">Vaishna Nambiar</td>
+            <td>Setup table structures for file migration in stage, trans &amp; prod environments (5 pts)</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
             <td><span class="day-pill jul6">Jul 6</span></td>
-            <td>Run feed comment loading through API call; if CloudHub issue persists, proceed with manual backfill through archive</td>
-            <td class="owner">RAMAKRISHNA Janga</td>
-            <td>CloudHub connectivity error blocking API inserts; manual backfill agreed as alternative</td>
+            <td class="owner">Aritra Das</td>
+            <td>Investigate &amp; resolve database connection issue: plot connections consuming from QAB instead of production DB</td>
+            <td><span class="status-badge status-progress">In Progress</span></td>
           </tr>
           <tr>
-            <td>2</td>
             <td><span class="day-pill jul6">Jul 6</span></td>
-            <td>Attach validation document to feed comment extraction story and move to Ready for Review</td>
-            <td class="owner">Vinika Gupta</td>
-            <td>Extraction queries and configs verified; extraction moved to data prep story</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td><span class="day-pill jul6">Jul 6</span></td>
-            <td>Create stories: summary report, DAG story, mock strategy story, rideback story, Stage 2 validation story</td>
-            <td class="owner">Kanika Narula</td>
-            <td>New sprint planning; stories identified during Jul 6 DSU</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td><span class="day-pill jul6">Jul 6</span></td>
-            <td>Update UT documentation and move story to Ready for Review</td>
-            <td class="owner">Syed Arshad Mohiuddin</td>
-            <td>Unit testing document needs to be attached before story closure</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td><span class="day-pill jul6">Jul 6</span></td>
-            <td>Create tasks under assigned work items; clarify scope questions immediately in engineering channels</td>
-            <td class="owner">All Team Members</td>
-            <td>Syed Arshad requested all team members create tasks before confirming sprint board</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td><span class="day-pill jul2">Jul 2</span></td>
-            <td>Add missing columns to Stage 2 agreement table to fix DAG failures</td>
-            <td class="owner">Shubham Sharma</td>
-            <td>Stage 2 DAG failing due to missing columns; pipeline must be running before data quality checks</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td><span class="day-pill jul2">Jul 2</span></td>
-            <td>Contact CLM team for approval matrix field API name and ETA for availability in APSQ6SB1 E2E sandbox</td>
-            <td class="owner">Sachin Kumar Sahu / Kanika Narula</td>
-            <td>Approval matrix field missing from target contract object; blocking Jayasudha's mapping work</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td><span class="day-pill jul2">Jul 2</span></td>
-            <td>Resolve Stage 2 data load issues and complete transformation deployment to DB</td>
-            <td class="owner">Jayasudha Murugamanickam</td>
-            <td>Data load issues during DB deployment; logic implemented in Byfrost; exclude flag filter causing filtered records</td>
+            <td class="owner">Sowjanya Atchutuni</td>
+            <td>Request Dil to update 3 E2E access items to read-only for verification; update JWT token</td>
+            <td><span class="status-badge status-open">Open</span></td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- Section 3: Medium Priority Action Items -->
+  <!-- Section 3: Medium Priority Items -->
   <div class="section">
     <div class="section-header">
       <div class="section-number">3</div>
-      <h2>Medium Priority Action Items</h2>
+      <h2>Medium Priority Items</h2>
     </div>
     <div class="section-body">
       <div class="filter-row">
         <label for="filter-med">Filter by Owner:</label>
         <select id="filter-med" onchange="filterTable('med-table', this.value, 'med-count')">
-          <option value="">All Owners</option>
+          <option value="all">All Owners</option>
         </select>
         <span class="count-badge" id="med-count"></span>
       </div>
       <table id="med-table">
         <thead>
           <tr>
-            <th>#</th>
             <th>Day</th>
-            <th>Action</th>
             <th>Owner</th>
-            <th>Context</th>
+            <th>Item</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
+            <td><span class="day-pill jul7">Jul 7</span></td>
+            <td class="owner">Prathibha Naik</td>
+            <td>Add scrum team column to existing Narville test cases based on IDs; reach out to respective owners to delete descoped dummy records from dashboard</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill jul7">Jul 7</span></td>
+            <td class="owner">Vaishna Nambiar</td>
+            <td>Clone procedures &amp; set up file migration code for stage/trans/prod (Qualified)</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill jul7">Jul 7</span></td>
+            <td class="owner">Sowjanya Atchutuni</td>
+            <td>Conduct KT session on file migration code for Shivangi; schedule sync meeting to debug Workday environment account conflicts</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill jul7">Jul 7</span></td>
+            <td class="owner">Aritra Das</td>
+            <td>Execute DQI mock scripts as backup operator; ensure knowledge of automated process</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-pill jul7">Jul 7</span></td>
+            <td class="owner">Shivangi Tyagi</td>
+            <td>Lead file migration analysis &amp; design (3 pts) &mdash; analyze source data, file counts, locations; attend KT session from Sowjanya</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
             <td><span class="day-pill jul6">Jul 6</span></td>
-            <td>Attach validation document to relevant story</td>
-            <td class="owner">Vinika Gupta</td>
-            <td>Stage 2 data validation document needs attachment</td>
+            <td class="owner">Mayuri Tawale</td>
+            <td>Verify test queries status with Shivangi; update to ready-for-review once confirmed</td>
+            <td><span class="status-badge status-progress">In Progress</span></td>
           </tr>
           <tr>
-            <td>2</td>
             <td><span class="day-pill jul6">Jul 6</span></td>
-            <td>Review 3 SQL procedures and provide feedback or report findings</td>
-            <td class="owner">Dwaipayana A B J</td>
-            <td>Assigned to reporting stories; RAMAKRISHNA available for guidance on queries</td>
+            <td class="owner">Vaishna Nambiar</td>
+            <td>Share list of contracts requiring RMS addition with Oracle team</td>
+            <td><span class="status-badge status-open">Open</span></td>
           </tr>
           <tr>
-            <td>3</td>
             <td><span class="day-pill jul6">Jul 6</span></td>
-            <td>Create audit summary report for execution application; collaborate with RAMAKRISHNA for guidance</td>
-            <td class="owner">Vinika Gupta</td>
-            <td>Vinika assigned as primary; RAMAKRISHNA to guide on reporting queries and SQL logic</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td><span class="day-pill jul6">Jul 6</span></td>
-            <td>Initiate Tableau dashboard structure discussions; develop proposed visual layout</td>
-            <td class="owner">All Team (RAMAKRISHNA secondary)</td>
-            <td>Tableau deferred to next sprint for data, but layout design can start now; partner has no extra objects but task objects need removal</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td><span class="day-pill jul6">Jul 6</span></td>
-            <td>Log work hours to Sachin's data load story</td>
-            <td class="owner">Shubham Sharma</td>
-            <td>Supporting Sachin on data load execution; Sachin on PTO Jul 7–10</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td><span class="day-pill jul2">Jul 2</span></td>
-            <td>Add reusable DQIs from reseller to partner Min table</td>
-            <td class="owner">Ashutosh Khaitan</td>
-            <td>15 required DQIs added; cascaded ones (agreement invalid, PC invalid) still to be added</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td><span class="day-pill jul2">Jul 2</span></td>
-            <td>Review architecture document for unstructured data; provide feedback before Monday Zhenxin presentation</td>
-            <td class="owner">Sachin Kumar Sahu / Ashutosh Khaitan</td>
-            <td>Document shared by Syed Arshad; still in draft; brief overview (not detailed) planned for Zhenxin's call</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td><span class="day-pill jul2">Jul 2</span></td>
-            <td>Verify picklist values in Org62 for LO review status field and complete LO loading</td>
-            <td class="owner">RAMAKRISHNA Janga</td>
-            <td>Awaiting screenshots from Mark 62 for picklist values; records with issues being held</td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td><span class="day-pill jul2">Jul 2</span></td>
-            <td>Complete remaining chatter QA query</td>
-            <td class="owner">Himanshu Jain</td>
-            <td>All other QA queries ready; chatter query was last remaining item</td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td><span class="day-pill jul2">Jul 2</span></td>
-            <td>Update data load story description with Ironclad and A62 reference links</td>
-            <td class="owner">Kanika Narula</td>
-            <td>DAG procedure to be cloned from reseller; links shared by Syed Arshad in chat</td>
+            <td class="owner">Sowjanya Atchutuni</td>
+            <td>Add missing reporting tag to project tasks; confirm sprint board by evening</td>
+            <td><span class="status-badge status-open">Open</span></td>
           </tr>
         </tbody>
       </table>
@@ -412,61 +340,54 @@
       <table>
         <thead>
           <tr>
-            <th>Risk / Blocker</th>
+            <th>Day</th>
             <th>Severity</th>
+            <th>Risk / Blocker</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>CloudHub connectivity error blocking feed comment backfill API — no records inserted; API status not updating</td>
+            <td><span class="day-pill jul7">Jul 7</span></td>
             <td><span class="sev-badge sev-high">High</span></td>
-            <td><span class="status-badge status-progress">Mitigating — manual backfill planned</span></td>
+            <td>Workday sync failures on 17 contracts (missing tax exemption code) &mdash; contract activation blocked until resolved; fix underway (set to &ldquo;exempted&rdquo;)</td>
+            <td><span class="status-badge status-progress">In Progress</span></td>
           </tr>
           <tr>
-            <td>Approval matrix field missing from target contract object in Byfrost and lower envs — blocks Jayasudha's mapping</td>
+            <td><span class="day-pill jul7">Jul 7</span></td>
             <td><span class="sev-badge sev-high">High</span></td>
-            <td><span class="status-badge status-open">Open — CLM team contact needed for API name + ETA</span></td>
+            <td>Contract migration test cases (quoting/partner/renewals/deal mgmt/finance) not yet uploaded to GA E2E sheet &mdash; risk to E2E readiness if not completed by Jul 9/10</td>
+            <td><span class="status-badge status-open">Open</span></td>
           </tr>
           <tr>
-            <td>Stage 2 DAG failing due to missing columns in agreement table — pipeline not yet running</td>
-            <td><span class="sev-badge sev-high">High</span></td>
-            <td><span class="status-badge status-progress">In Progress — Shubham adding missing columns</span></td>
-          </tr>
-          <tr>
-            <td>Exclude flag filter in Stage 2 causing most records to be filtered out during data load</td>
+            <td><span class="day-pill jul7">Jul 7</span></td>
             <td><span class="sev-badge sev-medium">Medium</span></td>
-            <td><span class="status-badge status-progress">In Progress — extensive testing planned this week</span></td>
+            <td>Workday environmental conflict: QA6 account numbers may already exist in Workday with different details, causing bad request errors on sync &mdash; investigation call scheduled</td>
+            <td><span class="status-badge status-progress">In Progress</span></td>
           </tr>
           <tr>
-            <td>LO picklist values mismatch between Org62 and E2E — review status field blocking LO loading</td>
+            <td><span class="day-pill jul7">Jul 7</span></td>
             <td><span class="sev-badge sev-medium">Medium</span></td>
-            <td><span class="status-badge status-progress">In Progress — awaiting screenshots from Mark 62</span></td>
+            <td>France contracts: 2 contracts require mandatory secondary tax ID &mdash; validation rule check and business clarification pending</td>
+            <td><span class="status-badge status-open">Open</span></td>
           </tr>
           <tr>
-            <td>Subsummary feature has major requirement gaps — out of scope for current sprint</td>
+            <td><span class="day-pill jul7">Jul 7</span></td>
             <td><span class="sev-badge sev-medium">Medium</span></td>
-            <td><span class="status-badge status-resolved">Resolved — marked out of scope</span></td>
+            <td>JWT token environment not ready &mdash; file migration extraction story pushed to next sprint; current sprint limited to table setup &amp; code structure only</td>
+            <td><span class="status-badge status-open">Open</span></td>
           </tr>
           <tr>
-            <td>Sachin Kumar Sahu on PTO Jul 7–10 — data load and execution app onboarding stories need coverage</td>
+            <td><span class="day-pill jul6">Jul 6</span></td>
             <td><span class="sev-badge sev-medium">Medium</span></td>
-            <td><span class="status-badge status-progress">Mitigated — Syed Arshad + Shubham providing coverage</span></td>
+            <td>Plot connections consuming data from QAB instead of production DB &mdash; environment misconfiguration risk for data quality</td>
+            <td><span class="status-badge status-progress">In Progress</span></td>
           </tr>
           <tr>
-            <td>New CRs (DocuSign Envelope ID, Customer Full Legal Name) arriving late in build cycle</td>
-            <td><span class="sev-badge sev-medium">Medium</span></td>
-            <td><span class="status-badge status-progress">In Progress — customer legal name logic confirmed; DocuSign envelope ID tracking needed</span></td>
-          </tr>
-          <tr>
-            <td>Tableau dashboard design blocked — mock data not available until next week's partner mock session</td>
+            <td><span class="day-pill jul6">Jul 6</span></td>
             <td><span class="sev-badge sev-low">Low</span></td>
-            <td><span class="status-badge status-progress">In Progress — layout design can start; data deferred</span></td>
-          </tr>
-          <tr>
-            <td>Assignment agreement build pending confirmation from Sarat — stories added as placeholders</td>
-            <td><span class="sev-badge sev-low">Low</span></td>
-            <td><span class="status-badge status-progress">In Progress — stories repurposed from reseller delta; awaiting Sarat confirmation</span></td>
+            <td>Quoting (Shantan) test case status was incorrectly reported as complete in morning DSU &mdash; corrected; actual completion expected within a day or two</td>
+            <td><span class="status-badge status-resolved">Resolved</span></td>
           </tr>
         </tbody>
       </table>
@@ -481,20 +402,16 @@
     </div>
     <div class="section-body">
       <ul class="decision-list">
-        <li><span class="date-prefix">Jul 6</span>Team capacity planning updated to 12 story points per person per sprint (was 10) per Sharat's instruction</li>
-        <li><span class="date-prefix">Jul 6</span>Manual feed comment backfill strategy adopted — API approach blocked by CloudHub connectivity issues; no right-back needed for feed comments except ID update</li>
-        <li><span class="date-prefix">Jul 6</span>Extraction activities separated from story execution — moved into data preparation story (setup and config only)</li>
-        <li><span class="date-prefix">Jul 6</span>Stage 2 validation defined as high-level review only — no formal QA document required; focus on root-child-grandchild mapping correctness</li>
-        <li><span class="date-prefix">Jul 6</span>Subsummary feature declared out of scope — major requirement gaps; only one field generates subsummary and that field itself is not available</li>
-        <li><span class="date-prefix">Jul 6</span>Reseller Delta stories repurposed for Assignment Agreement build — reseller work now limited to production; assignment agreement needs separate analysis and build stories</li>
-        <li><span class="date-prefix">Jul 6</span>DAG procedure for data load to be created by cloning existing reseller procedure — applies to A62 and Ironclad contracts across all environments</li>
-        <li><span class="date-prefix">Jul 6</span>Tableau dashboard design deferred to next sprint — mock data not available until after upcoming partner mock session next week</li>
-        <li><span class="date-prefix">Jul 2</span>CR implementation stories classified as dev tasks only — QA label removed to prevent misclassification in reporting metrics</li>
-        <li><span class="date-prefix">Jul 2</span>Customer Full Legal Name logic: prioritize customer profile value; use partner account value as fallback regardless of status (Sarmad updated mapping sheet)</li>
-        <li><span class="date-prefix">Jul 2</span>User stories can be marked Ready for Review with procedure names attached — no full UT document required for current sprint</li>
-        <li><span class="date-prefix">Jul 2</span>Exclusion rules for reseller/partner accounts marked N/A until data profiling completed in next sprint</li>
-        <li><span class="date-prefix">Jul 2</span>Placeholder story created for pipeline loading data from Google Sheets to database — will be repurposed if PDF scanning or Google Sheet pipeline is needed</li>
-        <li><span class="date-prefix">Jul 2</span>Priority is DAG run to establish pipeline — data quality checks will follow once pipeline is confirmed running</li>
+        <li><span class="date-prefix">Jul 7</span>File migration JWT extraction story pushed to next sprint; current sprint scoped to table structure creation + code setup for stage/trans/prod (5 pts) with Shivangi leading analysis &amp; design (3 pts)</li>
+        <li><span class="date-prefix">Jul 7</span>API deployment (new MuleSoft API): UAT and Production to be deployed on the same day &mdash; targeting Jul 13 or 14</li>
+        <li><span class="date-prefix">Jul 7</span>Mock run schedule finalized: Jul 13 (Mon) and Jul 15/16 for next sprint; DQI mock execution handed to Aritra as backup operator</li>
+        <li><span class="date-prefix">Jul 7</span>Tax exemption fix: set exemption code to &ldquo;exempted&rdquo; for 17 contracts where SF-based tax exempt type is &ldquo;exempt&rdquo; but code is missing &mdash; retry Workday sync after update</li>
+        <li><span class="date-prefix">Jul 7</span>Provisioning confirmed NOT blocked by activation/sync failures &mdash; can proceed immediately while Workday environment issues are investigated</li>
+        <li><span class="date-prefix">Jul 7</span>VAT validation required field: India contracts showing false despite having VAT number &mdash; determined as not required; no action needed</li>
+        <li><span class="date-prefix">Jul 6</span>Additional E2E mock sessions to run on Tuesdays and Thursdays starting next week (team has capacity)</li>
+        <li><span class="date-prefix">Jul 6</span>Bug fix/placeholder story reduced from 10 to 5 story points; part two can be added same sprint if needed</li>
+        <li><span class="date-prefix">Jul 6</span>DQI mock testing combined with E2E mock efforts &mdash; zero-point tracking story for traceability</li>
+        <li><span class="date-prefix">Jul 6</span>Post-productivity tasks reassigned from Bharathi (occupied with immigration work) to Naval Nagar</li>
       </ul>
     </div>
   </div>
@@ -504,54 +421,36 @@
 <script>
   function populateFilter(tableId, selectId) {
     var table = document.getElementById(tableId);
-    var select = document.getElementById(selectId);
-    var owners = [];
     var rows = table.querySelectorAll('tbody tr');
+    var owners = new Set();
     rows.forEach(function(row) {
       var ownerCell = row.querySelector('td.owner');
-      if (ownerCell) {
-        var name = ownerCell.textContent.trim();
-        if (name && owners.indexOf(name) === -1) {
-          owners.push(name);
-        }
-      }
+      if (ownerCell) owners.add(ownerCell.textContent.trim());
     });
-    owners.sort();
-    owners.forEach(function(name) {
-      var opt = document.createElement('option');
-      opt.value = name;
-      opt.textContent = name;
-      select.appendChild(opt);
+    var select = document.getElementById(selectId);
+    owners.forEach(function(owner) {
+      var option = document.createElement('option');
+      option.value = owner;
+      option.textContent = owner;
+      select.appendChild(option);
     });
-    updateCount(tableId, selectId === 'filter-high' ? 'high-count' : 'med-count');
-  }
-
-  function updateCount(tableId, countId) {
-    var table = document.getElementById(tableId);
-    var countEl = document.getElementById(countId);
-    if (!countEl) return;
-    var visible = 0;
-    table.querySelectorAll('tbody tr').forEach(function(row) {
-      if (!row.classList.contains('hidden')) visible++;
-    });
-    countEl.textContent = visible + ' item' + (visible !== 1 ? 's' : '');
   }
 
   function filterTable(tableId, owner, countId) {
     var table = document.getElementById(tableId);
-    table.querySelectorAll('tbody tr').forEach(function(row) {
-      if (!owner) {
+    var rows = table.querySelectorAll('tbody tr');
+    var count = 0;
+    rows.forEach(function(row) {
+      var ownerCell = row.querySelector('td.owner');
+      if (owner === 'all' || (ownerCell && ownerCell.textContent.trim() === owner)) {
         row.classList.remove('hidden');
+        count++;
       } else {
-        var ownerCell = row.querySelector('td.owner');
-        if (ownerCell && ownerCell.textContent.trim() === owner) {
-          row.classList.remove('hidden');
-        } else {
-          row.classList.add('hidden');
-        }
+        row.classList.add('hidden');
       }
     });
-    updateCount(tableId, countId);
+    var badge = document.getElementById(countId);
+    if (badge) badge.textContent = owner === 'all' ? '' : count + ' item' + (count !== 1 ? 's' : '');
   }
 
   document.addEventListener('DOMContentLoaded', function() {
