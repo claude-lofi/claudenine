@@ -1,348 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Slack Dashboard &ndash; Jul 9, 2026</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Slack Dashboard — Prathibha Naik</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f7; color: #1d1d1f; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f4f5f7; color: #172b4d; }
 
   .header {
-    background: linear-gradient(135deg, #6b21a8, #3b0764);
+    background: linear-gradient(135deg, #6b21a8, #4c1d95);
     color: white;
-    padding: 32px 40px 28px;
+    padding: 28px 32px 24px;
   }
-  .header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
-  .header .meta { margin-top: 6px; font-size: 14px; opacity: 0.8; }
+  .header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; }
+  .header .subtitle { font-size: 0.95rem; opacity: 0.85; margin-top: 4px; }
+  .header .meta { font-size: 0.82rem; opacity: 0.7; margin-top: 8px; }
 
-  .container { max-width: 1200px; margin: 0 auto; padding: 28px 24px; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 24px 20px 40px; }
 
-  .section { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .section-title { font-size: 16px; font-weight: 700; color: #1d1d1f; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #f0f0f0; }
+  .section-title {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #5e6c84; margin-bottom: 12px; margin-top: 28px;
+  }
 
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .card-full {
+    background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 18px 22px; margin-bottom: 12px;
+  }
+  .card-full .card-title {
+    font-size: 0.88rem; font-weight: 600; color: #172b4d; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
 
-  .thread { padding: 12px 0; border-bottom: 1px solid #f5f5f7; }
-  .thread:last-child { border-bottom: none; }
-  .thread-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
-  .thread-text { font-size: 14px; color: #3d3d3f; line-height: 1.5; }
-  .author { font-size: 13px; font-weight: 600; color: #1d1d1f; }
-  .timestamp { font-size: 12px; color: #86868b; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
 
-  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; white-space: nowrap; }
-  .badge.green  { background: #d1fae5; color: #065f46; }
-  .badge.blue   { background: #dbeafe; color: #1e40af; }
-  .badge.amber  { background: #fef3c7; color: #92400e; }
-  .badge.red    { background: #fee2e2; color: #991b1b; }
-  .badge.purple { background: #ede9fe; color: #5b21b6; }
-  .badge.gray   { background: #f3f4f6; color: #374151; }
+  .card {
+    background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 16px 18px;
+  }
+  .card .card-title {
+    font-size: 0.85rem; font-weight: 600; color: #172b4d;
+    margin-bottom: 10px; display: flex; align-items: center; gap: 7px;
+  }
 
-  .badge-critical { background: #fee2e2; color: #991b1b; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
-  .badge-high     { background: #ffedd5; color: #9a3412; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
-  .badge-medium   { background: #fef9c3; color: #854d0e; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
-  .badge-decision { background: #dbeafe; color: #1e40af; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
-  .badge-info     { background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
-  .badge-watch    { background: #f3e8ff; color: #6b21a8; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
-  .badge-resolved { background: #d1fae5; color: #065f46; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+  .channel {
+    display: inline-block; background: #e8e0fb; color: #4c1d95;
+    border-radius: 3px; padding: 1px 6px; font-size: 0.72rem; font-weight: 600;
+  }
+  .ts { color: #8993a4; font-size: 0.75rem; }
 
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  th { text-align: left; padding: 8px 12px; background: #f9fafb; color: #6b7280; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e5e7eb; }
-  td { padding: 10px 12px; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
-  tr:last-child td { border-bottom: none; }
+  .badge {
+    display: inline-block; border-radius: 3px; padding: 2px 7px;
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
+  }
+  .badge-red    { background: #ffebe6; color: #de350b; }
+  .badge-orange { background: #fff4e5; color: #ff8b00; }
+  .badge-yellow { background: #fffae6; color: #997000; }
+  .badge-green  { background: #e3fcef; color: #006644; }
+  .badge-blue   { background: #deebff; color: #0052cc; }
 
-  .milestone { display: flex; gap: 14px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid #f5f5f7; }
-  .milestone:last-child { border-bottom: none; }
-  .milestone-date { font-size: 12px; font-weight: 700; color: #6b21a8; min-width: 60px; padding-top: 2px; }
-  .milestone-text { font-size: 14px; color: #3d3d3f; line-height: 1.4; }
+  .item {
+    padding: 9px 0; border-bottom: 1px solid #f0f1f4; font-size: 0.84rem; line-height: 1.5;
+  }
+  .item:last-child { border-bottom: none; }
+  .item .from { font-weight: 600; color: #253858; }
+  .item .body { color: #5e6c84; margin-top: 2px; font-size: 0.81rem; }
 
-  .stat-bar { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
-  .stat { background: #f9fafb; border-radius: 8px; padding: 10px 16px; text-align: center; min-width: 80px; }
-  .stat-num { font-size: 22px; font-weight: 700; color: #1d1d1f; }
-  .stat-label { font-size: 11px; color: #6b7280; margin-top: 2px; }
-  .stat.green .stat-num { color: #065f46; }
-  .stat.red .stat-num { color: #991b1b; }
-  .stat.amber .stat-num { color: #92400e; }
-  .stat.blue .stat-num { color: #1e40af; }
+  .risk-item {
+    padding: 10px 14px; border-radius: 6px; margin-bottom: 9px;
+    font-size: 0.84rem; line-height: 1.5; border-left: 4px solid;
+  }
+  .risk-high   { border-color: #de350b; background: #fff5f4; }
+  .risk-medium { border-color: #ff8b00; background: #fffbf4; }
+  .risk-low    { border-color: #0052cc; background: #f4f8ff; }
+  .risk-item strong { display: block; margin-bottom: 3px; }
+  .risk-item .detail { color: #5e6c84; font-size: 0.8rem; }
+
+  .stat-row { display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .stat-box {
+    background: #f4f5f7; border-radius: 6px; padding: 9px 13px; flex: 1; min-width: 80px; text-align: center;
+  }
+  .stat-box .num { font-size: 1.4rem; font-weight: 700; color: #172b4d; }
+  .stat-box .lbl { font-size: 0.7rem; color: #5e6c84; margin-top: 2px; }
+
+  .milestone-item {
+    padding: 9px 0; border-bottom: 1px solid #f0f1f4;
+    font-size: 0.84rem; display: flex; align-items: flex-start; gap: 10px;
+  }
+  .milestone-item:last-child { border-bottom: none; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .dot-green  { background: #36b37e; }
+  .dot-blue   { background: #0065ff; }
+  .dot-yellow { background: #ffc400; }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>Slack Dashboard</h1>
-  <div class="meta">As of Jul 9, 2026 &nbsp;&middot;&nbsp; 6 channels monitored</div>
+  <h1>Slack Dashboard — Prathibha Naik</h1>
+  <div class="subtitle">Qualified E2E &amp; CLM Data Migration | DET Q2C Program</div>
+  <div class="meta">As of July 13, 2026 &nbsp;·&nbsp; #det-qualified-e2e-testing &nbsp;·&nbsp; #proj-qualified-det-q2c-team &nbsp;·&nbsp; #det-qualified-gtm-internal &nbsp;·&nbsp; #proj-qualified-releasemgt &nbsp;·&nbsp; #bt-clm-engg-team &nbsp;·&nbsp; #proj-clm-datamigration</div>
 </div>
 
 <div class="container">
 
-  <!-- SECTION 1: Open Threads -->
-  <div class="section">
-    <div class="section-title">&#128172; Open Threads</div>
+  <!-- OPEN THREADS -->
+  <div class="section-title">Open Threads</div>
 
-    <!-- E2E Progress Banner -->
-    <div class="thread">
-      <div class="thread-header">
-        <span class="badge red">#det-qualified-e2e-testing</span>
-        <span class="author">Rajendhar Mydam</span>
-        <span class="timestamp">Jul 9, 09:23</span>
-      </div>
-      <div class="thread-text">
-        <strong>Qualified E2E Week 1 Progress Update</strong> &mdash; 3.3% complete (35/1,076 TCs executed; 31 passed, 1 failed, 3 in progress).
-        <div class="stat-bar" style="margin-top:10px;">
-          <div class="stat green"><div class="stat-num">31</div><div class="stat-label">Passed</div></div>
-          <div class="stat red"><div class="stat-num">1</div><div class="stat-label">Failed</div></div>
-          <div class="stat amber"><div class="stat-num">3</div><div class="stat-label">In Progress</div></div>
-          <div class="stat blue"><div class="stat-num">1,041</div><div class="stat-label">Remaining</div></div>
-        </div>
-        <strong>Resolved:</strong> Fulfillment Provider parameters fixed; License Definitions resolved; Org62 confirmed pointing to QA6 (app.qualified-dev.com).<br>
-        <strong>Blocker:</strong> NPI Data Attributes missing &mdash; must be fixed to unblock Quoting and all downstream TCs.<br>
-        cc: Aditya Thakur, Nihar Aleti, Pooja Tripathi, <strong>Prathibha Naik</strong>, Nina Nguyen
-      </div>
+  <div class="card-full">
+    <div class="card-title">&#128308; E2E Week 1 Status — YELLOW &nbsp;<span class="badge badge-yellow">9.1% Complete</span>&nbsp;<span class="channel">#det-qualified-e2e-testing</span>&nbsp;<span class="ts">Jul 11 · Rajendhar Mydam</span></div>
+    <div class="stat-row">
+      <div class="stat-box"><div class="num">551</div><div class="lbl">Total TCs</div></div>
+      <div class="stat-box"><div class="num" style="color:#36b37e">50</div><div class="lbl">Passed</div></div>
+      <div class="stat-box"><div class="num" style="color:#de350b">5</div><div class="lbl">Blocked</div></div>
+      <div class="stat-box"><div class="num" style="color:#ff8b00">3</div><div class="lbl">In Progress</div></div>
+      <div class="stat-box"><div class="num" style="color:#de350b">1</div><div class="lbl">Failed</div></div>
+      <div class="stat-box"><div class="num">492</div><div class="lbl">Not Started</div></div>
     </div>
-
-    <div class="thread">
-      <div class="thread-header">
-        <span class="badge red">#det-qualified-e2e-testing</span>
-        <span class="author">Nina Nguyen</span>
-        <span class="timestamp">Jul 9, 08:07</span>
-      </div>
-      <div class="thread-text"><strong>NPI Data Attribute thread opened</strong> &mdash; NPI data parameter corrections needed; follow-up thread started to get right teams looped in. Migrated contract TCs target: Thursday Jul 10.</div>
-    </div>
-
-    <div class="thread">
-      <div class="thread-header">
-        <span class="badge red">#det-qualified-e2e-testing</span>
-        <span class="author">Neha Singhal</span>
-        <span class="timestamp">Jul 9, 00:51</span>
-      </div>
-      <div class="thread-text">Checking with Jesalyn Gentry if all Qualified issues are resolved so Shanthan Sakhamuri can proceed with quoting test cases. cc: DJ Banerjee.</div>
-    </div>
-
-    <div class="thread">
-      <div class="thread-header">
-        <span class="badge red">#det-qualified-e2e-testing</span>
-        <span class="author">Prathibha Naik</span>
-        <span class="timestamp">Jul 8, 23:37</span>
-      </div>
-      <div class="thread-text"><strong>Org62 &#8596; Qualified E2E environment clarification</strong> &mdash; thread opened to confirm which Qualified env Org62 should point to for E2E validation. <span class="badge-resolved">RESOLVED Jul 9</span> &mdash; Org62 confirmed pointing to QA6: app.qualified-dev.com.</div>
-    </div>
-
-    <div class="thread">
-      <div class="thread-header">
-        <span class="badge red">#det-qualified-e2e-testing</span>
-        <span class="author">Jesalyn Gentry</span>
-        <span class="timestamp">Jul 8, 23:15</span>
-      </div>
-      <div class="thread-text"><strong>Fulfillment Provider FIXED</strong> &mdash; FP updated with 2 required parameters; License Definitions added and tagged to 3 SKUs. Quoting/provisioning tests for Qualified can now resume.</div>
-    </div>
-
-    <div class="thread">
-      <div class="thread-header">
-        <span class="badge red">#det-qualified-e2e-testing</span>
-        <span class="author">Cindy Tschumy</span>
-        <span class="timestamp">Jul 9, 08:06</span>
-      </div>
-      <div class="thread-text">Pat Rock had 30 TCs due Jul 7 &mdash; Cindy rescheduled them to start Jul 14 due to Pat being on PTO. Checking with Naveen Sigiri on D360 Qualified E2E regression tests due Jul 9.</div>
-    </div>
-
-    <div class="thread">
-      <div class="thread-header">
-        <span class="badge blue">#proj-qualified-det-q2c-team</span>
-        <span class="author">Sowjanya Atchutuni</span>
-        <span class="timestamp">Jul 8, 13:08</span>
-      </div>
-      <div class="thread-text"><strong>Meeting schedule restructured for E2E phase (next 3 weeks):</strong><br>
-        &bull; E2E daily call: 7:30&ndash;8:00 PM IST (no change)<br>
-        &bull; Cutover calls: Mon &amp; Wed 8:00&ndash;8:30 PM IST<br>
-        &bull; Qualified DSU: 8:30&ndash;9:00 PM IST<br>
-        &bull; Refinement/planning/demo: 9:00&ndash;9:30 PM IST (shortened by 30 min)<br>
-        Asking Sharvil Shah to confirm and update meeting invites.
-      </div>
-    </div>
-
-    <div class="thread">
-      <div class="thread-header">
-        <span class="badge purple">#proj-clm-datamigration</span>
-        <span class="author">Ashutosh Khaitan / Kanika Narula</span>
-        <span class="timestamp">Jul 7</span>
-      </div>
-      <div class="thread-text">ISV+AA Plan finalization in progress; ISV Partner E2E Testing Scope and Obligation Summary Clarifications threads open. AA timeline shared by Zhenxin Wang with Arvind Singh Vaish.</div>
-    </div>
+    <div style="font-size:0.83rem;color:#5e6c84">AWS scenarios formally de-scoped (Qualified SKUs unavailable in Tackle/AWS from partner side — 7 scenarios removed, Prathibha confirmed all marked Descoped). Key blockers: CSP GET License Request errors, NPI data attributes missing, Workday sync failure (account ID mismatch), pricebook incomplete for AUD/EUR/GBP. Week 2 focus: unblock CSP, NPI &amp; Workday; migrated contracts data prep; pricebook finalization by Jul 14.</div>
   </div>
 
-  <!-- Sections 2 & 3: 2-col -->
+  <div class="card-full">
+    <div class="card-title">&#128203; CM E2E Test Data to be Added in GSheet &nbsp;<span class="channel">#det-qualified-e2e-testing</span>&nbsp;<span class="ts">Jul 13 · Prathibha Naik</span></div>
+    <div style="font-size:0.83rem;color:#5e6c84">Thread started today by Prathibha. All CM stream owners (Shanthan, Vineesha, Divesh, Nethish, Cindy, Pat Rock, Lucky, Akhila) asked to confirm CM test cases are updated with all mandatory fields in GSheet.</div>
+  </div>
+
+  <div class="card-full">
+    <div class="card-title">&#9888;&#65039; NPI Data Attributes &amp; CSP Provisioning — Still Open &nbsp;<span class="channel">#det-qualified-e2e-testing</span>&nbsp;<span class="ts">Jul 9–12</span></div>
+    <div style="font-size:0.83rem;color:#5e6c84">NPI data parameters partially added last week; quoting flows still blocked pending CSP coordination. Divesh confirmed tenant creation &amp; license PUT succeed, but GET License Request is erroring — orders stuck in Pending. ETA to resolve both: July 14. Divesh flagged he will return to NQE project once provisioning is sorted — resource risk.</div>
+  </div>
+
+  <div class="card-full">
+    <div class="card-title">&#9888;&#65039; Missing CM E2E Test Cases (FIN Q2C) &nbsp;<span class="channel">#det-qualified-e2e-testing</span>&nbsp;<span class="ts">Jul 10 · Cindy Tschumy</span></div>
+    <div style="font-size:0.83rem;color:#5e6c84">Cindy escalated to Alan Nguyen, Suman Vallakonda, Abhishek Joshi, Sarah Hargarten: missing E2E test cases for several CM scenarios identified in standup. 13 FIN-Q2C test cases without Scenario IDs highlighted in yellow — needs review, assignment of IDs, and upload to Narwhale.</div>
+  </div>
+
+  <div class="card-full">
+    <div class="card-title">&#128309; ISV Partner Data Migration — Plan in Progress &nbsp;<span class="channel">#proj-clm-datamigration</span>&nbsp;<span class="ts">Jul 6–7</span></div>
+    <div style="font-size:0.83rem;color:#5e6c84">Threads active: ISV Partner DM Approach (Phani Kumar, Jul 6), Finalization of ISV+AA Plan (Kanika Narula, Jul 7), DM/CLM E2E Testing Scope for ISV Partner (Ashutosh Khaitan, Jul 7), Partner ISV Obligation Summary Clarifications (Jul 6). AA timeline posted by Zhenxin Wang. Reseller DM prod cutover successfully completed Jun 21.</div>
+  </div>
+
+  <div class="card-full">
+    <div class="card-title">&#128309; NGCLM GUS TD Maintenance &amp; Deployment Errors &nbsp;<span class="channel">#bt-clm-engg-team</span>&nbsp;<span class="ts">Jul 6–10</span></div>
+    <div style="font-size:0.83rem;color:#5e6c84">Anil Neema started TD maintenance thread Jul 8; migration still in progress. Manoj Shurpali flagged deployment errors on Jul 6 (Suhas on PTO) — team asked to check and prepare fixes. Phani thread on Env Strategy for UPRA/SELA/ISV Partner open (Jul 10). NQE branch deployment to E2E on Jul 13.</div>
+  </div>
+
+  <div class="card-full">
+    <div class="card-title">&#128226; Meeting Schedule Change for E2E Phase &nbsp;<span class="channel">#proj-qualified-det-q2c-team</span>&nbsp;<span class="ts">Jul 8 · Sowjanya Atchutuni</span></div>
+    <div style="font-size:0.83rem;color:#5e6c84">For next 3 weeks of E2E: E2E daily call 7:30–8 PM IST (unchanged), Cutover calls Mon &amp; Wed 8–8:30 PM IST, Qualified DSU 8:30–9 PM IST, Qualified refinement/planning/demo 9–9:30 PM IST. Sharvil Shah asked to confirm and update meeting invites.</div>
+  </div>
+
+  <!-- AWAITING RESPONSE -->
+  <div class="section-title">Awaiting Response From Others</div>
   <div class="grid-2">
-
-    <div class="section">
-      <div class="section-title">&#9203; Awaiting Response</div>
-
-      <div class="thread">
-        <div class="thread-header"><span class="badge red">#det-qualified-e2e-testing</span></div>
-        <div class="thread-text"><strong>Cindy &#8594; Suresh Potla &amp; Akhila</strong> (Jul 8): 13 CM FIN-Q2C TCs need Scenario IDs. Awaiting response to determine if TCs are needed and to assign Upload Identifiers.</div>
+    <div class="card">
+      <div class="card-title">&#128228; Sent — Awaiting Response</div>
+      <div class="item">
+        <div class="from">Sowjanya Atchutuni <span class="ts">Jul 12</span></div>
+        <div class="body">Asked to summarize contracts that couldn't sync to Workday and the decision made. Rajendhar CC'd.</div>
       </div>
-
-      <div class="thread">
-        <div class="thread-header"><span class="badge red">#det-qualified-e2e-testing</span></div>
-        <div class="thread-text"><strong>Cindy &#8594; Rebecca Wong</strong> (Jul 8): 9 RMS TCs need Scenario IDs. Still awaiting response.</div>
+      <div class="item">
+        <div class="from">Shanthan, Vineesha, Divesh <span class="ts">Jul 12</span></div>
+        <div class="body">Create defects in Narwhale for blockers — should be part of Rajendhar's status report.</div>
       </div>
-
-      <div class="thread">
-        <div class="thread-header"><span class="badge red">#det-qualified-e2e-testing</span></div>
-        <div class="thread-text"><strong>Cindy &#8594; Naveen Sigiri</strong> (Jul 8): Confirming D360 Qualified E2E regression tests delivered by Jul 9. No response yet.</div>
+      <div class="item">
+        <div class="from">All CM stream owners <span class="ts">Jul 13</span></div>
+        <div class="body">Confirm CM test cases updated with all mandatory fields in GSheet.</div>
       </div>
-
-      <div class="thread">
-        <div class="thread-header"><span class="badge blue">#proj-qualified-det-q2c-team</span></div>
-        <div class="thread-text"><strong>Sowjanya &#8594; Sharvil Shah</strong> (Jul 8): Confirmation that new meeting schedule works + invite updates. Pending.</div>
+      <div class="item">
+        <div class="from">Helena Quinn <span class="channel">#det-qualified-gtm-internal</span> <span class="ts">Jun 22</span></div>
+        <div class="body">Asked for AMER &amp; APAC timezone POC for support during E2E, UAT and Prod testing phases.</div>
       </div>
-
-      <div class="thread">
-        <div class="thread-header"><span class="badge amber">#det-qualified-gtm-internal</span></div>
-        <div class="thread-text"><strong>Cindy &#8594; Masha Shevchenko</strong> (Jun 29): Timeline for obtaining remaining items from 3 customers (DET FIN task). Still no response.</div>
-      </div>
-
-      <div class="thread">
-        <div class="thread-header"><span class="badge green">#proj-qualified-releasemgt</span></div>
-        <div class="thread-text"><strong>Sathwic &#8594; Karan Gyanchandani</strong> (Jun 30): Org62 MSP support confirmation for Qualified cutover UAT starting Jul 20. Still pending.</div>
+      <div class="item">
+        <div class="from">Neha Singhal <span class="ts">Jul 8</span></div>
+        <div class="body">Confirm once SPIFF details on GA SKUs are done in Qualified E2E env.</div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="section-title">&#128276; Pending Action On You</div>
-
-      <div class="thread">
-        <div class="thread-header"><span class="badge red">#det-qualified-e2e-testing</span></div>
-        <div class="thread-text"><strong>Rajendhar &#8594; Prathibha</strong> (Jul 9): Tagged in E2E progress update as stakeholder &mdash; review Week 1 status and ensure morning/evening sync call participation from all teams.</div>
+    <div class="card">
+      <div class="card-title">&#128228; Earlier / FYI Sent</div>
+      <div class="item">
+        <div class="from">Pooja Tripathi <span class="ts">Jul 12</span></div>
+        <div class="body">Status update sent: CSP/NPI connects scheduled, Workday sync agreed as QA-only issue, Pricebook ETA Jul 14.</div>
       </div>
-
-      <div class="thread">
-        <div class="thread-header"><span class="badge red">#det-qualified-e2e-testing</span></div>
-        <div class="thread-text"><strong>Divesh &#8594; Prathibha</strong> (Jul 8): TC-136136 &ldquo;Create the CEO&apos;s and CPO&apos;s on the Order&rdquo; &mdash; unfamiliar step, needs clarification or reassignment.</div>
+      <div class="item">
+        <div class="from">Rajendhar &amp; Nina <span class="ts">Jul 10</span></div>
+        <div class="body">FYI given on bugs creation for Product &amp; NPI side in Narwhale.</div>
       </div>
-
-      <div class="thread">
-        <div class="thread-header"><span class="badge red">#det-qualified-e2e-testing</span></div>
-        <div class="thread-text"><strong>Prathibha action open</strong>: GA SKU SPIFF updates &mdash; CM SKUs done Jul 8; GA SKUs committed for Jul 9 (today). Confirm with Neha Singhal once done.</div>
-      </div>
-
-      <div class="thread">
-        <div class="thread-header"><span class="badge blue">#proj-qualified-det-q2c-team</span></div>
-        <div class="thread-text"><strong>Prathibha&apos;s own thread</strong> (Jul 8): Product Family update to Qualified in QA env &mdash; monitor for team responses and drive to resolution.</div>
-      </div>
-
-      <div class="thread">
-        <div class="thread-header"><span class="badge amber">#det-qualified-gtm-internal</span></div>
-        <div class="thread-text"><strong>Prathibha asked Helena Quinn</strong> (Jun 22): AMER/APAC timezone POC for E2E/UAT/Prod testing support. Confirm if response received; follow up if not.</div>
+      <div class="item">
+        <div class="from">Karthik Spry (Kevin Spry DM) <span class="ts">Jul 7</span></div>
+        <div class="body">Kevin shared PCT / PCLT schedule info and presentation links in DM.</div>
       </div>
     </div>
-
   </div>
 
-  <!-- SECTION 4: Risks & Decisions -->
-  <div class="section">
-    <div class="section-title">&#9888; Risks &amp; Decisions</div>
-    <table>
-      <thead>
-        <tr>
-          <th>Severity</th>
-          <th>Channel</th>
-          <th>Item</th>
-          <th>Owner / Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="badge-high">HIGH</span></td>
-          <td><span class="badge red">#det-qualified-e2e-testing</span></td>
-          <td><strong>NPI Data Attributes Missing</strong> &mdash; blocks Quoting and ALL downstream TCs; NPI data parameter corrections required immediately</td>
-          <td>Nina Nguyen &middot; Jul 9</td>
-        </tr>
-        <tr>
-          <td><span class="badge-high">HIGH</span></td>
-          <td><span class="badge red">#det-qualified-e2e-testing</span></td>
-          <td>Migrated contract TCs target Thu Jul 10 at risk &mdash; CPQ team (Shanthan) still focused on Infa; full Qualified focus resumes Wed; prerequisites (New Biz Account/Opp) must be in place first</td>
-          <td>Nina Nguyen &middot; Jul 7&ndash;9</td>
-        </tr>
-        <tr>
-          <td><span class="badge-medium">MEDIUM</span></td>
-          <td><span class="badge red">#det-qualified-e2e-testing</span></td>
-          <td>22 TCs (13 CM + 9 RMS) missing Scenario IDs &mdash; blocking Cindy from defining Upload Identifiers; awaiting Suresh/Akhila and Rebecca Wong</td>
-          <td>Cindy Tschumy &middot; Jul 8</td>
-        </tr>
-        <tr>
-          <td><span class="badge-medium">MEDIUM</span></td>
-          <td><span class="badge red">#det-qualified-e2e-testing</span></td>
-          <td>Suresh Potla has 149 TCs assigned &mdash; no planned execution date confirmed yet; Cindy escalating; E2E wraps Jul 27</td>
-          <td>Cindy Tschumy &middot; Jul 7</td>
-        </tr>
-        <tr>
-          <td><span class="badge-medium">MEDIUM</span></td>
-          <td><span class="badge red">#det-qualified-e2e-testing</span></td>
-          <td>Minor product rule bug on Qualified side identified (Jul 6 check-in) &mdash; needs attention before downstream TCs can progress</td>
-          <td>Nina Nguyen &middot; Jul 7</td>
-        </tr>
-        <tr>
-          <td><span class="badge-decision">DECISION</span></td>
-          <td><span class="badge red">#det-qualified-e2e-testing</span></td>
-          <td>Fulfillment Provider resolved &mdash; FP parameters and License Definitions added; quoting/provisioning tests can resume</td>
-          <td>Jesalyn Gentry &middot; Jul 8</td>
-        </tr>
-        <tr>
-          <td><span class="badge-decision">DECISION</span></td>
-          <td><span class="badge blue">#proj-qualified-det-q2c-team</span></td>
-          <td>Meeting schedule restructured for E2E phase (3 weeks): E2E call 7:30 PM, Cutover Mon/Wed 8:00 PM, DSU 8:30 PM, Refinement 9:00 PM IST</td>
-          <td>Sowjanya &middot; Jul 8</td>
-        </tr>
-        <tr>
-          <td><span class="badge-watch">WATCH</span></td>
-          <td><span class="badge green">#proj-qualified-releasemgt</span></td>
-          <td>Qualified Cutover UAT starts Jul 20 &mdash; Org62 MSP support still unconfirmed from Karan Gyanchandani</td>
-          <td>Sathwic &middot; Jun 30</td>
-        </tr>
-        <tr>
-          <td><span class="badge-watch">WATCH</span></td>
-          <td><span class="badge purple">#proj-clm-datamigration</span></td>
-          <td>ISV+AA Plan finalization ongoing &mdash; ISV Partner Data Migration Approach and Obligation Summary clarifications in active threads</td>
-          <td>Ashutosh / Phani &middot; Jul 6&ndash;7</td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- PENDING ACTION ON YOU -->
+  <div class="section-title">Pending Action On You</div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">&#9889; Needs Your Attention</div>
+      <div class="item">
+        <div class="from">Lucky Khobragade (DM) <span class="ts">Jul 7</span></div>
+        <div class="body">Karthik's comment on a task says Workday Team should handle it — please reassign the task to Workday Team.</div>
+      </div>
+      <div class="item">
+        <div class="from">Rajendhar Mydam (DM) <span class="ts">Jul 7</span></div>
+        <div class="body">Multiple DMs: "Are you available for a call?" — check if this was resolved.</div>
+      </div>
+      <div class="item">
+        <div class="from">DET-Time Tracker (DM)</div>
+        <div class="body">Overdue timesheet entries for weeks Mar 1 – Apr 18. Submit incomplete entries ASAP.</div>
+      </div>
+      <div class="item">
+        <div class="from">Employee Success (DM)</div>
+        <div class="body">Mid-Year Check-Ins open July 15 — schedule a connect with your manager.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">&#9889; Active / In-Flight Actions</div>
+      <div class="item">
+        <div class="from">All executors <span class="channel">#det-qualified-e2e-testing</span> <span class="ts">Jul 10</span></div>
+        <div class="body">Update planned execution dates in Narwhale ASAP. Prioritize AM/PM sync check-in calls (evening calls now 8PM PST).</div>
+      </div>
+      <div class="item">
+        <div class="from">Vineesha Pala (Group DM) <span class="ts">Jul 7</span></div>
+        <div class="body">MuleSoft error in qa6: <code>field integrity exception — versions 3.0+ must specify pricebook entry id</code>. Vivek (Qualified) looped in — confirm resolution.</div>
+      </div>
+      <div class="item">
+        <div class="from">Akshay Ajit Dhuri <span class="channel">#proj-qualified-det-q2c-team</span> <span class="ts">Jul 7</span></div>
+        <div class="body">Divesh asked to update Product Family for Qualified Premier, Enterprise &amp; U editions in QA6 — thread still open per Prathibha's note.</div>
+      </div>
+    </div>
   </div>
 
-  <!-- SECTION 5: Milestones -->
-  <div class="section">
-    <div class="section-title">&#127937; Milestones &amp; Program Updates</div>
+  <!-- RISKS & DECISIONS -->
+  <div class="section-title">Risks &amp; Decisions from Conversations</div>
 
-    <div class="milestone">
-      <div class="milestone-date">Jul 9</div>
-      <div class="milestone-text"><strong>GA SKU SPIFF update due (today)</strong> &mdash; Prathibha committed to updating GA SKUs in E2E env; confirm with Neha Singhal (#det-qualified-e2e-testing)</div>
+  <div class="risk-item risk-high">
+    <strong>&#128308; CSP GET License Request Failing — Orders Stuck in Pending <span class="badge badge-red">Immediate</span></strong>
+    <div class="detail">Divesh: tenant creation works, license def PUT succeeds, but final GET License Request is erroring out. Needs immediate fix from CSP team. ETA discussed for Jul 14. Divesh also flagged he will return to NQE project once provisioning is resolved — creating a resource gap.</div>
+  </div>
+
+  <div class="risk-item risk-high">
+    <strong>&#128308; NPI Data Attributes Missing — Blocking All Quoting &amp; Downstream TCs <span class="badge badge-red">ETA Jul 14</span></strong>
+    <div class="detail">Attributes partially added but quoting flows still blocked due to CSP dependency. All FL001–FL006 scenarios remain impacted. Risk: if not resolved by Jul 14, Week 2 velocity will remain critically low.</div>
+  </div>
+
+  <div class="risk-item risk-high">
+    <strong>&#128308; E2E Velocity at Risk — 9.1% After Week 1 of 3-Week Testing Window</strong>
+    <div class="detail">492 of 551 TCs not started. Parallel blockers (CSP, NPI, Workday, Pricebook) + resource bandwidth issues. Needs escalation/executive awareness if blockers persist past mid-Week 2 (around Jul 15–16).</div>
+  </div>
+
+  <div class="risk-item risk-medium">
+    <strong>&#128992; Missing CM E2E Test Cases — FIN Q2C Scenarios Without Scenario IDs</strong>
+    <div class="detail">Cindy flagged 13 FIN-Q2C TCs without IDs blocking Narwhale upload; broader CM gaps reported in standup. Needs immediate triage by Suresh Potla, Akhila Reddy, Saivikas Thalluri before CM execution can begin.</div>
+  </div>
+
+  <div class="risk-item risk-medium">
+    <strong>&#128992; Workday Sync Failure — Account ID Mismatch in QA Env</strong>
+    <div class="detail">Decision made: QA-env-only issue, not expected in UAT/Prod. Fix on need for records needed for QA validation. Sowjanya needs to summarize outstanding unsync'd contracts for proper accounting.</div>
+  </div>
+
+  <div class="risk-item risk-medium">
+    <strong>&#128992; Pricebook Incomplete for AUD, EUR, GBP Currencies <span class="badge badge-orange">ETA Jul 14</span></strong>
+    <div class="detail">Blocking all non-USD test case execution. Call scheduled Jul 13. At risk if not resolved on time.</div>
+  </div>
+
+  <div class="risk-item risk-medium">
+    <strong>&#128992; Unconfirmed Assumption: All Qualified SKUs Map to Existing Vertex Commodity Codes</strong>
+    <div class="detail">Cindy Tschumy flagged this in #det-qualified-gtm-internal (Jun 17) — not yet confirmed by Helena Quinn / Rebecca Wong. If new SKUs require Vertex config, DET FIN scope and timeline must be adjusted.</div>
+  </div>
+
+  <div class="risk-item risk-low">
+    <strong>&#128309; Qualified Cutover UAT Starting July 20 — Org62 MSP Support Confirmation Pending</strong>
+    <div class="detail">Sathwic Gurram asked Karan Gyanchandani (Jun 30) for Org62 MSP support confirmation. No public confirmation seen. Vertex POC: Helena Quinn (APAC), Rebecca Wong (AMER).</div>
+  </div>
+
+  <div class="risk-item risk-low">
+    <strong>&#128309; ISV Partner Data Migration — Plan Being Finalized, Timeline Uncertain</strong>
+    <div class="detail">AA timeline posted by Zhenxin Wang. ISV+AA plan finalization in progress (Kanika Narula, Jul 7). Possible delta load for Reseller toward end of August 2026 — Rohit Kumar Verma asked Sathwic for app store release dates for that period.</div>
+  </div>
+
+  <!-- MILESTONES -->
+  <div class="section-title">Recent Milestones &amp; Program Updates</div>
+  <div class="card-full">
+    <div class="milestone-item">
+      <div class="dot dot-green"></div>
+      <div>
+        <div><strong>Reseller Data Migration Prod Cutover — Completed</strong> with 100% data accuracy</div>
+        <div class="ts">Jun 21, 2026 · #proj-clm-datamigration · Varaha N Sarat Sanapala</div>
+      </div>
     </div>
-
-    <div class="milestone">
-      <div class="milestone-date">Jul 9</div>
-      <div class="milestone-text"><strong>D360 Qualified E2E regression tests</strong> &mdash; Naveen Sigiri due to deliver by today; Cindy following up (#det-qualified-e2e-testing)</div>
+    <div class="milestone-item">
+      <div class="dot dot-green"></div>
+      <div>
+        <div><strong>Qualified E2E Officially Launched</strong> — 551 TCs loaded in Narwhale, dashboard live; 3-week testing window underway</div>
+        <div class="ts">Jul 7–11, 2026 · #det-qualified-e2e-testing</div>
+      </div>
     </div>
-
-    <div class="milestone">
-      <div class="milestone-date">Jul 10</div>
-      <div class="milestone-text"><strong>Migrated Contract TCs target</strong> &mdash; Nina&apos;s goal: all migrated contract test cases updated in Narwhale by Thursday; at risk due to NPI blockers (#det-qualified-e2e-testing)</div>
+    <div class="milestone-item">
+      <div class="dot dot-green"></div>
+      <div>
+        <div><strong>AWS E2E Scenarios De-scoped</strong> — 7 AWS/SELA scenarios removed; all marked Descoped in Narwhale (Prathibha confirmed Jul 10)</div>
+        <div class="ts">Jul 10, 2026 · #det-qualified-e2e-testing</div>
+      </div>
     </div>
-
-    <div class="milestone">
-      <div class="milestone-date">Jul 14</div>
-      <div class="milestone-text"><strong>Pat Rock TC execution resumes</strong> &mdash; 30 Zuora RMS TCs rescheduled from Jul 7 to start Jul 14 (#det-qualified-e2e-testing)</div>
+    <div class="milestone-item">
+      <div class="dot dot-green"></div>
+      <div>
+        <div><strong>Qualified Fulfillment Provider Parameters Resolved</strong> — FP updated, License Definitions linked to 3 SKUs; provisioning tests can resume</div>
+        <div class="ts">Jul 8, 2026 · Jesalyn Gentry · #det-qualified-e2e-testing</div>
+      </div>
     </div>
-
-    <div class="milestone">
-      <div class="milestone-date">Jul 20</div>
-      <div class="milestone-text"><strong>Qualified Cutover UAT starts</strong> &mdash; per cutover plan; Org62 MSP support confirmation still pending from Karan (#proj-qualified-releasemgt)</div>
+    <div class="milestone-item">
+      <div class="dot dot-green"></div>
+      <div>
+        <div><strong>Org62 &#8596; Qualified E2E Env Confirmed</strong> — Org62 confirmed to point to <code>app.qualified-dev.com</code> for E2E validation</div>
+        <div class="ts">Jul 8, 2026 · #det-qualified-e2e-testing</div>
+      </div>
     </div>
-
-    <div class="milestone">
-      <div class="milestone-date">Jul 27</div>
-      <div class="milestone-text"><strong>Qualified E2E Testing wraps</strong> &mdash; all 1,076 TCs to be executed; currently 3.3% complete (35/1,076) after Week 1 (#det-qualified-e2e-testing)</div>
+    <div class="milestone-item">
+      <div class="dot dot-green"></div>
+      <div>
+        <div><strong>SPIFF Details on CM SKUs Updated</strong> in Qualified E2E env; GA SKUs to follow</div>
+        <div class="ts">Jul 8, 2026 · Prathibha Naik</div>
+      </div>
     </div>
-
+    <div class="milestone-item">
+      <div class="dot dot-blue"></div>
+      <div>
+        <div><strong>E2E Daily Check-In Schedule Updated</strong> — Evening calls shifted to 8PM PST to accommodate APAC</div>
+        <div class="ts">Jul 10, 2026 · Nina Nguyen</div>
+      </div>
+    </div>
+    <div class="milestone-item">
+      <div class="dot dot-yellow"></div>
+      <div>
+        <div><strong>Qualified Cutover UAT Planned from July 20</strong> — Org62 MSP support confirmation pending from Karan Gyanchandani</div>
+        <div class="ts">Jun 30, 2026 · #proj-qualified-releasemgt</div>
+      </div>
+    </div>
+    <div class="milestone-item">
+      <div class="dot dot-yellow"></div>
+      <div>
+        <div><strong>ISV Partner Data Migration Plan Finalization In Progress</strong> — ISV+AA plan active; reseller DM complete, ISV phase is next</div>
+        <div class="ts">Jul 6–7, 2026 · #proj-clm-datamigration</div>
+      </div>
+    </div>
   </div>
 
 </div>
