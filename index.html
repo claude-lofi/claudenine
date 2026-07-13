@@ -70,6 +70,22 @@
   .decisions-list li:last-child { border-bottom: none; }
   .decisions-list li::before { content: "✔"; color: #0052cc; flex-shrink: 0; margin-top: 1px; }
   .dec-date { font-size: 0.75rem; color: #8993a4; flex-shrink: 0; min-width: 55px; margin-top: 2px; }
+  .tab-bar { display: flex; gap: 0; border-bottom: 2px solid #dfe1e6; margin-bottom: 16px; }
+  .tab-btn {
+    padding: 8px 20px; font-size: 0.82rem; font-weight: 600; cursor: pointer;
+    border: none; background: none; color: #5e6c84; border-bottom: 3px solid transparent;
+    margin-bottom: -2px; transition: color 0.15s;
+  }
+  .tab-btn:hover { color: #0052cc; }
+  .tab-btn.active { color: #0052cc; border-bottom-color: #0052cc; }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+  .day-pill {
+    display: inline-block; border-radius: 3px; padding: 1px 6px;
+    font-size: 0.7rem; font-weight: 700; margin-right: 5px; vertical-align: middle;
+  }
+  .pill-today { background: #e3fcef; color: #006644; }
+  .pill-prior { background: #deebff; color: #0052cc; }
 </style>
 </head>
 <body>
@@ -82,205 +98,9 @@
 
 <div class="container">
 
-  <!-- SECTION 1: WORK COMPLETED -->
+  <!-- SECTION 1: HIGH PRIORITY ACTION ITEMS -->
   <div class="section">
-    <div class="section-title">Section 1 — Work Completed</div>
-
-    <!-- Jul 13 -->
-    <div class="day-block">
-      <div class="day-header">
-        <span class="day-badge badge-today">Jul 13, 2026 — Today</span>
-        <span style="font-size:0.82rem;color:#5e6c84">DSU: Project CLM Data Migration</span>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Adarsh M</div>
-        <ul>
-          <li>Updated Ironclad execution onboarding story — ready for Sachin to review and deploy to database</li>
-          <li>Working on transformation test cases and changes post-power outage on Friday</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Ajith Kumar</div>
-        <ul>
-          <li>Moved 3rd story (reporting DSU) to ready for review</li>
-          <li>Updated procedure for 2nd story — awaiting Rama's review</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Ashutosh Khaitan</div>
-        <ul>
-          <li>Confirmed grandchild concept removed — no grandchild in scope (business call on Friday)</li>
-          <li>Exclusion rule update in progress; will run DSU tag in second half to verify scope (~7,000 items)</li>
-          <li>Reviewing generated queries for testing phase</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Deepa Pardeshi</div>
-        <ul>
-          <li>Extraction completed for 1st user story; API configs and load orchestration ready for 3rd story</li>
-          <li>Analyzing writeback queries for partner grandchild — now updating to remove grandchild logic per Friday's CR</li>
-          <li>Scheduled connect with Sachin for 2nd user story clarification</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Dwaipayana A B J</div>
-        <ul>
-          <li>Completed changes for audit summary report (Ironclad files &amp; attachments) — pending Rama's review</li>
-          <li>Working on frequency distribution report; connecting with Rama post-DSU on repurposed line-by-line audit report</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Himanshu Jain</div>
-        <ul>
-          <li>Prepared complete query data for E2; connecting with Ashutosh to review attributes today</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Jayasudha Murugamanickam</div>
-        <ul>
-          <li>Validation of transformation story in progress — started Thursday, external ID and several columns validated</li>
-          <li>Writing queries for assignment agreement; identified need for root/child mapping clarification from Rohit</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">RAMAKRISHNA Janga</div>
-        <ul>
-          <li>Confirmed ~75 PC and ~90 PCA assignment agreement records in backfilled data</li>
-          <li>Proposed 2-tab Excel structure (partner tab + assignment agreement tab) for line-by-line audit reports</li>
-          <li>Will explain procedure creation process to team today</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Shubham Sharma</div>
-        <ul>
-          <li>Data prep complete for object stories; external ID null cases fixed — all populating as expected</li>
-          <li>2nd and 3rd stories data prep nearly done; assignment agreement columns (3–4) to be added</li>
-          <li>Story moved back to In Progress pending CR implementation</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Syed Arshad Mohiuddin</div>
-        <ul>
-          <li>Root/child/grandchild logic finalization was complete until Friday's CR — now updating to remove grandchild</li>
-          <li>Walked team through AA mapping flow: override table → AA classification stamp → separate lightweight and regular flows into same contract table</li>
-          <li>Decided: 2 separate stored procs (one for Org62 AA, one for Ironclad AA); no new project</li>
-          <li>Priorities: root/child logic correction, AA trans procedure finalization with Jayasudha, IDP solutioning, unstructured AA logic</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Vinika Gupta</div>
-        <ul>
-          <li>Completed report for 2nd story — shared with Rama for verification</li>
-          <li>Working on 3rd story; verified data load DAG changes (pending status update)</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Kanika Narula</div>
-        <ul>
-          <li>Updated stories with CRs (CR 6761 — exclusion rule, type field transformation, AA ID inclusion)</li>
-          <li>Confirmed ISV partner changes going directly from 4SB1 to UAT — apps QA6 mock cancelled</li>
-          <li>Data backfill on hold; PI board cleanup in progress (removing project setup stories)</li>
-          <li>Rescheduled review meeting to 3:30 PM tomorrow; will share updated PI board link</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Jul 9 -->
-    <div class="day-block">
-      <div class="day-header">
-        <span class="day-badge badge-prior">Jul 9, 2026</span>
-        <span style="font-size:0.82rem;color:#5e6c84">DSU: Project CLM Data Migration</span>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Adarsh M</div>
-        <ul>
-          <li>Reviewed Tableau dashboard — names updated, LRO sheets removed; will review with Rama</li>
-          <li>Connecting with Shubham to close execution onboarding story on Ironclad (assigned to Sachin)</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Ajith Kumar</div>
-        <ul>
-          <li>Started work on 2nd story procedure; 3rd user story in progress</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Ashutosh Khaitan</div>
-        <ul>
-          <li>Working on DQ and exclusions for assignment agreement — found 29 test agreements vs. 2–3 in requirements; needs business clarification</li>
-          <li>Assignment agreement analysis in good shape; sequencing clarified</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Deepa Madhukar Pardeshi</div>
-        <ul>
-          <li>Set up load orchestration for 3rd user story (unstructured onboarding); analyzing writeback queries for grandchild partner requirement</li>
-          <li>Starting data prep activities in parallel</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Dil Thapa</div>
-        <ul>
-          <li>No major board updates; available to assist with issues</li>
-          <li>Identified critical item: connected app using username/password auth expiring Sep 1 — JWT migration needed</li>
-          <li>Planning to set up meeting and start thread on JWT migration</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Dwaipayana A B J</div>
-        <ul>
-          <li>Mostly completed audit summary report for Ironclad files; pending Rama's review</li>
-          <li>Will connect with Rama post-DSU on assignment agreement for repurposed line-by-line audit report</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Himanshu Jain</div>
-        <ul>
-          <li>Completed E2 documentation for stage vs. strength and transactions vs. out; connecting with Ashutosh for review</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Jayasudha Murugamanickam</div>
-        <ul>
-          <li>Analyzing assignment agreement column classification; preparing queries; validating data in Org62 and Ironclad for duplicates and logic issues</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">RAMAKRISHNA Janga</div>
-        <ul>
-          <li>Backfill of account and opportunity objects completed; moving to approval matrix, agreement PC and PCA</li>
-          <li>Shared Excel sheet with IDP scan queries and sub-sheets with Arshad for review</li>
-          <li>Confirmed assignment agreement identified via PC population in IDP sheet</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Shubham Sharma</div>
-        <ul>
-          <li>Data prep scripts for 1st story complete — in QA; configuration setup and writeback analysis for 3rd and 4th stories in progress</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Syed Arshad Mohiuddin</div>
-        <ul>
-          <li>Working on stored procedure for root/child map; TDD documentation updated per Sharat's feedback</li>
-          <li>Preparing for CLM call at 12:30 to walk through solutioning</li>
-          <li>Investigated IDP discrepancy: 8 records from IDP vs. 10 from R12 API — needs query re-run with created date</li>
-        </ul>
-      </div>
-      <div class="person-block">
-        <div class="person-name">Kanika Narula</div>
-        <ul>
-          <li>Gathering DMAS tool features and challenges documentation for product team</li>
-          <li>Will repurpose stories for assignment agreement migration requirements post-DSU discussion with Rama</li>
-          <li>Vinika (internet issues due to heavy rainfall) — cloned DAGs for writeback, modified audit summary procedure</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION 2: HIGH PRIORITY ACTION ITEMS -->
-  <div class="section">
-    <div class="section-title">Section 2 — High Priority Action Items</div>
+    <div class="section-title">Section 1 — High Priority Action Items</div>
     <div class="table-wrap">
       <div class="filter-bar">
         <label for="filter-high">Filter by Owner:</label>
@@ -349,9 +169,9 @@
     </div>
   </div>
 
-  <!-- SECTION 3: MEDIUM PRIORITY ACTION ITEMS -->
+  <!-- SECTION 2: MEDIUM PRIORITY ACTION ITEMS -->
   <div class="section">
-    <div class="section-title">Section 3 — Medium Priority Action Items</div>
+    <div class="section-title">Section 2 — Medium Priority Action Items</div>
     <div class="table-wrap">
       <div class="filter-bar">
         <label for="filter-med">Filter by Owner:</label>
@@ -444,9 +264,9 @@
     </div>
   </div>
 
-  <!-- SECTION 4: RISKS & BLOCKERS -->
+  <!-- SECTION 3: RISKS & BLOCKERS -->
   <div class="section">
-    <div class="section-title">Section 4 — Key Risks &amp; Blockers</div>
+    <div class="section-title">Section 3 — Key Risks &amp; Blockers</div>
     <div class="table-wrap">
       <table>
         <thead>
@@ -498,22 +318,153 @@
     </div>
   </div>
 
-  <!-- SECTION 5: KEY DECISIONS -->
+  <!-- SECTIONS 4 & 5: TABBED -->
   <div class="section">
-    <div class="section-title">Section 5 — Key Decisions Aligned</div>
-    <div class="decisions-list">
-      <ul>
-        <li><span class="dec-date">Jul 13</span> <span><strong>Grandchild logic removed from scope</strong> — confirmed by business on Friday; only root and child relationships remain. All procedures and stories to be updated accordingly.</span></li>
-        <li><span class="dec-date">Jul 13</span> <span><strong>Implementation story repurposed</strong> — CR 6761 and related CRs (exclusion rules, type field transformation, AA ID inclusion) added to existing story rather than creating new.</span></li>
-        <li><span class="dec-date">Jul 13</span> <span><strong>Apps QA6 regression mock cancelled</strong> — ISV partner changes going directly from 4SB1 to UAT; no need to back-fill or test in apps QA6 sandbox. Data backfill on hold.</span></li>
-        <li><span class="dec-date">Jul 13</span> <span><strong>Assignment agreement flow uses existing pipeline, not a new project</strong> — separate trans procedures for lightweight AA (Org62 + Ironclad) will load into existing contract tables; override table with AA classification identifier drives routing.</span></li>
-        <li><span class="dec-date">Jul 13</span> <span><strong>"Terminated" status renamed to "Original AA"</strong> — to avoid naming confusion with previous standards and maintain consistency. Separate "PA Classification" field introduced to prevent data collision with AA Classification field.</span></li>
-        <li><span class="dec-date">Jul 13</span> <span><strong>Project completion target set for October 23</strong> — PI board updated; project setup stories removed. E2E timelines shifted to July 27–31 to include assignment agreement delivery.</span></li>
-        <li><span class="dec-date">Jul 9</span> <span><strong>Connected app migration to JWT authentication</strong> — Salesforce retiring username/password auth Sep 1. Team agreed to migrate; one-time effort requiring certificate generation and new connected app setup. Dil Thapa to coordinate cross-team.</span></li>
-        <li><span class="dec-date">Jul 9</span> <span><strong>Reporting document structure under review</strong> — proposal to split partner and assignment agreement reports into two Excel tabs pending stakeholder validation (Rohit to take to business).</span></li>
-      </ul>
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('tab-decisions', this)">Section 4 — Key Decisions</button>
+      <button class="tab-btn" onclick="switchTab('tab-work', this)">Section 5 — Work Completed</button>
     </div>
-  </div>
+
+    <div id="tab-decisions" class="tab-pane active">
+      <div class="decisions-list">
+        <ul>
+          <li><span class="dec-date">Jul 13</span> <span><strong>Grandchild logic removed from scope</strong> — confirmed by business on Friday; only root and child relationships remain. All procedures and stories to be updated accordingly.</span></li>
+          <li><span class="dec-date">Jul 13</span> <span><strong>Implementation story repurposed</strong> — CR 6761 and related CRs (exclusion rules, type field transformation, AA ID inclusion) added to existing story rather than creating new.</span></li>
+          <li><span class="dec-date">Jul 13</span> <span><strong>Apps QA6 regression mock cancelled</strong> — ISV partner changes going directly from 4SB1 to UAT; no need to back-fill or test in apps QA6 sandbox. Data backfill on hold.</span></li>
+          <li><span class="dec-date">Jul 13</span> <span><strong>Assignment agreement flow uses existing pipeline, not a new project</strong> — separate trans procedures for lightweight AA (Org62 + Ironclad) will load into existing contract tables; override table with AA classification identifier drives routing.</span></li>
+          <li><span class="dec-date">Jul 13</span> <span><strong>"Terminated" status renamed to "Original AA"</strong> — to avoid naming confusion with previous standards and maintain consistency. Separate "PA Classification" field introduced to prevent data collision with AA Classification field.</span></li>
+          <li><span class="dec-date">Jul 13</span> <span><strong>Project completion target set for October 23</strong> — PI board updated; project setup stories removed. E2E timelines shifted to July 27–31 to include assignment agreement delivery.</span></li>
+          <li><span class="dec-date">Jul 9</span> <span><strong>Connected app migration to JWT authentication</strong> — Salesforce retiring username/password auth Sep 1. Team agreed to migrate; one-time effort requiring certificate generation and new connected app setup. Dil Thapa to coordinate cross-team.</span></li>
+          <li><span class="dec-date">Jul 9</span> <span><strong>Reporting document structure under review</strong> — proposal to split partner and assignment agreement reports into two Excel tabs pending stakeholder validation (Rohit to take to business).</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="tab-work" class="tab-pane">
+      <div class="section-title">Section 5 — Work Completed</div>
+    <div class="day-block">
+      <div class="person-block">
+        <div class="person-name">Adarsh M</div>
+        <ul>
+          <li><span class="day-pill pill-today">Jul 13</span>Updated Ironclad execution onboarding story — ready for Sachin to review and deploy to database</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Working on transformation test cases and changes post-power outage on Friday</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Reviewed Tableau dashboard — names updated, LRO sheets removed; will review with Rama</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Connecting with Shubham to close execution onboarding story on Ironclad (assigned to Sachin)</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Ajith Kumar</div>
+        <ul>
+          <li><span class="day-pill pill-today">Jul 13</span>Moved 3rd story (reporting DSU) to ready for review</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Updated procedure for 2nd story — awaiting Rama's review</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Started work on 2nd story procedure; 3rd user story in progress</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Ashutosh Khaitan</div>
+        <ul>
+          <li><span class="day-pill pill-today">Jul 13</span>Confirmed grandchild concept removed — no grandchild in scope (business call on Friday)</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Exclusion rule update in progress; will run DSU tag in second half to verify scope (~7,000 items)</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Reviewing generated queries for testing phase</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Working on DQ and exclusions for assignment agreement — found 29 test agreements vs. 2–3 in requirements; needs business clarification</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Assignment agreement analysis in good shape; sequencing clarified</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Deepa Pardeshi</div>
+        <ul>
+          <li><span class="day-pill pill-today">Jul 13</span>Extraction completed for 1st user story; API configs and load orchestration ready for 3rd story</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Analyzing writeback queries for partner grandchild — now updating to remove grandchild logic per Friday's CR</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Scheduled connect with Sachin for 2nd user story clarification</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Set up load orchestration for 3rd user story (unstructured onboarding); analyzing writeback queries for grandchild partner requirement</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Starting data prep activities in parallel</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Dil Thapa</div>
+        <ul>
+          <li><span class="day-pill pill-prior">Jul 9</span>No major board updates; available to assist with issues</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Identified critical item: connected app using username/password auth expiring Sep 1 — JWT migration needed</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Planning to set up meeting and start thread on JWT migration</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Dwaipayana A B J</div>
+        <ul>
+          <li><span class="day-pill pill-today">Jul 13</span>Completed changes for audit summary report (Ironclad files &amp; attachments) — pending Rama's review</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Working on frequency distribution report; connecting with Rama post-DSU on repurposed line-by-line audit report</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Mostly completed audit summary report for Ironclad files; pending Rama's review</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Will connect with Rama post-DSU on assignment agreement for repurposed line-by-line audit report</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Himanshu Jain</div>
+        <ul>
+          <li><span class="day-pill pill-today">Jul 13</span>Prepared complete query data for E2; connecting with Ashutosh to review attributes today</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Completed E2 documentation for stage vs. strength and transactions vs. out; connecting with Ashutosh for review</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Jayasudha Murugamanickam</div>
+        <ul>
+          <li><span class="day-pill pill-today">Jul 13</span>Validation of transformation story in progress — started Thursday, external ID and several columns validated</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Writing queries for assignment agreement; identified need for root/child mapping clarification from Rohit</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Analyzing assignment agreement column classification; preparing queries; validating data in Org62 and Ironclad for duplicates and logic issues</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Kanika Narula</div>
+        <ul>
+          <li><span class="day-pill pill-today">Jul 13</span>Updated stories with CRs (CR 6761 — exclusion rule, type field transformation, AA ID inclusion)</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Confirmed ISV partner changes going directly from 4SB1 to UAT — apps QA6 mock cancelled</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Data backfill on hold; PI board cleanup in progress (removing project setup stories)</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Rescheduled review meeting to 3:30 PM tomorrow; will share updated PI board link</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Gathering DMAS tool features and challenges documentation for product team</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Will repurpose stories for assignment agreement migration requirements post-DSU discussion with Rama</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Vinika (internet issues due to heavy rainfall) — cloned DAGs for writeback, modified audit summary procedure</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">RAMAKRISHNA Janga</div>
+        <ul>
+          <li><span class="day-pill pill-today">Jul 13</span>Confirmed ~75 PC and ~90 PCA assignment agreement records in backfilled data</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Proposed 2-tab Excel structure (partner tab + assignment agreement tab) for line-by-line audit reports</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Will explain procedure creation process to team today</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Backfill of account and opportunity objects completed; moving to approval matrix, agreement PC and PCA</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Shared Excel sheet with IDP scan queries and sub-sheets with Arshad for review</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Confirmed assignment agreement identified via PC population in IDP sheet</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Shubham Sharma</div>
+        <ul>
+          <li><span class="day-pill pill-today">Jul 13</span>Data prep complete for object stories; external ID null cases fixed — all populating as expected</li>
+          <li><span class="day-pill pill-today">Jul 13</span>2nd and 3rd stories data prep nearly done; assignment agreement columns (3–4) to be added</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Story moved back to In Progress pending CR implementation</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Data prep scripts for 1st story complete — in QA; configuration setup and writeback analysis for 3rd and 4th stories in progress</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Syed Arshad Mohiuddin</div>
+        <ul>
+          <li><span class="day-pill pill-today">Jul 13</span>Root/child/grandchild logic finalization was complete until Friday's CR — now updating to remove grandchild</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Walked team through AA mapping flow: override table → AA classification stamp → separate lightweight and regular flows into same contract table</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Decided: 2 separate stored procs (one for Org62 AA, one for Ironclad AA); no new project</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Working on stored procedure for root/child map; TDD documentation updated per Sharat's feedback</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Preparing for CLM call at 12:30 to walk through solutioning</li>
+          <li><span class="day-pill pill-prior">Jul 9</span>Investigated IDP discrepancy: 8 records from IDP vs. 10 from R12 API — needs query re-run with created date</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Vinika Gupta</div>
+        <ul>
+          <li><span class="day-pill pill-today">Jul 13</span>Completed report for 2nd story — shared with Rama for verification</li>
+          <li><span class="day-pill pill-today">Jul 13</span>Working on 3rd story; verified data load DAG changes (pending status update)</li>
+        </ul>
+      </div>
+    </div>
+    </div><!-- /tab-work -->
+  </div><!-- /tabbed section -->
 
 </div>
 
@@ -554,6 +505,15 @@ function filterTable(tableId, owner, countId) {
   if (countEl) {
     countEl.textContent = owner ? ('Showing ' + visible + ' of ' + rows.length) : '';
   }
+}
+
+function switchTab(paneId, btn) {
+  var bar = btn.closest('.tab-bar');
+  bar.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  var section = bar.closest('.section');
+  section.querySelectorAll('.tab-pane').forEach(function(p) { p.classList.remove('active'); });
+  document.getElementById(paneId).classList.add('active');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
