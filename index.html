@@ -1,417 +1,516 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CLM Meeting Highlights</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f4f8; color: #333; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CLM Meeting Highlights</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f4f8; color: #172b4d; }
 
-    .header {
-      background: linear-gradient(135deg, #0070d2, #032d60);
-      color: white;
-      padding: 32px 40px;
-    }
-    .header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
-    .header .subtitle { font-size: 1rem; opacity: 0.85; margin-top: 6px; }
-    .header .meta { font-size: 0.85rem; opacity: 0.7; margin-top: 10px; }
+  .header {
+    background: linear-gradient(135deg, #0070d2, #032d60);
+    color: white; padding: 28px 32px 24px;
+  }
+  .header h1 { font-size: 1.8rem; font-weight: 700; }
+  .header .subtitle { font-size: 0.95rem; opacity: 0.85; margin-top: 4px; }
+  .header .meta { font-size: 0.82rem; opacity: 0.7; margin-top: 8px; }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 30px 24px; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 24px 20px 48px; }
 
-    .section { background: white; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 28px; overflow: hidden; }
-    .section-header { background: #f7f9fc; border-bottom: 2px solid #e2e8f0; padding: 16px 24px; display: flex; align-items: center; gap: 10px; }
-    .section-header h2 { font-size: 1.1rem; font-weight: 700; color: #032d60; }
-    .section-number { background: #0070d2; color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; }
-    .section-body { padding: 20px 24px; }
+  .section { margin-bottom: 32px; }
+  .section-title {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.09em;
+    text-transform: uppercase; color: #5e6c84; margin-bottom: 12px;
+    padding-bottom: 6px; border-bottom: 2px solid #dfe1e6;
+  }
 
-    .day-block { margin-bottom: 20px; }
-    .day-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 12px; }
-    .day-badge.jul7 { background: #d4edda; color: #155724; }
-    .day-badge.jul6 { background: #e8f4fd; color: #0070d2; }
+  /* Day blocks */
+  .day-block { background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 18px 22px; margin-bottom: 14px; }
+  .day-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .day-badge {
+    display: inline-block; border-radius: 4px; padding: 3px 10px;
+    font-size: 0.78rem; font-weight: 700;
+  }
+  .badge-today { background: #e3fcef; color: #006644; }
+  .badge-prior { background: #deebff; color: #0052cc; }
+  .person-block { margin-bottom: 8px; }
+  .person-name { font-size: 0.82rem; font-weight: 700; color: #0052cc; margin-bottom: 3px; }
+  .person-block ul { list-style: none; padding-left: 10px; }
+  .person-block ul li { font-size: 0.83rem; color: #253858; padding: 2px 0; line-height: 1.5; }
+  .person-block ul li::before { content: "✓"; color: #36b37e; margin-right: 6px; font-weight: 700; }
 
-    .person-block { margin-bottom: 14px; }
-    .person-name { font-weight: 600; font-size: 0.92rem; color: #032d60; margin-bottom: 6px; }
-    .bullet-list { list-style: none; padding: 0; }
-    .bullet-list li { padding: 4px 0 4px 20px; position: relative; font-size: 0.9rem; line-height: 1.5; color: #444; }
-    .bullet-list li::before { content: "\2713"; position: absolute; left: 0; color: #0070d2; font-weight: 700; }
+  /* Tables */
+  .table-wrap { overflow-x: auto; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .filter-bar { padding: 12px 16px; border-bottom: 1px solid #f0f1f4; display: flex; align-items: center; gap: 10px; }
+  .filter-bar label { font-size: 0.8rem; font-weight: 600; color: #5e6c84; }
+  .filter-bar select { font-size: 0.82rem; border: 1px solid #dfe1e6; border-radius: 4px; padding: 4px 8px; color: #172b4d; }
+  .filter-bar .count { font-size: 0.78rem; color: #8993a4; margin-left: 6px; }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: #f4f5f7; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #5e6c84; padding: 10px 14px; text-align: left; border-bottom: 1px solid #dfe1e6; }
+  td { padding: 10px 14px; font-size: 0.83rem; border-bottom: 1px solid #f4f5f7; vertical-align: top; color: #253858; line-height: 1.5; }
+  tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #f8f9ff; }
+  tbody tr.hidden { display: none; }
 
-    .filter-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
-    .filter-row label { font-size: 0.85rem; font-weight: 600; color: #444; }
-    .filter-row select { padding: 6px 10px; border: 1px solid #d0d7de; border-radius: 6px; font-size: 0.85rem; background: white; cursor: pointer; }
-    .count-badge { background: #e8f4fd; color: #0070d2; padding: 3px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; }
+  .badge {
+    display: inline-block; border-radius: 3px; padding: 2px 7px;
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  }
+  .badge-high   { background: #ffebe6; color: #de350b; }
+  .badge-medium { background: #fff4e5; color: #ff8b00; }
+  .badge-low    { background: #e3fcef; color: #006644; }
+  .badge-open   { background: #deebff; color: #0052cc; }
+  .badge-inprog { background: #fffae6; color: #997000; }
+  .badge-done   { background: #e3fcef; color: #006644; }
+  .badge-pending { background: #f3e8ff; color: #5b21b6; }
 
-    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-    thead tr { background: #032d60; color: white; }
-    thead th { padding: 10px 14px; text-align: left; font-weight: 600; }
-    tbody tr { border-bottom: 1px solid #f0f0f0; transition: background 0.15s; }
-    tbody tr:hover { background: #f7f9fc; }
-    tbody tr.hidden { display: none; }
-    tbody td { padding: 10px 14px; vertical-align: top; }
-    td.owner { font-weight: 600; color: #032d60; white-space: nowrap; }
-
-    .day-pill { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; }
-    .day-pill.jul7 { background: #d4edda; color: #155724; }
-    .day-pill.jul6 { background: #e8f4fd; color: #0070d2; }
-
-    .sev-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; }
-    .sev-high { background: #fde8e8; color: #c0392b; }
-    .sev-medium { background: #fef3cd; color: #856404; }
-    .sev-low { background: #d4edda; color: #155724; }
-
-    .status-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; }
-    .status-open { background: #fde8e8; color: #c0392b; }
-    .status-progress { background: #fef3cd; color: #856404; }
-    .status-resolved { background: #d4edda; color: #155724; }
-
-    .decision-list { list-style: none; padding: 0; }
-    .decision-list li { padding: 8px 0 8px 20px; position: relative; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; line-height: 1.5; }
-    .decision-list li:last-child { border-bottom: none; }
-    .decision-list li::before { content: "\2714"; position: absolute; left: 0; color: #0070d2; font-weight: 700; }
-    .date-prefix { font-size: 0.78rem; font-weight: 600; color: #0070d2; margin-right: 8px; }
-  </style>
+  .decisions-list { background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 18px 22px; }
+  .decisions-list li { font-size: 0.84rem; padding: 7px 0; border-bottom: 1px solid #f4f5f7; line-height: 1.5; list-style: none; display: flex; gap: 10px; }
+  .decisions-list li:last-child { border-bottom: none; }
+  .decisions-list li::before { content: "✔"; color: #0052cc; flex-shrink: 0; margin-top: 1px; }
+  .dec-date { font-size: 0.75rem; color: #8993a4; flex-shrink: 0; min-width: 55px; margin-top: 2px; }
+</style>
 </head>
 <body>
 
 <div class="header">
   <h1>CLM Meeting Highlights</h1>
   <div class="subtitle">Highlights the key notes of last 2 meeting notes</div>
-  <div class="meta">Jul 7, 2026 &bull; Jul 6, 2026 &bull; Generated: Jul 8, 2026</div>
+  <div class="meta">Jul 13, 2026 &nbsp;+&nbsp; Jul 9, 2026 &nbsp;·&nbsp; Generated: July 13, 2026</div>
 </div>
 
 <div class="container">
 
-  <!-- Section 1: Work Completed -->
+  <!-- SECTION 1: WORK COMPLETED -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-number">1</div>
-      <h2>Work Completed</h2>
+    <div class="section-title">Section 1 — Work Completed</div>
+
+    <!-- Jul 13 -->
+    <div class="day-block">
+      <div class="day-header">
+        <span class="day-badge badge-today">Jul 13, 2026 — Today</span>
+        <span style="font-size:0.82rem;color:#5e6c84">DSU: Project CLM Data Migration</span>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Adarsh M</div>
+        <ul>
+          <li>Updated Ironclad execution onboarding story — ready for Sachin to review and deploy to database</li>
+          <li>Working on transformation test cases and changes post-power outage on Friday</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Ajith Kumar</div>
+        <ul>
+          <li>Moved 3rd story (reporting DSU) to ready for review</li>
+          <li>Updated procedure for 2nd story — awaiting Rama's review</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Ashutosh Khaitan</div>
+        <ul>
+          <li>Confirmed grandchild concept removed — no grandchild in scope (business call on Friday)</li>
+          <li>Exclusion rule update in progress; will run DSU tag in second half to verify scope (~7,000 items)</li>
+          <li>Reviewing generated queries for testing phase</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Deepa Pardeshi</div>
+        <ul>
+          <li>Extraction completed for 1st user story; API configs and load orchestration ready for 3rd story</li>
+          <li>Analyzing writeback queries for partner grandchild — now updating to remove grandchild logic per Friday's CR</li>
+          <li>Scheduled connect with Sachin for 2nd user story clarification</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Dwaipayana A B J</div>
+        <ul>
+          <li>Completed changes for audit summary report (Ironclad files &amp; attachments) — pending Rama's review</li>
+          <li>Working on frequency distribution report; connecting with Rama post-DSU on repurposed line-by-line audit report</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Himanshu Jain</div>
+        <ul>
+          <li>Prepared complete query data for E2; connecting with Ashutosh to review attributes today</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Jayasudha Murugamanickam</div>
+        <ul>
+          <li>Validation of transformation story in progress — started Thursday, external ID and several columns validated</li>
+          <li>Writing queries for assignment agreement; identified need for root/child mapping clarification from Rohit</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">RAMAKRISHNA Janga</div>
+        <ul>
+          <li>Confirmed ~75 PC and ~90 PCA assignment agreement records in backfilled data</li>
+          <li>Proposed 2-tab Excel structure (partner tab + assignment agreement tab) for line-by-line audit reports</li>
+          <li>Will explain procedure creation process to team today</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Shubham Sharma</div>
+        <ul>
+          <li>Data prep complete for object stories; external ID null cases fixed — all populating as expected</li>
+          <li>2nd and 3rd stories data prep nearly done; assignment agreement columns (3–4) to be added</li>
+          <li>Story moved back to In Progress pending CR implementation</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Syed Arshad Mohiuddin</div>
+        <ul>
+          <li>Root/child/grandchild logic finalization was complete until Friday's CR — now updating to remove grandchild</li>
+          <li>Walked team through AA mapping flow: override table → AA classification stamp → separate lightweight and regular flows into same contract table</li>
+          <li>Decided: 2 separate stored procs (one for Org62 AA, one for Ironclad AA); no new project</li>
+          <li>Priorities: root/child logic correction, AA trans procedure finalization with Jayasudha, IDP solutioning, unstructured AA logic</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Vinika Gupta</div>
+        <ul>
+          <li>Completed report for 2nd story — shared with Rama for verification</li>
+          <li>Working on 3rd story; verified data load DAG changes (pending status update)</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Kanika Narula</div>
+        <ul>
+          <li>Updated stories with CRs (CR 6761 — exclusion rule, type field transformation, AA ID inclusion)</li>
+          <li>Confirmed ISV partner changes going directly from 4SB1 to UAT — apps QA6 mock cancelled</li>
+          <li>Data backfill on hold; PI board cleanup in progress (removing project setup stories)</li>
+          <li>Rescheduled review meeting to 3:30 PM tomorrow; will share updated PI board link</li>
+        </ul>
+      </div>
     </div>
-    <div class="section-body">
 
-      <div class="day-block">
-        <span class="day-badge jul7">Jul 7, 2026 &mdash; Most Recent</span>
-
-        <div class="person-block">
-          <div class="person-name">Sowjanya Atchutuni</div>
-          <ul class="bullet-list">
-            <li>Conducted sprint DSU covering all team updates for [Qualified] Q2C DM sprint</li>
-            <li>Updated sprint board status messages; corrected incorrect Q2C completion status that had been reported</li>
-            <li>Confirmed mock run schedule: Jul 13 (Mon) and Jul 15/16 (tentative) for next week</li>
-            <li>Resolved Workday sync failure strategy: update 17 affected contracts&apos; tax exemption code to &ldquo;exempted&rdquo; and retry sync</li>
-            <li>Scheduled 12:30 call with Sur to debug environmental account sync conflicts with Workday</li>
-          </ul>
-        </div>
-
-        <div class="person-block">
-          <div class="person-name">Vaishna Nambiar</div>
-          <ul class="bullet-list">
-            <li>Added two additional mock run stories to current sprint for Jul 13 &amp; 15/16 runs</li>
-            <li>Updated deployment story to include both UAT and production deployment on same day</li>
-            <li>Identified 17 contracts with missing tax exemption code causing Workday sync failures; coordinating fix with Shivangi</li>
-            <li>Following up with Dan on pending CR (contract interpretation) and JWT token configuration</li>
-          </ul>
-        </div>
-
-        <div class="person-block">
-          <div class="person-name">Jaya Themaskar</div>
-          <ul class="bullet-list">
-            <li>Started analysis on current contract activation failures; investigating root cause</li>
-          </ul>
-        </div>
-
-        <div class="person-block">
-          <div class="person-name">Bharathi Subburaj</div>
-          <ul class="bullet-list">
-            <li>Connected with Narville team to obtain JAR and CPS details for API deployment</li>
-            <li>API deployment plan confirmed: UAT + Production on same day (targeting Jul 13/14)</li>
-          </ul>
-        </div>
-
-        <div class="person-block">
-          <div class="person-name">Mayuri Tawale</div>
-          <ul class="bullet-list">
-            <li>DQI mock automation progress confirmed; DQI mock largely automated</li>
-            <li>Handed off DQI mock execution knowledge to Aritra Das as backup coverage</li>
-          </ul>
-        </div>
+    <!-- Jul 9 -->
+    <div class="day-block">
+      <div class="day-header">
+        <span class="day-badge badge-prior">Jul 9, 2026</span>
+        <span style="font-size:0.82rem;color:#5e6c84">DSU: Project CLM Data Migration</span>
       </div>
-
-      <div class="day-block">
-        <span class="day-badge jul6">Jul 6, 2026</span>
-
-        <div class="person-block">
-          <div class="person-name">Jaya Themaskar</div>
-          <ul class="bullet-list">
-            <li>Completed Airflow Git migration code; data migration in progress, to be finalized after E2E prep</li>
-          </ul>
-        </div>
-
-        <div class="person-block">
-          <div class="person-name">Sowjanya Atchutuni</div>
-          <ul class="bullet-list">
-            <li>Completed sprint assignments for all team members; rebalanced post-productivities to Naval Nagar</li>
-            <li>Reduced bug fix/placeholder story from 10 to 5 points for sprint manageability</li>
-            <li>Assigned QA tasks to Mayuri Tawale; MuleSoft code deployment to Bharathi &amp; Naval</li>
-            <li>Assigned DQI mock to Aritra Das &amp; Bharathi; decided additional E2E mocks on Tuesdays &amp; Thursdays next week</li>
-          </ul>
-        </div>
-
-        <div class="person-block">
-          <div class="person-name">Aritra Das</div>
-          <ul class="bullet-list">
-            <li>Identified database connection issue: plot connections consuming data from QAB instead of production DB; flagged for Shivangi to resolve</li>
-          </ul>
-        </div>
-
-        <div class="person-block">
-          <div class="person-name">Mayuri Tawale</div>
-          <ul class="bullet-list">
-            <li>Test queries sent to Shivangi for review; waiting for confirmation before moving to ready-for-review</li>
-            <li>Confirmed E2E bug check still pending for A2A scenario</li>
-          </ul>
-        </div>
+      <div class="person-block">
+        <div class="person-name">Adarsh M</div>
+        <ul>
+          <li>Reviewed Tableau dashboard — names updated, LRO sheets removed; will review with Rama</li>
+          <li>Connecting with Shubham to close execution onboarding story on Ironclad (assigned to Sachin)</li>
+        </ul>
       </div>
-
+      <div class="person-block">
+        <div class="person-name">Ajith Kumar</div>
+        <ul>
+          <li>Started work on 2nd story procedure; 3rd user story in progress</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Ashutosh Khaitan</div>
+        <ul>
+          <li>Working on DQ and exclusions for assignment agreement — found 29 test agreements vs. 2–3 in requirements; needs business clarification</li>
+          <li>Assignment agreement analysis in good shape; sequencing clarified</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Deepa Madhukar Pardeshi</div>
+        <ul>
+          <li>Set up load orchestration for 3rd user story (unstructured onboarding); analyzing writeback queries for grandchild partner requirement</li>
+          <li>Starting data prep activities in parallel</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Dil Thapa</div>
+        <ul>
+          <li>No major board updates; available to assist with issues</li>
+          <li>Identified critical item: connected app using username/password auth expiring Sep 1 — JWT migration needed</li>
+          <li>Planning to set up meeting and start thread on JWT migration</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Dwaipayana A B J</div>
+        <ul>
+          <li>Mostly completed audit summary report for Ironclad files; pending Rama's review</li>
+          <li>Will connect with Rama post-DSU on assignment agreement for repurposed line-by-line audit report</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Himanshu Jain</div>
+        <ul>
+          <li>Completed E2 documentation for stage vs. strength and transactions vs. out; connecting with Ashutosh for review</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Jayasudha Murugamanickam</div>
+        <ul>
+          <li>Analyzing assignment agreement column classification; preparing queries; validating data in Org62 and Ironclad for duplicates and logic issues</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">RAMAKRISHNA Janga</div>
+        <ul>
+          <li>Backfill of account and opportunity objects completed; moving to approval matrix, agreement PC and PCA</li>
+          <li>Shared Excel sheet with IDP scan queries and sub-sheets with Arshad for review</li>
+          <li>Confirmed assignment agreement identified via PC population in IDP sheet</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Shubham Sharma</div>
+        <ul>
+          <li>Data prep scripts for 1st story complete — in QA; configuration setup and writeback analysis for 3rd and 4th stories in progress</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Syed Arshad Mohiuddin</div>
+        <ul>
+          <li>Working on stored procedure for root/child map; TDD documentation updated per Sharat's feedback</li>
+          <li>Preparing for CLM call at 12:30 to walk through solutioning</li>
+          <li>Investigated IDP discrepancy: 8 records from IDP vs. 10 from R12 API — needs query re-run with created date</li>
+        </ul>
+      </div>
+      <div class="person-block">
+        <div class="person-name">Kanika Narula</div>
+        <ul>
+          <li>Gathering DMAS tool features and challenges documentation for product team</li>
+          <li>Will repurpose stories for assignment agreement migration requirements post-DSU discussion with Rama</li>
+          <li>Vinika (internet issues due to heavy rainfall) — cloned DAGs for writeback, modified audit summary procedure</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <!-- Section 2: High Priority Items -->
+  <!-- SECTION 2: HIGH PRIORITY ACTION ITEMS -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-number">2</div>
-      <h2>High Priority Items</h2>
-    </div>
-    <div class="section-body">
-      <div class="filter-row">
+    <div class="section-title">Section 2 — High Priority Action Items</div>
+    <div class="table-wrap">
+      <div class="filter-bar">
         <label for="filter-high">Filter by Owner:</label>
-        <select id="filter-high" onchange="filterTable('high-table', this.value, 'high-count')">
-          <option value="all">All Owners</option>
+        <select id="filter-high" onchange="filterTable('table-high', this.value, 'count-high')">
+          <option value="">All</option>
         </select>
-        <span class="count-badge" id="high-count"></span>
+        <span class="count" id="count-high"></span>
       </div>
-      <table id="high-table">
+      <table id="table-high">
         <thead>
           <tr>
-            <th>Day</th>
-            <th>Owner</th>
-            <th>Item</th>
-            <th>Status</th>
+            <th>#</th><th>Day</th><th>Action</th><th>Owner</th><th>Context</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td class="owner">Vaishna Nambiar</td>
-            <td>Update tax exemption code to &ldquo;exempted&rdquo; for 17 contracts and retry Workday sync; notify CN of the change</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>1</td><td>Jul 13</td>
+            <td>Correct root/child logic and remove grandchild references from all trans procedures</td>
+            <td class="owner">Syed Arshad Mohiuddin</td>
+            <td>Friday CR confirmed no grandchild in scope. Core logic must be updated before data prep can proceed.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td class="owner">Prathibha Naik</td>
-            <td>Upload qualified contract migration test cases to GA End-to-End details sheet by Wed/Thu (Jul 9/10)</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>2</td><td>Jul 13</td>
+            <td>Finalize AA (Assignment Agreement) transformation procedures with Jayasudha</td>
+            <td class="owner">Syed Arshad Mohiuddin</td>
+            <td>Separate procs for Org62 AA and Ironclad AA mapping, both loading into existing contract table.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td class="owner">Sowjanya Atchutuni</td>
-            <td>Follow up with Shantan (quoting) &amp; Amswini (partner) to get remaining contract migration test cases added</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>3</td><td>Jul 13</td>
+            <td>Resolve IDP solutioning — confirm with business on attachment scanning requirement</td>
+            <td class="owner">Ashutosh Khaitan</td>
+            <td>Business expects attachments in scope; IDP API currently file-only. Needs decision before technical path chosen.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td class="owner">Shivangi Tyagi</td>
-            <td>Investigate Workday transaction sync errors &mdash; determine if failures are caused by existing account sync errors or a new issue</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>4</td><td>Jul 13</td>
+            <td>Update exclusion rule in DMAS and run DSU tag to verify scope post-exclusions</td>
+            <td class="owner">Ashutosh Khaitan</td>
+            <td>Total dataset ~7,000; need post-exclusion count to finalize E2E testing scope and share with CLM team.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td class="owner">Bharathi Subburaj</td>
-            <td>Prepare API deployment run list &amp; JAR details with Narville team; target UAT + Prod deployment Jul 13/14</td>
-            <td><span class="status-badge status-progress">In Progress</span></td>
+            <td>5</td><td>Jul 13</td>
+            <td>Get business confirmation on assignment agreement identification (IDP sheet data)</td>
+            <td class="owner">Ashutosh Khaitan</td>
+            <td>~75 PC and ~90 PCA records identified but business confirmation still pending. Risk of scope change.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td class="owner">Vaishna Nambiar</td>
-            <td>Setup table structures for file migration in stage, trans &amp; prod environments (5 pts)</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>6</td><td>Jul 13</td>
+            <td>Deploy updated Ironclad execution onboarding story to database</td>
+            <td class="owner">Adarsh M</td>
+            <td>Story updated and ready; Sachin requested deployment before he reviews.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul6">Jul 6</span></td>
-            <td class="owner">Aritra Das</td>
-            <td>Investigate &amp; resolve database connection issue: plot connections consuming from QAB instead of production DB</td>
-            <td><span class="status-badge status-progress">In Progress</span></td>
+            <td>7</td><td>Jul 9</td>
+            <td>Migrate connected app from username/password to JWT authentication before Sep 1 expiry</td>
+            <td class="owner">Dil Thapa</td>
+            <td>Salesforce retiring username/password auth Sep 1. One-time cross-team effort — new connected app, certificates. All teams impacted. Meeting to be set up.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul6">Jul 6</span></td>
-            <td class="owner">Sowjanya Atchutuni</td>
-            <td>Request Dil to update 3 E2E access items to read-only for verification; update JWT token</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>8</td><td>Jul 13</td>
+            <td>Confirm apps QA6 mock is cancelled and update environment strategy thread</td>
+            <td class="owner">Kanika Narula</td>
+            <td>ISV partner changes going directly from 4SB1 to UAT — no regression mock on apps QA6 required. Thread needs update.</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- Section 3: Medium Priority Items -->
+  <!-- SECTION 3: MEDIUM PRIORITY ACTION ITEMS -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-number">3</div>
-      <h2>Medium Priority Items</h2>
-    </div>
-    <div class="section-body">
-      <div class="filter-row">
+    <div class="section-title">Section 3 — Medium Priority Action Items</div>
+    <div class="table-wrap">
+      <div class="filter-bar">
         <label for="filter-med">Filter by Owner:</label>
-        <select id="filter-med" onchange="filterTable('med-table', this.value, 'med-count')">
-          <option value="all">All Owners</option>
+        <select id="filter-med" onchange="filterTable('table-med', this.value, 'count-med')">
+          <option value="">All</option>
         </select>
-        <span class="count-badge" id="med-count"></span>
+        <span class="count" id="count-med"></span>
       </div>
-      <table id="med-table">
+      <table id="table-med">
         <thead>
           <tr>
-            <th>Day</th>
-            <th>Owner</th>
-            <th>Item</th>
-            <th>Status</th>
+            <th>#</th><th>Day</th><th>Action</th><th>Owner</th><th>Context</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td class="owner">Prathibha Naik</td>
-            <td>Add scrum team column to existing Narville test cases based on IDs; reach out to respective owners to delete descoped dummy records from dashboard</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>1</td><td>Jul 13</td>
+            <td>Post root/child mapping clarification query to Rohit for assignment agreement</td>
+            <td class="owner">Jayasudha Murugamanickam / Syed Arshad Mohiuddin</td>
+            <td>Mapping sheet lacks root vs. child segregation detail for assignment agreement columns. Need Rohit's input.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td class="owner">Vaishna Nambiar</td>
-            <td>Clone procedures &amp; set up file migration code for stage/trans/prod (Qualified)</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>2</td><td>Jul 13</td>
+            <td>Update data prep / transformation procedure to accommodate AA logic and remove grandchild</td>
+            <td class="owner">Deepa Madhukar Pardeshi</td>
+            <td>Must handle AA classification case statement (override table join) and remove grandchild handling from procedure.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td class="owner">Sowjanya Atchutuni</td>
-            <td>Conduct KT session on file migration code for Shivangi; schedule sync meeting to debug Workday environment account conflicts</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>3</td><td>Jul 13</td>
+            <td>Verify DAG changes for data load and update story status</td>
+            <td class="owner">Vinika Gupta</td>
+            <td>DAG created and run; needs verification before status can be moved.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td class="owner">Aritra Das</td>
-            <td>Execute DQI mock scripts as backup operator; ensure knowledge of automated process</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>4</td><td>Jul 13</td>
+            <td>Clarify 2nd user story with Sachin and schedule connect</td>
+            <td class="owner">Deepa Pardeshi</td>
+            <td>Second user story requirements still unclear; meeting to be scheduled in second half of today.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td class="owner">Shivangi Tyagi</td>
-            <td>Lead file migration analysis &amp; design (3 pts) &mdash; analyze source data, file counts, locations; attend KT session from Sowjanya</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>5</td><td>Jul 13</td>
+            <td>Review audit summary report changes (Ironclad files &amp; attachments) and move to next story</td>
+            <td class="owner">Dwaipayana A B J</td>
+            <td>Changes completed; pending Rama review. Also starting frequency distribution report today.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul6">Jul 6</span></td>
-            <td class="owner">Mayuri Tawale</td>
-            <td>Verify test queries status with Shivangi; update to ready-for-review once confirmed</td>
-            <td><span class="status-badge status-progress">In Progress</span></td>
+            <td>6</td><td>Jul 13</td>
+            <td>Update and share PI board link — remove project setup stories; reschedule review to 3:30 PM tomorrow</td>
+            <td class="owner">Kanika Narula</td>
+            <td>Project completion target set for Oct 23. Project setup stories no longer needed due to time constraints.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul6">Jul 6</span></td>
-            <td class="owner">Vaishna Nambiar</td>
-            <td>Share list of contracts requiring RMS addition with Oracle team</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>7</td><td>Jul 13</td>
+            <td>Get alignment from Rohit on 2-tab Excel structure for partner + AA line-by-line report</td>
+            <td class="owner">RAMAKRISHNA Janga</td>
+            <td>Combining into one sheet causes null columns; separate tabs proposed. Rohit to take to business.</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul6">Jul 6</span></td>
-            <td class="owner">Sowjanya Atchutuni</td>
-            <td>Add missing reporting tag to project tasks; confirm sprint board by evening</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>8</td><td>Jul 13</td>
+            <td>Confirm if blank mapping logic for PCA child records applies to PC child records</td>
+            <td class="owner">Kanika Narula</td>
+            <td>Needs business stakeholder confirmation before AA transformation logic is finalized.</td>
+          </tr>
+          <tr>
+            <td>9</td><td>Jul 9</td>
+            <td>Start thread on JWT authentication migration; include Sarat and all impacted teams</td>
+            <td class="owner">Dil Thapa</td>
+            <td>One-time effort; cross-team coordination required. Sep 1 deadline.</td>
+          </tr>
+          <tr>
+            <td>10</td><td>Jul 9</td>
+            <td>Investigate IDP discrepancy: re-run query with created date to find 8 vs 10 record difference</td>
+            <td class="owner">Dil Thapa</td>
+            <td>IDP shows 8 records, R12 API shows 10. Run content document query with created_date filter to check for recent additions vs config issues.</td>
+          </tr>
+          <tr>
+            <td>11</td><td>Jul 9</td>
+            <td>Collect DMAS tool features and challenges list for product team</td>
+            <td class="owner">Kanika Narula</td>
+            <td>Kanika gathering data on DMAS usage beyond field mapping, orchestration, and API config. Will connect with team separately.</td>
+          </tr>
+          <tr>
+            <td>12</td><td>Jul 13</td>
+            <td>Cross-check IDP scan prompt — verify whether to prioritize AA or PA in scanning</td>
+            <td class="owner">Sachin Kumar Sahu</td>
+            <td>Scanning priority currently configured to favor AA over PA. Business confirmation needed on attachment scanning scope.</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- Section 4: Key Risks & Blockers -->
+  <!-- SECTION 4: RISKS & BLOCKERS -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-number">4</div>
-      <h2>Key Risks &amp; Blockers</h2>
-    </div>
-    <div class="section-body">
+    <div class="section-title">Section 4 — Key Risks &amp; Blockers</div>
+    <div class="table-wrap">
       <table>
         <thead>
-          <tr>
-            <th>Day</th>
-            <th>Severity</th>
-            <th>Risk / Blocker</th>
-            <th>Status</th>
-          </tr>
+          <tr><th>Risk / Blocker</th><th>Severity</th><th>Status</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td><span class="sev-badge sev-high">High</span></td>
-            <td>Workday sync failures on 17 contracts (missing tax exemption code) &mdash; contract activation blocked until resolved; fix underway (set to &ldquo;exempted&rdquo;)</td>
-            <td><span class="status-badge status-progress">In Progress</span></td>
+            <td>Connected app (username/password auth) expiring Sep 1 — JWT migration required; cross-team impact, certificates and new connected app setup needed</td>
+            <td><span class="badge badge-high">High</span></td>
+            <td><span class="badge badge-inprog">In Progress</span> — Dil Thapa working on it; meeting/thread to be set up</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td><span class="sev-badge sev-high">High</span></td>
-            <td>Contract migration test cases (quoting/partner/renewals/deal mgmt/finance) not yet uploaded to GA E2E sheet &mdash; risk to E2E readiness if not completed by Jul 9/10</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>Grandchild logic removal CR (Friday) requires significant rework across root/child trans procedures, data prep, and unstructured stories</td>
+            <td><span class="badge badge-high">High</span></td>
+            <td><span class="badge badge-inprog">In Progress</span> — Arshad, Deepa, Shubham updating; E2E timeline pushed to Jul 27–31</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td><span class="sev-badge sev-medium">Medium</span></td>
-            <td>Workday environmental conflict: QA6 account numbers may already exist in Workday with different details, causing bad request errors on sync &mdash; investigation call scheduled</td>
-            <td><span class="status-badge status-progress">In Progress</span></td>
+            <td>IDP solutioning unresolved — business has not confirmed attachment scanning requirement; IDP API is file-only; API update needed for attachments</td>
+            <td><span class="badge badge-high">High</span></td>
+            <td><span class="badge badge-open">Open</span> — Pending business feedback; team waiting before choosing technical path</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td><span class="sev-badge sev-medium">Medium</span></td>
-            <td>France contracts: 2 contracts require mandatory secondary tax ID &mdash; validation rule check and business clarification pending</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>Business confirmation on assignment agreement identification (IDP sheet) still pending — risk of scope change to ~75–90 identified records</td>
+            <td><span class="badge badge-medium">Medium</span></td>
+            <td><span class="badge badge-open">Open</span> — Ashutosh flagged; business call needed this week</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul7">Jul 7</span></td>
-            <td><span class="sev-badge sev-medium">Medium</span></td>
-            <td>JWT token environment not ready &mdash; file migration extraction story pushed to next sprint; current sprint limited to table setup &amp; code structure only</td>
-            <td><span class="status-badge status-open">Open</span></td>
+            <td>IDP data discrepancy: 8 records from IDP scan vs. 10 in R12 API — configuration or recent data addition under investigation</td>
+            <td><span class="badge badge-medium">Medium</span></td>
+            <td><span class="badge badge-inprog">In Progress</span> — Dil Thapa to re-run query with created_date; Arshad &amp; Dil to connect</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul6">Jul 6</span></td>
-            <td><span class="sev-badge sev-medium">Medium</span></td>
-            <td>Plot connections consuming data from QAB instead of production DB &mdash; environment misconfiguration risk for data quality</td>
-            <td><span class="status-badge status-progress">In Progress</span></td>
+            <td>Assignment agreement root/child mapping details not in mapping sheet — blocking Jayasudha's transformation work</td>
+            <td><span class="badge badge-medium">Medium</span></td>
+            <td><span class="badge badge-open">Open</span> — Query to be posted to Rohit by Jayasudha &amp; Arshad</td>
           </tr>
           <tr>
-            <td><span class="day-pill jul6">Jul 6</span></td>
-            <td><span class="sev-badge sev-low">Low</span></td>
-            <td>Quoting (Shantan) test case status was incorrectly reported as complete in morning DSU &mdash; corrected; actual completion expected within a day or two</td>
-            <td><span class="status-badge status-resolved">Resolved</span></td>
+            <td>Apps QA6 backfill effort may be wasted — ISV partner not moving changes to E2E/QA6 sandbox; going directly to UAT</td>
+            <td><span class="badge badge-medium">Medium</span></td>
+            <td><span class="badge badge-done">Resolved</span> — Kanika confirmed mock cancelled; data backfill on hold</td>
+          </tr>
+          <tr>
+            <td>Test record discrepancy: 29 test agreements in org vs. 2–3 in requirements — needs business clarification on scope</td>
+            <td><span class="badge badge-medium">Medium</span></td>
+            <td><span class="badge badge-open">Open</span> — Ashutosh to start thread; business involvement required</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- Section 5: Key Decisions Aligned -->
+  <!-- SECTION 5: KEY DECISIONS -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-number">5</div>
-      <h2>Key Decisions Aligned</h2>
-    </div>
-    <div class="section-body">
-      <ul class="decision-list">
-        <li><span class="date-prefix">Jul 7</span>File migration JWT extraction story pushed to next sprint; current sprint scoped to table structure creation + code setup for stage/trans/prod (5 pts) with Shivangi leading analysis &amp; design (3 pts)</li>
-        <li><span class="date-prefix">Jul 7</span>API deployment (new MuleSoft API): UAT and Production to be deployed on the same day &mdash; targeting Jul 13 or 14</li>
-        <li><span class="date-prefix">Jul 7</span>Mock run schedule finalized: Jul 13 (Mon) and Jul 15/16 for next sprint; DQI mock execution handed to Aritra as backup operator</li>
-        <li><span class="date-prefix">Jul 7</span>Tax exemption fix: set exemption code to &ldquo;exempted&rdquo; for 17 contracts where SF-based tax exempt type is &ldquo;exempt&rdquo; but code is missing &mdash; retry Workday sync after update</li>
-        <li><span class="date-prefix">Jul 7</span>Provisioning confirmed NOT blocked by activation/sync failures &mdash; can proceed immediately while Workday environment issues are investigated</li>
-        <li><span class="date-prefix">Jul 7</span>VAT validation required field: India contracts showing false despite having VAT number &mdash; determined as not required; no action needed</li>
-        <li><span class="date-prefix">Jul 6</span>Additional E2E mock sessions to run on Tuesdays and Thursdays starting next week (team has capacity)</li>
-        <li><span class="date-prefix">Jul 6</span>Bug fix/placeholder story reduced from 10 to 5 story points; part two can be added same sprint if needed</li>
-        <li><span class="date-prefix">Jul 6</span>DQI mock testing combined with E2E mock efforts &mdash; zero-point tracking story for traceability</li>
-        <li><span class="date-prefix">Jul 6</span>Post-productivity tasks reassigned from Bharathi (occupied with immigration work) to Naval Nagar</li>
+    <div class="section-title">Section 5 — Key Decisions Aligned</div>
+    <div class="decisions-list">
+      <ul>
+        <li><span class="dec-date">Jul 13</span> <span><strong>Grandchild logic removed from scope</strong> — confirmed by business on Friday; only root and child relationships remain. All procedures and stories to be updated accordingly.</span></li>
+        <li><span class="dec-date">Jul 13</span> <span><strong>Implementation story repurposed</strong> — CR 6761 and related CRs (exclusion rules, type field transformation, AA ID inclusion) added to existing story rather than creating new.</span></li>
+        <li><span class="dec-date">Jul 13</span> <span><strong>Apps QA6 regression mock cancelled</strong> — ISV partner changes going directly from 4SB1 to UAT; no need to back-fill or test in apps QA6 sandbox. Data backfill on hold.</span></li>
+        <li><span class="dec-date">Jul 13</span> <span><strong>Assignment agreement flow uses existing pipeline, not a new project</strong> — separate trans procedures for lightweight AA (Org62 + Ironclad) will load into existing contract tables; override table with AA classification identifier drives routing.</span></li>
+        <li><span class="dec-date">Jul 13</span> <span><strong>"Terminated" status renamed to "Original AA"</strong> — to avoid naming confusion with previous standards and maintain consistency. Separate "PA Classification" field introduced to prevent data collision with AA Classification field.</span></li>
+        <li><span class="dec-date">Jul 13</span> <span><strong>Project completion target set for October 23</strong> — PI board updated; project setup stories removed. E2E timelines shifted to July 27–31 to include assignment agreement delivery.</span></li>
+        <li><span class="dec-date">Jul 9</span> <span><strong>Connected app migration to JWT authentication</strong> — Salesforce retiring username/password auth Sep 1. Team agreed to migrate; one-time effort requiring certificate generation and new connected app setup. Dil Thapa to coordinate cross-team.</span></li>
+        <li><span class="dec-date">Jul 9</span> <span><strong>Reporting document structure under review</strong> — proposal to split partner and assignment agreement reports into two Excel tabs pending stakeholder validation (Rohit to take to business).</span></li>
       </ul>
     </div>
   </div>
@@ -419,44 +518,48 @@
 </div>
 
 <script>
-  function populateFilter(tableId, selectId) {
-    var table = document.getElementById(tableId);
-    var rows = table.querySelectorAll('tbody tr');
-    var owners = new Set();
-    rows.forEach(function(row) {
-      var ownerCell = row.querySelector('td.owner');
-      if (ownerCell) owners.add(ownerCell.textContent.trim());
+function populateFilter(tableId, selectId) {
+  var table = document.getElementById(tableId);
+  var select = document.getElementById(selectId);
+  var owners = new Set();
+  table.querySelectorAll('td.owner').forEach(function(td) {
+    td.textContent.split('/').forEach(function(o) {
+      var name = o.trim();
+      if (name) owners.add(name);
     });
-    var select = document.getElementById(selectId);
-    owners.forEach(function(owner) {
-      var option = document.createElement('option');
-      option.value = owner;
-      option.textContent = owner;
-      select.appendChild(option);
-    });
-  }
-
-  function filterTable(tableId, owner, countId) {
-    var table = document.getElementById(tableId);
-    var rows = table.querySelectorAll('tbody tr');
-    var count = 0;
-    rows.forEach(function(row) {
-      var ownerCell = row.querySelector('td.owner');
-      if (owner === 'all' || (ownerCell && ownerCell.textContent.trim() === owner)) {
-        row.classList.remove('hidden');
-        count++;
-      } else {
-        row.classList.add('hidden');
-      }
-    });
-    var badge = document.getElementById(countId);
-    if (badge) badge.textContent = owner === 'all' ? '' : count + ' item' + (count !== 1 ? 's' : '');
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    populateFilter('high-table', 'filter-high');
-    populateFilter('med-table', 'filter-med');
   });
+  var sorted = Array.from(owners).sort();
+  sorted.forEach(function(name) {
+    var opt = document.createElement('option');
+    opt.value = name;
+    opt.textContent = name;
+    select.appendChild(opt);
+  });
+}
+
+function filterTable(tableId, owner, countId) {
+  var table = document.getElementById(tableId);
+  var rows = table.querySelectorAll('tbody tr');
+  var visible = 0;
+  rows.forEach(function(row) {
+    var ownerCell = row.querySelector('td.owner');
+    if (!owner || (ownerCell && ownerCell.textContent.indexOf(owner) !== -1)) {
+      row.classList.remove('hidden');
+      visible++;
+    } else {
+      row.classList.add('hidden');
+    }
+  });
+  var countEl = document.getElementById(countId);
+  if (countEl) {
+    countEl.textContent = owner ? ('Showing ' + visible + ' of ' + rows.length) : '';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  populateFilter('table-high', 'filter-high');
+  populateFilter('table-med', 'filter-med');
+});
 </script>
 </body>
 </html>
