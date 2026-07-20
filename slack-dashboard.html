@@ -60,298 +60,379 @@
   .badge-yellow { background: #fffae6; color: #997000; }
   .badge-green  { background: #e3fcef; color: #006644; }
   .badge-blue   { background: #deebff; color: #0052cc; }
+  .badge-purple { background: #e8e0fb; color: #4c1d95; }
+  .badge-gray   { background: #f4f5f7; color: #5e6c84; }
 
-  .item {
-    padding: 9px 0; border-bottom: 1px solid #f0f1f4; font-size: 0.84rem; line-height: 1.5;
-  }
-  .item:last-child { border-bottom: none; }
-  .item .from { font-weight: 600; color: #253858; }
-  .item .body { color: #5e6c84; margin-top: 2px; font-size: 0.81rem; }
+  .item { border-top: 1px solid #f0f1f3; padding: 10px 0 4px; }
+  .item:first-child { border-top: none; padding-top: 0; }
+  .item p { font-size: 0.82rem; color: #42526e; line-height: 1.45; margin-top: 3px; }
+  .item .from { font-size: 0.78rem; color: #8993a4; margin-top: 2px; }
 
-  .risk-item {
-    padding: 10px 14px; border-radius: 6px; margin-bottom: 9px;
-    font-size: 0.84rem; line-height: 1.5; border-left: 4px solid;
-  }
-  .risk-high   { border-color: #de350b; background: #fff5f4; }
-  .risk-medium { border-color: #ff8b00; background: #fffbf4; }
-  .risk-low    { border-color: #0052cc; background: #f4f8ff; }
-  .risk-item strong { display: block; margin-bottom: 3px; }
-  .risk-item .detail { color: #5e6c84; font-size: 0.8rem; }
+  .progress-bar-wrap { background: #f0f1f3; border-radius: 6px; height: 8px; margin-top: 4px; }
+  .progress-bar { background: linear-gradient(90deg,#6b21a8,#a855f7); border-radius: 6px; height: 8px; }
 
-  .stat-row { display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
-  .stat-box {
-    background: #f4f5f7; border-radius: 6px; padding: 9px 13px; flex: 1; min-width: 80px; text-align: center;
-  }
-  .stat-box .num { font-size: 1.4rem; font-weight: 700; color: #172b4d; }
-  .stat-box .lbl { font-size: 0.7rem; color: #5e6c84; margin-top: 2px; }
+  .stat-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+  .stat { text-align: center; }
+  .stat .val { font-size: 1.3rem; font-weight: 700; color: #4c1d95; }
+  .stat .lbl { font-size: 0.7rem; color: #8993a4; }
 
-  .milestone-item {
-    padding: 9px 0; border-bottom: 1px solid #f0f1f4;
-    font-size: 0.84rem; display: flex; align-items: flex-start; gap: 10px;
-  }
-  .milestone-item:last-child { border-bottom: none; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
-  .dot-green  { background: #36b37e; }
-  .dot-blue   { background: #0065ff; }
-  .dot-yellow { background: #ffc400; }
+  .defect-row { display: flex; gap: 8px; align-items: flex-start; padding: 6px 0; border-top: 1px solid #f0f1f3; font-size: 0.81rem; }
+  .defect-row:first-child { border-top: none; }
+
+  ul.bullet { margin-left: 16px; margin-top: 4px; }
+  ul.bullet li { font-size: 0.81rem; color: #42526e; margin-bottom: 3px; line-height: 1.4; }
 </style>
 </head>
 <body>
 
 <div class="header">
   <h1>Slack Dashboard — Prathibha Naik</h1>
-  <div class="subtitle">Qualified E2E &amp; CLM Data Migration | DET Q2C Program</div>
-  <div class="meta">As of July 13, 2026 &nbsp;·&nbsp; #det-qualified-e2e-testing &nbsp;·&nbsp; #proj-qualified-det-q2c-team &nbsp;·&nbsp; #det-qualified-gtm-internal &nbsp;·&nbsp; #proj-qualified-releasemgt &nbsp;·&nbsp; #bt-clm-engg-team &nbsp;·&nbsp; #proj-clm-datamigration</div>
+  <div class="subtitle">Qualified M&amp;A Q2C · E2E Testing · CLM Data Migration · Release Mgmt</div>
+  <div class="meta">As of July 20, 2026 &nbsp;·&nbsp; Channels: #proj-qualified-det-q2c-team &nbsp;·&nbsp; #det-qualified-gtm-internal &nbsp;·&nbsp; #det-qualified-e2e-testing &nbsp;·&nbsp; #proj-qualified-releasemgt &nbsp;·&nbsp; #bt-clm-engg-team &nbsp;·&nbsp; #proj-clm-datamigration</div>
 </div>
 
 <div class="container">
 
-  <!-- OPEN THREADS -->
+  <!-- ═══ OPEN THREADS (full width, shown first) ═══ -->
   <div class="section-title">Open Threads</div>
 
   <div class="card-full">
-    <div class="card-title">&#128308; E2E Week 1 Status — YELLOW &nbsp;<span class="badge badge-yellow">9.1% Complete</span>&nbsp;<span class="channel">#det-qualified-e2e-testing</span>&nbsp;<span class="ts">Jul 11 · Rajendhar Mydam</span></div>
+    <div class="card-title">
+      <span class="badge badge-yellow">IN PROGRESS</span>
+      Qualified E2E Status — Overall 35.31% (244/691 TCs) · Sign-off July 29
+      <span class="channel">#det-qualified-e2e-testing</span>
+      <span class="ts">Jul 18</span>
+    </div>
     <div class="stat-row">
-      <div class="stat-box"><div class="num">551</div><div class="lbl">Total TCs</div></div>
-      <div class="stat-box"><div class="num" style="color:#36b37e">50</div><div class="lbl">Passed</div></div>
-      <div class="stat-box"><div class="num" style="color:#de350b">5</div><div class="lbl">Blocked</div></div>
-      <div class="stat-box"><div class="num" style="color:#ff8b00">3</div><div class="lbl">In Progress</div></div>
-      <div class="stat-box"><div class="num" style="color:#de350b">1</div><div class="lbl">Failed</div></div>
-      <div class="stat-box"><div class="num">492</div><div class="lbl">Not Started</div></div>
+      <div class="stat"><div class="val">244</div><div class="lbl">Passed</div></div>
+      <div class="stat"><div class="val">447</div><div class="lbl">Remaining</div></div>
+      <div class="stat"><div class="val">8</div><div class="lbl">Failed</div></div>
+      <div class="stat"><div class="val">60+</div><div class="lbl">TCs/day target</div></div>
+      <div class="stat"><div class="val">Jul 29</div><div class="lbl">Sign-off</div></div>
     </div>
-    <div style="font-size:0.83rem;color:#5e6c84">AWS scenarios formally de-scoped (Qualified SKUs unavailable in Tackle/AWS from partner side — 7 scenarios removed, Prathibha confirmed all marked Descoped). Key blockers: CSP GET License Request errors, NPI data attributes missing, Workday sync failure (account ID mismatch), pricebook incomplete for AUD/EUR/GBP. Week 2 focus: unblock CSP, NPI &amp; Workday; migrated contracts data prep; pricebook finalization by Jul 14.</div>
+    <div class="progress-bar-wrap" style="margin-top:10px;">
+      <div class="progress-bar" style="width:35.31%"></div>
+    </div>
+    <p style="font-size:0.75rem;color:#8993a4;margin-top:4px;">35.31% complete — 64.69% remaining. Daily pace must reach 60+ TCs/day to close by July 29.</p>
+    <p style="margin-top:8px;font-size:0.81rem;color:#42526e;">Pillar breakdown: AcctMgmt 90% · DealMgmt 66.7% (6 failures) · Quoting 41.7% · OEP 31.4% · RFM 30.9% · Renewals 13.8% · Finance 13.2%</p>
   </div>
 
   <div class="card-full">
-    <div class="card-title">&#128203; CM E2E Test Data to be Added in GSheet &nbsp;<span class="channel">#det-qualified-e2e-testing</span>&nbsp;<span class="ts">Jul 13 · Prathibha Naik</span></div>
-    <div style="font-size:0.83rem;color:#5e6c84">Thread started today by Prathibha. All CM stream owners (Shanthan, Vineesha, Divesh, Nethish, Cindy, Pat Rock, Lucky, Akhila) asked to confirm CM test cases are updated with all mandatory fields in GSheet.</div>
+    <div class="card-title">
+      <span class="badge badge-red">BLOCKER</span>
+      Account Name / Billing Contact Mismatch on Migrated Contracts — Causing Quoting Failure
+      <span class="channel">#det-qualified-e2e-testing</span>
+      <span class="ts">Jul 17</span>
+    </div>
+    <p>Shanthan Sakhamuri flagged: On migrated contracts, Account Name and Billing Contact are mismatched, causing quoting failures. Unclear if data issue or defect. Cinthia Garrido and Deepali Ugale asked to post error details. FYI: Akshay, Saivikas, Rajendhar, Sowjanya.</p>
+    <p class="from">Thread: 5 replies · Latest Jul 17 14:30</p>
   </div>
 
   <div class="card-full">
-    <div class="card-title">&#9888;&#65039; NPI Data Attributes &amp; CSP Provisioning — Still Open &nbsp;<span class="channel">#det-qualified-e2e-testing</span>&nbsp;<span class="ts">Jul 9–12</span></div>
-    <div style="font-size:0.83rem;color:#5e6c84">NPI data parameters partially added last week; quoting flows still blocked pending CSP coordination. Divesh confirmed tenant creation &amp; license PUT succeed, but GET License Request is erroring — orders stuck in Pending. ETA to resolve both: July 14. Divesh flagged he will return to NQE project once provisioning is sorted — resource risk.</div>
+    <div class="card-title">
+      <span class="badge badge-red">ACTIVE DEFECTS</span>
+      4 Active Defects in Qualified E2E
+      <span class="channel">#det-qualified-e2e-testing</span>
+      <span class="ts">Jul 18</span>
+    </div>
+    <div class="defect-row"><span class="badge badge-orange">P4 · NEW</span><span style="margin-left:6px;font-size:0.81rem;">Pricebook entry missing — AUD/GBP/BRL not synced in Qualified Org. <strong>Owner: Nina Nguyen</strong> (check with Vivek)</span></div>
+    <div class="defect-row"><span class="badge badge-orange">P4 · SEND TO BT</span><span style="margin-left:6px;font-size:0.81rem;">Org62_ExternalId__c not populated on Opportunity and OLI. <strong>Owner: Nina Nguyen</strong> — Naveen Kumar to check</span></div>
+    <div class="defect-row"><span class="badge badge-orange">P4 · NEW</span><span style="margin-left:6px;font-size:0.81rem;">Tax on quote showing 0% for UK — expected 20%. <strong>Owner: Rebecca Wong</strong> to check and update</span></div>
+    <div class="defect-row"><span class="badge badge-red">P2 · SEND TO BT</span><span style="margin-left:6px;font-size:0.81rem;">DPP Fee Lines not generated for Qualified and force.com SKUs due to missing RPLIs. <strong>No fix expected.</strong> Kept active for tracking.</span></div>
   </div>
 
   <div class="card-full">
-    <div class="card-title">&#9888;&#65039; Missing CM E2E Test Cases (FIN Q2C) &nbsp;<span class="channel">#det-qualified-e2e-testing</span>&nbsp;<span class="ts">Jul 10 · Cindy Tschumy</span></div>
-    <div style="font-size:0.83rem;color:#5e6c84">Cindy escalated to Alan Nguyen, Suman Vallakonda, Abhishek Joshi, Sarah Hargarten: missing E2E test cases for several CM scenarios identified in standup. 13 FIN-Q2C test cases without Scenario IDs highlighted in yellow — needs review, assignment of IDs, and upload to Narwhale.</div>
+    <div class="card-title">
+      <span class="badge badge-orange">ACTION DUE</span>
+      Qualified Cutover Plan — Finalize UAT by July 20 (TODAY)
+      <span class="channel">#proj-qualified-releasemgt</span>
+      <span class="ts">Jul 14–16</span>
+    </div>
+    <p>Sharvil Shah: All cutover updates due by <strong>July 20 Mon EOD</strong>. Vertex tasks for Rebecca Wong and Helen Wu still need clarification — no participation/updates observed on the calls. Only Row 62 identified so far. Shivangi/Sowjanya/Vaishna asked to complete Rows up to 53 (columns I/J).</p>
+    <p class="from">Thread has 4 replies · Latest Jul 16 15:06</p>
   </div>
 
   <div class="card-full">
-    <div class="card-title">&#128309; ISV Partner Data Migration — Plan in Progress &nbsp;<span class="channel">#proj-clm-datamigration</span>&nbsp;<span class="ts">Jul 6–7</span></div>
-    <div style="font-size:0.83rem;color:#5e6c84">Threads active: ISV Partner DM Approach (Phani Kumar, Jul 6), Finalization of ISV+AA Plan (Kanika Narula, Jul 7), DM/CLM E2E Testing Scope for ISV Partner (Ashutosh Khaitan, Jul 7), Partner ISV Obligation Summary Clarifications (Jul 6). AA timeline posted by Zhenxin Wang. Reseller DM prod cutover successfully completed Jun 21.</div>
+    <div class="card-title">
+      <span class="badge badge-blue">DISCUSSION</span>
+      Stack Admin Value for Qualified SKUs — Downstream Impact?
+      <span class="channel">#proj-qualified-det-q2c-team</span>
+      <span class="ts">Jul 14</span>
+    </div>
+    <p>Donald Paff flagged: Quoting Rules team is creating a unique Stack Admin value for Qualified SKUs (currently CO-R). Proposed QF-R or QD-R with -A for base editions. Asked: does this Stack Admin change affect downstream processes? Thread has 12 replies, latest Jul 17. Prathibha tagged to voice input.</p>
+    <p class="from">Akshay, Vikrant, Vivek, Jesalyn, Rajendhar, Nina, Prathibha, Stuti tagged · 12 replies</p>
   </div>
 
   <div class="card-full">
-    <div class="card-title">&#128309; NGCLM GUS TD Maintenance &amp; Deployment Errors &nbsp;<span class="channel">#bt-clm-engg-team</span>&nbsp;<span class="ts">Jul 6–10</span></div>
-    <div style="font-size:0.83rem;color:#5e6c84">Anil Neema started TD maintenance thread Jul 8; migration still in progress. Manoj Shurpali flagged deployment errors on Jul 6 (Suhas on PTO) — team asked to check and prepare fixes. Phani thread on Env Strategy for UPRA/SELA/ISV Partner open (Jul 10). NQE branch deployment to E2E on Jul 13.</div>
+    <div class="card-title">
+      <span class="badge badge-purple">UAT PREP</span>
+      UAT Preparation Thread
+      <span class="channel">#det-qualified-gtm-internal</span>
+      <span class="ts">Jul 17</span>
+    </div>
+    <p>Prathibha Naik opened a UAT Preparation thread. 4 replies, latest Jul 17 21:10.</p>
+    <p class="from">Thread: 4 replies · Latest Jul 17 21:10</p>
   </div>
 
   <div class="card-full">
-    <div class="card-title">&#128226; Meeting Schedule Change for E2E Phase &nbsp;<span class="channel">#proj-qualified-det-q2c-team</span>&nbsp;<span class="ts">Jul 8 · Sowjanya Atchutuni</span></div>
-    <div style="font-size:0.83rem;color:#5e6c84">For next 3 weeks of E2E: E2E daily call 7:30–8 PM IST (unchanged), Cutover calls Mon &amp; Wed 8–8:30 PM IST, Qualified DSU 8:30–9 PM IST, Qualified refinement/planning/demo 9–9:30 PM IST. Sharvil Shah asked to confirm and update meeting invites.</div>
+    <div class="card-title">
+      <span class="badge badge-blue">IN PROGRESS</span>
+      AA Fields on AA Layout — CLM Data Migration
+      <span class="channel">#proj-clm-datamigration</span>
+      <span class="ts">Jul 14–18</span>
+    </div>
+    <p>Kanika Narula opened a thread on AA Fields on AA Layout. 15 replies, latest Jul 18 06:44.</p>
+    <p class="from">15 replies · Latest Jul 18 06:44</p>
   </div>
 
-  <!-- AWAITING RESPONSE -->
-  <div class="section-title">Awaiting Response From Others</div>
+  <div class="card-full">
+    <div class="card-title">
+      <span class="badge badge-blue">IN PROGRESS</span>
+      Billing Frequency Thread — Quoting
+      <span class="channel">#det-qualified-e2e-testing</span>
+      <span class="ts">Jul 15–18</span>
+    </div>
+    <p>Nina Nguyen opened thread on Billing Frequency. 16 replies, latest Jul 18 02:12. Vikrant Shukla clarified: two PBEs per SKU (BF=1 and BF=12) are created intentionally by automation. DJ Banerjee asked if deprecation of PLI multi-billing-frequency logic was already deployed in May release.</p>
+    <p class="from">16 replies · Latest Jul 18</p>
+  </div>
+
+  <div class="card-full">
+    <div class="card-title">
+      <span class="badge badge-blue">MULTIPLE THREADS</span>
+      Prathibha's E2E Test Scenario Threads (GA SKUs) — New Business, AddOn, Manual Account
+      <span class="channel">#det-qualified-e2e-testing</span>
+      <span class="ts">Jul 17</span>
+    </div>
+    <p>Prathibha opened 6 test scenario threads for GA SKU flows: New Business (GA SKUs), New Business (Manual Account/Update team, blocked), New Business (Lead creation Org62), AddOn quote (GA SKU), New Business quote (GA SKU). Multiple threads have active replies — some still resolving.</p>
+    <p class="from">Threads range from 1–8 replies · Jul 17</p>
+  </div>
+
+  <div class="card-full">
+    <div class="card-title">
+      <span class="badge badge-blue">IN PROGRESS</span>
+      Post-GA Branch Merge Activity
+      <span class="channel">#bt-clm-engg-team</span>
+      <span class="ts">Jul 17</span>
+    </div>
+    <p>Latamangesh Kar opened Post-GA Branch Merge Activity thread. 1 reply Jul 17 01:50.</p>
+    <p class="from">1 reply · Latest Jul 17</p>
+  </div>
+
+  <div class="card-full">
+    <div class="card-title">
+      <span class="badge badge-blue">IN PROGRESS</span>
+      ISV Partner Data Migration Approach + Finalization of ISV+AA Plan
+      <span class="channel">#proj-clm-datamigration</span>
+      <span class="ts">Jul 6–7</span>
+    </div>
+    <p>Phani Kumar opened ISV Partner DM Approach thread (3 replies). Kanika Narula opened ISV+AA Plan finalization thread (7 replies, latest Jul 7 20:15). ISV Partner Mock Timeline thread has 18 replies (latest Jul 13).</p>
+    <p class="from">Multiple active threads · Latest Jul 13</p>
+  </div>
+
+  <!-- ═══ TWO-COLUMN SECTION ═══ -->
+  <div class="section-title">Awaiting Response From Others &amp; Pending Action On You</div>
   <div class="grid-2">
+
+    <!-- LEFT: Awaiting Response From Others -->
     <div class="card">
-      <div class="card-title">&#128228; Sent — Awaiting Response</div>
+      <div class="card-title">⏳ Awaiting Response From Others</div>
+
       <div class="item">
-        <div class="from">Sowjanya Atchutuni <span class="ts">Jul 12</span></div>
-        <div class="body">Asked to summarize contracts that couldn't sync to Workday and the decision made. Rajendhar CC'd.</div>
+        <div><span class="badge badge-orange">AWAITING</span> <span class="channel">#det-qualified-e2e-testing</span> <span class="ts">Jul 14</span></div>
+        <p>Prathibha asked Divesh Angula and Vineesha Pala to share Qualified tenant details for Tejaswini Bairi (SELA quoting team). Response received: "no" reaction from Divesh. Resolution still unclear.</p>
       </div>
+
       <div class="item">
-        <div class="from">Shanthan, Vineesha, Divesh <span class="ts">Jul 12</span></div>
-        <div class="body">Create defects in Narwhale for blockers — should be part of Rajendhar's status report.</div>
+        <div><span class="badge badge-orange">AWAITING</span> <span class="channel">#proj-qualified-det-q2c-team</span> <span class="ts">Jul 8</span></div>
+        <p>Prathibha opened thread on "Product Family to be updated to Qualified in QA env." — 5 replies, latest Jul 8 22:22. Status of fix unknown.</p>
       </div>
+
       <div class="item">
-        <div class="from">All CM stream owners <span class="ts">Jul 13</span></div>
-        <div class="body">Confirm CM test cases updated with all mandatory fields in GSheet.</div>
+        <div><span class="badge badge-orange">AWAITING</span> <span class="channel">#det-qualified-gtm-internal</span> <span class="ts">Jun 22</span></div>
+        <p>Prathibha asked Helena Quinn for AMER and APAC point of contact for testing support (E2E, UAT, Prod). Thread had 2 replies (Jun 22 23:05). Need confirmation that contacts are confirmed for current UAT phase.</p>
       </div>
+
       <div class="item">
-        <div class="from">Helena Quinn <span class="channel">#det-qualified-gtm-internal</span> <span class="ts">Jun 22</span></div>
-        <div class="body">Asked for AMER &amp; APAC timezone POC for support during E2E, UAT and Prod testing phases.</div>
+        <div><span class="badge badge-orange">AWAITING</span> <span class="channel">DM: Rebecca Wong</span> <span class="ts">Jul 17</span></div>
+        <p>Prathibha reached out re: Finance tax defect (0% for UK). Rebecca confirmed it's a true defect — Parker Hansen (Vertex) is checking logs. Needs payload from Suresh. Awaiting Parker's findings.</p>
       </div>
+
       <div class="item">
-        <div class="from">Neha Singhal <span class="ts">Jul 8</span></div>
-        <div class="body">Confirm once SPIFF details on GA SKUs are done in Qualified E2E env.</div>
+        <div><span class="badge badge-orange">AWAITING</span> <span class="channel">DM: Tejaswini Bairi</span> <span class="ts">Jul 17</span></div>
+        <p>Prathibha asked Tejaswini to raise defect and tag in E2E channel. Tejaswini said she lacks Narwhale access. Prathibha asked who Divesh/Shanthan could help — thread link shared. Resolution pending Divesh's assistance.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-orange">AWAITING</span> <span class="channel">DM: Shanthan Sakhamuri</span> <span class="ts">Jul 18</span></div>
+        <p>Shanthan messaged asking for a quick call — response not visible in search results. Awaiting confirmation whether call was connected.</p>
       </div>
     </div>
 
+    <!-- RIGHT: Pending Action On You -->
     <div class="card">
-      <div class="card-title">&#128228; Earlier / FYI Sent</div>
+      <div class="card-title">🔔 Pending Action On You</div>
+
       <div class="item">
-        <div class="from">Pooja Tripathi <span class="ts">Jul 12</span></div>
-        <div class="body">Status update sent: CSP/NPI connects scheduled, Workday sync agreed as QA-only issue, Pricebook ETA Jul 14.</div>
+        <div><span class="badge badge-red">ACTION NEEDED</span> <span class="channel">#proj-qualified-det-q2c-team</span> <span class="ts">Jul 14</span></div>
+        <p><strong>Akshay Ajit Dhuri</strong> tagged Prathibha (@U0AGF1H7PFT) to voice inputs on Stack Admin value change for Qualified SKUs (QF-R vs QD-R). Thread has 12 replies — <strong>please review and provide input</strong> if not already done.</p>
       </div>
+
       <div class="item">
-        <div class="from">Rajendhar &amp; Nina <span class="ts">Jul 10</span></div>
-        <div class="body">FYI given on bugs creation for Product &amp; NPI side in Narwhale.</div>
+        <div><span class="badge badge-red">ACTION NEEDED</span> <span class="channel">#det-qualified-e2e-testing</span> <span class="ts">Jul 17</span></div>
+        <p><strong>Akshay Ajit Dhuri</strong> asked Prathibha, Rajendhar, and Nina to review currency descoping decision (INR/JPY/BRL descoped; SEK may replace one) and inform testers. Need to <strong>confirm testers are updated</strong>.</p>
       </div>
+
       <div class="item">
-        <div class="from">Karthik Spry (Kevin Spry DM) <span class="ts">Jul 7</span></div>
-        <div class="body">Kevin shared PCT / PCLT schedule info and presentation links in DM.</div>
+        <div><span class="badge badge-red">ACTION NEEDED</span> <span class="channel">#det-qualified-e2e-testing</span> <span class="ts">Jul 14</span></div>
+        <p><strong>Vikrant Shukla</strong> asked Prathibha and Saivikas to post all open issues impacting Qualified E2E or share a defect dashboard link. <strong>Need to share defect dashboard or open issues list.</strong></p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-orange">DUE TODAY</span> <span class="channel">#proj-qualified-releasemgt</span> <span class="ts">Jul 14</span></div>
+        <p><strong>Sharvil Shah</strong>: All cutover plan updates due by <strong>July 20 EOD today</strong>. Verify your rows and columns are filled in the cutover sheet.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-orange">FYI / VERIFY</span> <span class="channel">#det-qualified-e2e-testing</span> <span class="ts">Jul 15</span></div>
+        <p>Prathibha opened "Contracts for CM test cases" thread. 8 replies latest Jul 16. Verify if all CM contract data is resolved for testing.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-orange">FYI</span> <span class="channel">Bot DM</span> <span class="ts">Jul 20</span></div>
+        <p><strong>DET-Time Tracker</strong>: Overdue timesheet notification — multiple weeks from March 2026 through July 2026 are incomplete. Please submit hours.</p>
       </div>
     </div>
+
   </div>
 
-  <!-- PENDING ACTION ON YOU -->
-  <div class="section-title">Pending Action On You</div>
-  <div class="grid-2">
-    <div class="card">
-      <div class="card-title">&#9889; Needs Your Attention</div>
-      <div class="item">
-        <div class="from">Lucky Khobragade (DM) <span class="ts">Jul 7</span></div>
-        <div class="body">Karthik's comment on a task says Workday Team should handle it — please reassign the task to Workday Team.</div>
-      </div>
-      <div class="item">
-        <div class="from">Rajendhar Mydam (DM) <span class="ts">Jul 7</span></div>
-        <div class="body">Multiple DMs: "Are you available for a call?" — check if this was resolved.</div>
-      </div>
-      <div class="item">
-        <div class="from">DET-Time Tracker (DM)</div>
-        <div class="body">Overdue timesheet entries for weeks Mar 1 – Apr 18. Submit incomplete entries ASAP.</div>
-      </div>
-      <div class="item">
-        <div class="from">Employee Success (DM)</div>
-        <div class="body">Mid-Year Check-Ins open July 15 — schedule a connect with your manager.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">&#9889; Active / In-Flight Actions</div>
-      <div class="item">
-        <div class="from">All executors <span class="channel">#det-qualified-e2e-testing</span> <span class="ts">Jul 10</span></div>
-        <div class="body">Update planned execution dates in Narwhale ASAP. Prioritize AM/PM sync check-in calls (evening calls now 8PM PST).</div>
-      </div>
-      <div class="item">
-        <div class="from">Vineesha Pala (Group DM) <span class="ts">Jul 7</span></div>
-        <div class="body">MuleSoft error in qa6: <code>field integrity exception — versions 3.0+ must specify pricebook entry id</code>. Vivek (Qualified) looped in — confirm resolution.</div>
-      </div>
-      <div class="item">
-        <div class="from">Akshay Ajit Dhuri <span class="channel">#proj-qualified-det-q2c-team</span> <span class="ts">Jul 7</span></div>
-        <div class="body">Divesh asked to update Product Family for Qualified Premier, Enterprise &amp; U editions in QA6 — thread still open per Prathibha's note.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- RISKS & DECISIONS -->
+  <!-- ═══ RISKS & DECISIONS ═══ -->
   <div class="section-title">Risks &amp; Decisions from Conversations</div>
+  <div class="grid-2">
 
-  <div class="risk-item risk-high">
-    <strong>&#128308; CSP GET License Request Failing — Orders Stuck in Pending <span class="badge badge-red">Immediate</span></strong>
-    <div class="detail">Divesh: tenant creation works, license def PUT succeeds, but final GET License Request is erroring out. Needs immediate fix from CSP team. ETA discussed for Jul 14. Divesh also flagged he will return to NQE project once provisioning is resolved — creating a resource gap.</div>
+    <div class="card">
+      <div class="card-title">⚠️ Risks &amp; Unconfirmed Assumptions</div>
+
+      <div class="item">
+        <div><span class="badge badge-red">RISK</span> <span class="channel">#det-qualified-e2e-testing</span></div>
+        <p><strong>E2E pace risk:</strong> At 35.31% with sign-off July 29, the team needs 60+ TCs/day. Finance is only at 13.2%, Renewals 13.8%. If pace doesn't improve, sign-off date is at risk.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-red">RISK</span> <span class="channel">#det-qualified-e2e-testing</span></div>
+        <p><strong>Migrated contract data quality:</strong> Account name / billing contact mismatch on migrated contracts causing quoting failures. Not yet confirmed as data issue vs defect — root cause unknown.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-orange">ASSUMPTION</span> <span class="channel">#det-qualified-gtm-internal</span></div>
+        <p><strong>DET FIN assumption flagged (Jun 17):</strong> ALL SKUs map to existing ASP Commodity Codes (no net new Vertex config required). Stuti Gupta, Abhishek Joshi, Rebecca Wong, Helena Quinn tagged. Thread had 5 replies (latest Jun 23) — confirm this assumption is validated before UAT.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-orange">RISK</span> <span class="channel">#proj-qualified-releasemgt</span></div>
+        <p><strong>Vertex cutover tasks:</strong> Rebecca Wong and Helen Wu have not engaged on Vertex tasks. Only Row 62 identified. All updates due TODAY (Jul 20 EOD). Risk of incomplete cutover plan if Vertex items remain unresolved.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-orange">ASSUMPTION</span> <span class="channel">#det-qualified-e2e-testing</span></div>
+        <p><strong>Currency descoping:</strong> INR, JPY, BRL descoped from GA SKU E2E. SEK needs revalidation for one scenario. Decision was made Jul 17 (Akshay) — confirm testers and downstream teams have been notified.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">✅ Decisions Made</div>
+
+      <div class="item">
+        <div><span class="badge badge-green">DECIDED</span> <span class="channel">#det-qualified-e2e-testing</span> <span class="ts">Jul 18</span></div>
+        <p>DPP Line defect (P2) to be kept active for tracking only — <strong>no fix expected.</strong></p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-green">DECIDED</span> <span class="channel">#det-qualified-e2e-testing</span> <span class="ts">Jul 18</span></div>
+        <p>GA SKUs with INR, JPY, BRL descoped. SEK added for Courtesy TS revalidation. Rest valid for downstream.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-green">DECIDED</span> <span class="channel">#det-qualified-e2e-testing</span> <span class="ts">Jul 17</span></div>
+        <p>Non-profit SKUs are NOT being tested as part of E2E (confirmed by Akshay). Testers should be informed to skip non-profit scenarios.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-green">DECIDED</span> <span class="channel">#proj-qualified-releasemgt</span> <span class="ts">Jun 24</span></div>
+        <p>Vertex POC for UAT: Helena Quinn (APAC), Rebecca Wong (AMER). Confirmed by Prathibha.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-blue">PENDING DECISION</span> <span class="channel">#proj-qualified-det-q2c-team</span> <span class="ts">Jul 14</span></div>
+        <p>Stack Admin value for Qualified SKUs (QF-R vs QD-R) — NPI call discussion ongoing. Decision needed before GA to avoid downstream quoting rule issues.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-blue">PENDING DECISION</span> <span class="channel">#det-qualified-e2e-testing</span> <span class="ts">Jul 17</span></div>
+        <p>Tax defect (0% UK, expected 20%) — Parker Hansen (Vertex) investigating. Needs determination: data issue vs Vertex configuration fix.</p>
+      </div>
+    </div>
+
   </div>
 
-  <div class="risk-item risk-high">
-    <strong>&#128308; NPI Data Attributes Missing — Blocking All Quoting &amp; Downstream TCs <span class="badge badge-red">ETA Jul 14</span></strong>
-    <div class="detail">Attributes partially added but quoting flows still blocked due to CSP dependency. All FL001–FL006 scenarios remain impacted. Risk: if not resolved by Jul 14, Week 2 velocity will remain critically low.</div>
-  </div>
-
-  <div class="risk-item risk-high">
-    <strong>&#128308; E2E Velocity at Risk — 9.1% After Week 1 of 3-Week Testing Window</strong>
-    <div class="detail">492 of 551 TCs not started. Parallel blockers (CSP, NPI, Workday, Pricebook) + resource bandwidth issues. Needs escalation/executive awareness if blockers persist past mid-Week 2 (around Jul 15–16).</div>
-  </div>
-
-  <div class="risk-item risk-medium">
-    <strong>&#128992; Missing CM E2E Test Cases — FIN Q2C Scenarios Without Scenario IDs</strong>
-    <div class="detail">Cindy flagged 13 FIN-Q2C TCs without IDs blocking Narwhale upload; broader CM gaps reported in standup. Needs immediate triage by Suresh Potla, Akhila Reddy, Saivikas Thalluri before CM execution can begin.</div>
-  </div>
-
-  <div class="risk-item risk-medium">
-    <strong>&#128992; Workday Sync Failure — Account ID Mismatch in QA Env</strong>
-    <div class="detail">Decision made: QA-env-only issue, not expected in UAT/Prod. Fix on need for records needed for QA validation. Sowjanya needs to summarize outstanding unsync'd contracts for proper accounting.</div>
-  </div>
-
-  <div class="risk-item risk-medium">
-    <strong>&#128992; Pricebook Incomplete for AUD, EUR, GBP Currencies <span class="badge badge-orange">ETA Jul 14</span></strong>
-    <div class="detail">Blocking all non-USD test case execution. Call scheduled Jul 13. At risk if not resolved on time.</div>
-  </div>
-
-  <div class="risk-item risk-medium">
-    <strong>&#128992; Unconfirmed Assumption: All Qualified SKUs Map to Existing Vertex Commodity Codes</strong>
-    <div class="detail">Cindy Tschumy flagged this in #det-qualified-gtm-internal (Jun 17) — not yet confirmed by Helena Quinn / Rebecca Wong. If new SKUs require Vertex config, DET FIN scope and timeline must be adjusted.</div>
-  </div>
-
-  <div class="risk-item risk-low">
-    <strong>&#128309; Qualified Cutover UAT Starting July 20 — Org62 MSP Support Confirmation Pending</strong>
-    <div class="detail">Sathwic Gurram asked Karan Gyanchandani (Jun 30) for Org62 MSP support confirmation. No public confirmation seen. Vertex POC: Helena Quinn (APAC), Rebecca Wong (AMER).</div>
-  </div>
-
-  <div class="risk-item risk-low">
-    <strong>&#128309; ISV Partner Data Migration — Plan Being Finalized, Timeline Uncertain</strong>
-    <div class="detail">AA timeline posted by Zhenxin Wang. ISV+AA plan finalization in progress (Kanika Narula, Jul 7). Possible delta load for Reseller toward end of August 2026 — Rohit Kumar Verma asked Sathwic for app store release dates for that period.</div>
-  </div>
-
-  <!-- MILESTONES -->
+  <!-- ═══ MILESTONES & UPDATES ═══ -->
   <div class="section-title">Recent Milestones &amp; Program Updates</div>
-  <div class="card-full">
-    <div class="milestone-item">
-      <div class="dot dot-green"></div>
-      <div>
-        <div><strong>Reseller Data Migration Prod Cutover — Completed</strong> with 100% data accuracy</div>
-        <div class="ts">Jun 21, 2026 · #proj-clm-datamigration · Varaha N Sarat Sanapala</div>
+  <div class="grid-2">
+
+    <div class="card">
+      <div class="card-title">🚀 Qualified Program Milestones</div>
+
+      <div class="item">
+        <div><span class="badge badge-green">COMPLETED</span> <span class="ts">Jul 15</span></div>
+        <p><strong>Workday Sync for Migrated Contracts:</strong> 773/789 contracts successfully synced to Workday. 16 failed — 14 are in Expired status (likely E2E testing artifacts), 1 in Progress, 1 Error. Sowjanya provided detailed status update.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-green">RESOLVED</span> <span class="ts">Jul 14</span></div>
+        <p><strong>All major E2E blockers cleared</strong> as of Jul 14: Licensing error resolved (orders auto-provisioning), Opportunity sync with Qualified resolved, CPQ price lists added for all required currencies. Status moved from RED to YELLOW.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-blue">IN PROGRESS</span> <span class="ts">Jul 8</span></div>
+        <p><strong>E2E daily cadence adjusted:</strong> E2E daily call 7:30–8:00 PM IST (no change). Cutover calls Mon/Wed 8:00–8:30 PM IST. Qualified DSU 8:30–9:00 PM IST. Changes for next 3 weeks. (Sowjanya, per Sharvil's confirmation.)</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-purple">NGCLM</span> <span class="ts">Jul 17</span></div>
+        <p><strong>NGCLM MuleSoft Integration Overview</strong> recording shared by Revanth Kumar Potu. Documentation: Internal CLM MuleSoft doc. Follow-up session planned for remaining topics.</p>
       </div>
     </div>
-    <div class="milestone-item">
-      <div class="dot dot-green"></div>
-      <div>
-        <div><strong>Qualified E2E Officially Launched</strong> — 551 TCs loaded in Narwhale, dashboard live; 3-week testing window underway</div>
-        <div class="ts">Jul 7–11, 2026 · #det-qualified-e2e-testing</div>
+
+    <div class="card">
+      <div class="card-title">📦 CLM &amp; Data Migration Milestones</div>
+
+      <div class="item">
+        <div><span class="badge badge-green">COMPLETED</span> <span class="ts">Jun 21</span></div>
+        <p><strong>Reseller Data Migration — Prod Cutover Complete!</strong> All Reseller DM prod cutover activities completed successfully. Team kudos from Varaha Sarat Sanapala for Ashutosh Khaitan, Sachin Sahu, Arshad, Rohit, Zhenxin Wang, and the full team for extended weekend efforts despite Mule issues and Ironclad slowness.</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-green">COMPLETED</span> <span class="ts">May 22</span></div>
+        <p><strong>Resellers Iteration 2 DM:</strong> Test case execution reached 100% pass status (reported via CLM internal channel).</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-blue">IN PROGRESS</span> <span class="ts">Jul 7–14</span></div>
+        <p><strong>ISV Partner DM:</strong> Mock timeline and ISV+AA plan being finalized. DM/CLM E2E Testing Scope for ISV Partner being defined. AA Fields on AA Layout thread active (15 replies, latest Jul 18).</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-blue">IN PROGRESS</span> <span class="ts">Jun 19 (prior)</span></div>
+        <p><strong>Qualified DM Mock 0:</strong> DQI Mock 0 achieved 82.99% data coverage (747/882 in-scope contracts). Reports on Tableau. Next load mock to MNADM5 was scheduled for Jun 24. Program progressing toward UAT cutover (Jul 20+).</p>
+      </div>
+
+      <div class="item">
+        <div><span class="badge badge-orange">WATCH</span> <span class="ts">May 16</span></div>
+        <p><strong>Reseller Delta Load:</strong> Tentative August 2026 (last week) delta load being planned. Rohit Kumar Verma coordinating with Sathwic Gurram for release window. Thread had 20 replies.</p>
       </div>
     </div>
-    <div class="milestone-item">
-      <div class="dot dot-green"></div>
-      <div>
-        <div><strong>AWS E2E Scenarios De-scoped</strong> — 7 AWS/SELA scenarios removed; all marked Descoped in Narwhale (Prathibha confirmed Jul 10)</div>
-        <div class="ts">Jul 10, 2026 · #det-qualified-e2e-testing</div>
-      </div>
-    </div>
-    <div class="milestone-item">
-      <div class="dot dot-green"></div>
-      <div>
-        <div><strong>Qualified Fulfillment Provider Parameters Resolved</strong> — FP updated, License Definitions linked to 3 SKUs; provisioning tests can resume</div>
-        <div class="ts">Jul 8, 2026 · Jesalyn Gentry · #det-qualified-e2e-testing</div>
-      </div>
-    </div>
-    <div class="milestone-item">
-      <div class="dot dot-green"></div>
-      <div>
-        <div><strong>Org62 &#8596; Qualified E2E Env Confirmed</strong> — Org62 confirmed to point to <code>app.qualified-dev.com</code> for E2E validation</div>
-        <div class="ts">Jul 8, 2026 · #det-qualified-e2e-testing</div>
-      </div>
-    </div>
-    <div class="milestone-item">
-      <div class="dot dot-green"></div>
-      <div>
-        <div><strong>SPIFF Details on CM SKUs Updated</strong> in Qualified E2E env; GA SKUs to follow</div>
-        <div class="ts">Jul 8, 2026 · Prathibha Naik</div>
-      </div>
-    </div>
-    <div class="milestone-item">
-      <div class="dot dot-blue"></div>
-      <div>
-        <div><strong>E2E Daily Check-In Schedule Updated</strong> — Evening calls shifted to 8PM PST to accommodate APAC</div>
-        <div class="ts">Jul 10, 2026 · Nina Nguyen</div>
-      </div>
-    </div>
-    <div class="milestone-item">
-      <div class="dot dot-yellow"></div>
-      <div>
-        <div><strong>Qualified Cutover UAT Planned from July 20</strong> — Org62 MSP support confirmation pending from Karan Gyanchandani</div>
-        <div class="ts">Jun 30, 2026 · #proj-qualified-releasemgt</div>
-      </div>
-    </div>
-    <div class="milestone-item">
-      <div class="dot dot-yellow"></div>
-      <div>
-        <div><strong>ISV Partner Data Migration Plan Finalization In Progress</strong> — ISV+AA plan active; reseller DM complete, ISV phase is next</div>
-        <div class="ts">Jul 6–7, 2026 · #proj-clm-datamigration</div>
-      </div>
-    </div>
+
   </div>
 
-</div>
+</div><!-- /container -->
 </body>
 </html>
