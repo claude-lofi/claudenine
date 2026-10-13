@@ -52,6 +52,7 @@
     border-bottom: 2px solid var(--border);
   }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; }
+  .grid-full { display: grid; grid-template-columns: 1fr; gap: 14px; }
   .card {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -66,6 +67,7 @@
   .card.sev-info { border-left-color: var(--blue); background: var(--blue-light); }
   .card.sev-green { border-left-color: var(--green); background: var(--green-light); }
   .card.sev-action { border-left-color: var(--purple-light); background: #f3effe; }
+  .card.sev-yellow { border-left-color: var(--yellow); background: var(--yellow-light); }
   .card-channel {
     font-size: 10px; font-weight: 600; text-transform: uppercase;
     letter-spacing: 0.6px; color: var(--purple-mid); margin-bottom: 5px;
@@ -82,6 +84,7 @@
   .tag-green { background: #c5eedd; color: var(--green); }
   .tag-purple { background: #ddd0f8; color: var(--purple-mid); }
   .tag-gray { background: #e4e2f0; color: var(--gray); }
+  .tag-yellow { background: #fdf3c0; color: var(--yellow); }
   .card-meta { font-size: 11px; color: #8888aa; margin-top: 6px; }
   .empty { color: var(--text-secondary); font-size: 13px; font-style: italic; padding: 10px 0; }
   footer { text-align: center; color: #aaa8c0; font-size: 11px; padding: 32px 20px 20px; }
@@ -91,322 +94,355 @@
 
 <header>
   <h1>Slack Dashboard — Prathibha Naik</h1>
-  <p>As of October 9, 2026 &nbsp;·&nbsp; Sprint end day · Active channels across Brazil, Germany &amp; E-Invoicing</p>
+  <p>As of October 13, 2026 &nbsp;·&nbsp; New TPM onboarding for E-Invoicing · Active channels across Brazil, Germany &amp; E-Invoicing</p>
   <div class="channels">
     #brazil-tax-reform · #brazil-tax-reform-e2e-validation · #brazil-tax-reform-hypercare · #brazil-tax-reform-a10-discussion ·
     #rfm-quoting-team-brazil-tax · #brazil-fy27-rfm-det · #einvoice-germany-transmission-method ·
-    #mtd-germany-requirement-finalization · #ar-germany-requirement-finalization · #det-rev-rfm-einvoice-team
+    #mtd-germany-requirement-finalization · #ar-germany-requirement-finalization · #det-rev-rfm-einvoice-team ·
+    #det-einvoicing-rev-fin-collab · #bt-revenue-govt-einvoicing
   </div>
 </header>
 
 <div class="container">
 
-  <!-- SECTION 1: ACTION ITEMS FOR PRATHIBHA -->
-  <div class="section-title">Action Items &amp; Mentions for Prathibha</div>
-  <div class="grid">
+  <!-- SECTION 1: OPEN THREADS -->
+  <div class="section-title">Open Threads</div>
+  <div class="grid-full">
 
-    <div class="card sev-action">
-      <div class="card-channel">#brazil-fy27-rfm-det</div>
-      <div class="card-title">Sprint closes today — stories must move to Done</div>
-      <div class="card-body">Pratap Singh flagged: today is the last day of the sprint (cycle). All open issues must be closed ASAP. Prathibha tagged team to close stories or document reasons for carry-over in Linear.</div>
-      <span class="tag tag-orange">Sprint Close</span>
-      <span class="tag tag-red">Today</span>
+    <div class="card sev-p1">
+      <div class="card-channel">#det-einvoicing-rev-fin-collab · TODAY</div>
+      <div class="card-title">PRODUCTION BUG: Invoice 39372680 submitted twice — duplicate submission error</div>
+      <div class="card-body">Pradeep reported to EI Finance team: Invoice was submitted at 14:00 and 14:30 on Oct 2. At 14:00, EI layer returned a null response — so status wasn't updated to "E-Invoicing In Progress". The job re-picked the record at 14:30 and errored as a duplicate. Root cause under investigation: why did EI return null at 14:00? Sankalan checked logs and confirmed. As Prathibha transitions into this TPM role, this is an active production incident to monitor.</div>
+      <span class="tag tag-red">Production Incident</span>
+      <span class="tag tag-orange">Under Investigation</span>
+      <div class="card-meta">Oct 13, 2026 · Pradeep Venkateshaiah, Sankalan Gain, Rupp Santos S, Akshay Jain</div>
+    </div>
+
+    <div class="card sev-p2">
+      <div class="card-channel">#brazil-fy27-rfm-det · TODAY</div>
+      <div class="card-title">Sprint 10 kick-off: All stories added to Linear, QA plan targeting Oct 19 in QA6</div>
+      <div class="card-body">Prathibha posted: all required stories for the current sprint are in Linear — Syam will correct descriptions before the team call. Asked all developers to estimate and assign by today. Separately, created a QA story with target for all Sprint 3 changes available in QA6 by Oct 19. Sandhiya asked to include targeted use cases and scenarios for that testing window. Apoorav has assigned user stories and will work with Prathibha to add deployment/data load stories.</div>
+      <span class="tag tag-orange">Sprint Active</span>
+      <span class="tag tag-purple">Brazil FY27</span>
+      <span class="tag tag-blue">QA6 Target: Oct 19</span>
+      <div class="card-meta">Oct 12, 2026 · Apoorav Rai, Pratap Singh, Vineela Parsi, Syam Mandava</div>
+    </div>
+
+    <div class="card sev-p2">
+      <div class="card-channel">#rfm-quoting-team-brazil-tax · TODAY</div>
+      <div class="card-title">Tax Information card bug: Saving erases hidden tax fields (impacting Oracle sync)</div>
+      <div class="card-body">Vineela reported (Oct 8): The CPQ Tax Information card only shows country-specific fields. When saved, all other stored tax details are erased without warning — on both quotes and contracts. Since contract tax info syncs to Oracle for invoicing, hidden fields can disappear from what Oracle receives. Prathibha asked DJ Banerjee and Veera Maddukuri today to check and provide visibility. Linear tickets: BTRFM-87 (CPQ team to resolve TRN validation) and BTRFM-88 (support during QA on 2 additional keys).</div>
+      <span class="tag tag-red">CPQ Bug</span>
+      <span class="tag tag-orange">Oracle Impact</span>
+      <span class="tag tag-purple">BTRFM-87 / BTRFM-88</span>
+      <div class="card-meta">Oct 8–13, 2026 · Vineela Parsi, DJ Banerjee, Veera Maddukuri, Gautam Daga</div>
+    </div>
+
+    <div class="card sev-p2">
+      <div class="card-channel">#brazil-tax-reform · THIS WEEK</div>
+      <div class="card-title">RAID items due this week: AP Invoicing (Oct 16) and IBS/CBS Airfare (Oct 14)</div>
+      <div class="card-body">Sabeina Harris posted open Business RAID items due this month. Alexandre Costa has two items due imminently: "AP Invoicing – PWC Tax engagement" (Oct 16) and "IBS/CBS Tax Credits on Domestic Airfare / Flytour/Concur" (Oct 14). Other items due Oct 31: New Billing Field Legislative Risk (R-012), Customer Acceptance Risk on Credit Memos (R-011). Sabeina asked all owners to reply in thread on blockers and track status.</div>
+      <span class="tag tag-red">Due Oct 14</span>
+      <span class="tag tag-orange">Due Oct 16</span>
+      <span class="tag tag-yellow">Due Oct 31</span>
+      <div class="card-meta">Oct 13, 2026 · Sabeina Harris, Alexandre Costa, Renata Araujo, Aislinn O'Higgins</div>
     </div>
 
     <div class="card sev-action">
-      <div class="card-channel">#rfm-quoting-team-brazil-tax</div>
-      <div class="card-title">TDs added in Linear for CPQ TRN bug &amp; QA support</div>
-      <div class="card-body">Prathibha added BTRFM-87 (CPQ team to resolve TRN validation) and BTRFM-88 (support during QA validation of 2 additional keys in Quote) to Linear. Asked DJ Banerjee to review and include in their cycles if needed.</div>
-      <span class="tag tag-purple">Linear</span>
-      <span class="tag tag-orange">Action</span>
-      <div class="card-meta">Oct 8 · DJ Banerjee, Syam Mandava</div>
+      <div class="card-channel">#det-rev-rfm-einvoice-team · Oct 12</div>
+      <div class="card-title">E2E testing blocked: Valid test data (Primary, SIREN, SIRET + BCN) still not received</div>
+      <div class="card-body">Jayapriya asked Pradeep Venkateshaiah for valid test data for all three tax IDs (Primary, SIREN, SIRET) along with their corresponding BCN values. Previously rejected E2E scenarios are still failing for the same reason. 3 open E2E bugs on EI are expected to carry over into the next sprint. Karthik Gudivada is tracking.</div>
+      <span class="tag tag-orange">E2E Blocked</span>
+      <span class="tag tag-yellow">Data Missing</span>
+      <div class="card-meta">Oct 9–12, 2026 · Jayapriya Veerasamy, Pradeep Venkateshaiah, Karthik Gudivada, Neelima Kulkarni</div>
     </div>
 
     <div class="card sev-action">
-      <div class="card-channel">#brazil-fy27-rfm-det</div>
-      <div class="card-title">Design walkthrough needed before Vineela's break</div>
-      <div class="card-body">Prathibha to Vineela: quick check before short break next week — if design on all recent requirements to meet Brazil needs is completed, team should have a walkthrough.</div>
-      <span class="tag tag-purple">Design Review</span>
-      <div class="card-meta">Oct 6 · Vineela Parsi</div>
+      <div class="card-channel">#brazil-fy27-rfm-det · Oct 12</div>
+      <div class="card-title">Spike needed: Mule-based approach for in-flight BR contracts (LE Type Code &amp; Simples Nacional)</div>
+      <div class="card-body">Apoorav asked Patangay Nagaraju (Mule) to evaluate if Mule can be leveraged for the spike on "Populate LE Type Code &amp; Simples Nacional for in-flight BR contracts." Apoorav also asked Prathibha to create a parallel story to explore the Mule approach so both options can be compared before deciding. Vineela and Kishore are copied. Decision on approach is pending.</div>
+      <span class="tag tag-orange">Decision Needed</span>
+      <span class="tag tag-purple">Spike</span>
+      <span class="tag tag-blue">Mule vs Apex</span>
+      <div class="card-meta">Oct 12, 2026 · Apoorav Rai, Prathibha Naik, Patangay Nagaraju, Vineela Parsi</div>
     </div>
 
-    <div class="card sev-action">
-      <div class="card-channel">#brazil-fy27-rfm-det</div>
-      <div class="card-title">Tax attribute data reverted in QA6</div>
-      <div class="card-body">Pankaj Singh Rawat confirmed the tax attribute data change has been reverted in QA6. Prathibha tagged on the notification.</div>
-      <span class="tag tag-blue">QA6</span>
-      <div class="card-meta">Oct 7 · Pankaj Singh Rawat</div>
+    <div class="card sev-info">
+      <div class="card-channel">#mtd-germany-requirement-finalization · Oct 9</div>
+      <div class="card-title">MTD Bypass Checkbox (Req #13): Behavior for blank VAT Number still unconfirmed</div>
+      <div class="card-body">Priscillia asked Ashlaisha: can the bypass checkbox accept a blank VAT Number (graying out that field) while keeping Secondary Tax ID and Additional Tax ID open? RevOps will capture Steuernummer at enablement for AEs requesting bypass. Ashlaisha also waiting on Ivy Relles / Shrey Soni to confirm by next week whether E_Invoicing_System__c field can be used to capture PEPPOL preference for Germany E-Invoicing.</div>
+      <span class="tag tag-yellow">Awaiting Confirmation</span>
+      <span class="tag tag-blue">Germany MTD Req #13</span>
+      <div class="card-meta">Oct 8–9, 2026 · Ashlaisha Singh, Priscillia Stevenson, Ivy Relles, Shrey Soni, Peter Vizcaino</div>
     </div>
 
-    <div class="card sev-action">
-      <div class="card-channel">#brazil-fy27-rfm-det</div>
-      <div class="card-title">Spike: additional attributes to invoice — risk check needed</div>
-      <div class="card-body">Prathibha to Apoorav Rai: spike on passing additional attributes to invoice — likely won't implement but checking if data is readily available in DBs or if there's a risk if it's not straightforward. Vineela FYI.</div>
-      <span class="tag tag-gray">Spike</span>
-      <div class="card-meta">Oct 6 · Apoorav Rai, Vineela Parsi</div>
-    </div>
-
-    <div class="card sev-action">
-      <div class="card-channel">#brazil-tax-reform-e2e-validation</div>
-      <div class="card-title">E2E channel created — aligning Finance QA contact</div>
-      <div class="card-body">Prathibha created #brazil-tax-reform-e2e-validation to plan and track E2E flows post changes in QA6. Pre-reqs: (1) timelines for all changes in QA6, (2) agree on pre-data for existing quotes/orders scenarios. Reached out to Iffath Kokan (Revenue QA) to identify Finance POC.</div>
-      <span class="tag tag-blue">E2E Planning</span>
-      <span class="tag tag-green">New Channel</span>
-      <div class="card-meta">Oct 8 · Iffath Kokan confirmed Finance contacts: Casi Abner, Amjad Ali, Pat Rock, Jayashree Gurumurthy</div>
-    </div>
-
-    <div class="card sev-action">
-      <div class="card-channel">#det-rev-rfm-einvoice-team</div>
-      <div class="card-title">Prathibha joined E-invoicing team channel</div>
-      <div class="card-body">Prathibha Naik joined #det-rev-rfm-einvoice-team on Oct 7. Pratap Singh tagged her on E-invoicing project timeline for France E-Reporting, Germany MTD and Germany E-Invoicing deliverables planning.</div>
-      <span class="tag tag-blue">E-Invoicing</span>
-      <div class="card-meta">Oct 7 · Pratap Singh, Pradeep Venkateshaiah</div>
+    <div class="card sev-info">
+      <div class="card-channel">#ar-germany-requirement-finalization · Oct 6</div>
+      <div class="card-title">Germany AR requirements: Sovos PDF timesheet capability and Debit Memo scope still open</div>
+      <div class="card-body">Fatema followed up on 3 items: (1) Row 21 – Ashlaisha still waiting for Sovos to confirm ability to embed PDF timesheet in XML; (2) Row 27 – Deloitte still to come back on Debit Memo scope (in or out for Germany e-invoicing); (3) Rows 29–32 – Bad Debt CM meeting was scheduled Oct 6 to finalize. Row 2 (ZUGFeRD default) was closed.</div>
+      <span class="tag tag-yellow">Awaiting Sovos</span>
+      <span class="tag tag-orange">Debit Memo Scope TBD</span>
+      <div class="card-meta">Oct 6, 2026 · Fatema Tuz Zohra, Ashlaisha Singh, Priscillia Stevenson, Cian O'Brien</div>
     </div>
 
   </div>
 
-  <!-- SECTION 2: BRAZIL TAX REFORM -->
-  <div class="section-title">Brazil Tax Reform</div>
+
+  <!-- SECTION 2: AWAITING RESPONSE FROM OTHERS -->
+  <div class="section-title">Awaiting Response From Others</div>
+  <div class="grid">
+
+    <div class="card sev-action">
+      <div class="card-channel">#rfm-quoting-team-brazil-tax · TODAY</div>
+      <div class="card-title">Waiting on DJ Banerjee &amp; Veera Maddukuri re: Tax Info card bug</div>
+      <div class="card-body">Prathibha messaged today asking them to check Slack updates on the CPQ Tax Information card issue and provide visibility on the ask. No reply visible yet.</div>
+      <span class="tag tag-orange">Awaiting Reply</span>
+      <div class="card-meta">Oct 13, 2026 · DJ Banerjee, Veera Maddukuri</div>
+    </div>
+
+    <div class="card sev-action">
+      <div class="card-channel">DM · TODAY</div>
+      <div class="card-title">Waiting on Linear support to restore cycle edit permissions</div>
+      <div class="card-body">Prathibha asked Pratap Singh if he could edit Linear cycle names for the Brazil program. Pratap confirmed he also lacks access. Prathibha will raise a case with Linear support — awaiting resolution.</div>
+      <span class="tag tag-yellow">Linear Access</span>
+      <span class="tag tag-orange">Raising Support Case</span>
+      <div class="card-meta">Oct 13, 2026 · Pratap Singh</div>
+    </div>
+
+    <div class="card sev-action">
+      <div class="card-channel">#mtd-germany-requirement-finalization · Oct 8</div>
+      <div class="card-title">Waiting on Ivy Relles / Shrey Soni to confirm PEPPOL field (by next week)</div>
+      <div class="card-body">Ashlaisha asked them to confirm whether E_Invoicing_System__c can be used to capture a customer's PEPPOL preference for Germany E-Invoicing. Needed to finalize the mapping sheet for the development team.</div>
+      <span class="tag tag-yellow">Due Next Week</span>
+      <span class="tag tag-blue">Germany EI</span>
+      <div class="card-meta">Oct 8, 2026 · Ivy Relles, Shrey Soni, Fatema Tuz Zohra, Pradeep Venkateshaiah</div>
+    </div>
+
+    <div class="card sev-action">
+      <div class="card-channel">DM with Sirisha · TODAY</div>
+      <div class="card-title">Will check with Iffath on production duplicate submission issue status</div>
+      <div class="card-body">Prathibha told Sirisha Balijepalli she was unsure of the workaround decision (owned by DET Finance team). Will check with Iffath today and confirm in the DM; otherwise, Iffath will update on weekly PCTs.</div>
+      <span class="tag tag-orange">Checking Today</span>
+      <div class="card-meta">Oct 13, 2026 · Iffath Kokan, Sirisha Balijepalli</div>
+    </div>
+
+    <div class="card sev-info">
+      <div class="card-channel">#det-einvoicing-rev-fin-collab · Oct 9</div>
+      <div class="card-title">UAT sign-off pending from Pradeep for FR E-Invoicing endpoint changes</div>
+      <div class="card-body">Rupp Santos shared UAT evidence for endpointCode changes (SIREN mismatch fix). Asked Pradeep to review and provide sign-off over email. Production deployment is Oct 13 — this was needed by last Friday.</div>
+      <span class="tag tag-red">Overdue Sign-off</span>
+      <span class="tag tag-blue">FR E-Invoicing</span>
+      <div class="card-meta">Oct 9, 2026 · Rupp Santos S, Pradeep Venkateshaiah, Akshay Jain</div>
+    </div>
+
+  </div>
+
+
+  <!-- SECTION 3: PENDING ACTION ON YOU -->
+  <div class="section-title">Pending Action On You (Prathibha)</div>
   <div class="grid">
 
     <div class="card sev-p2">
-      <div class="card-channel">#brazil-tax-reform</div>
-      <div class="card-title">Free Trials / Courtesy Contracts — Brazilian VAT compliance gap</div>
-      <div class="card-body">Deloitte guidance: trials up to 31 days are taxable at market value regardless of contract close. Trials &gt;31 consecutive days require FMV tracking — policy should restrict until FMV tracking exists. Force.com trials not documented in Oracle 62.
-        <br><br><strong>Actions:</strong> Hera Ng / Renata Araujo — collate all zero-dollar scenarios into a single canvas. Julia Paiva — share Oracle 62 extracted report and analyze dollar-amount impact.</div>
-      <span class="tag tag-orange">Compliance Gap</span>
-      <span class="tag tag-blue">Deloitte</span>
-      <div class="card-meta">Oct 9 · Sabeina Harris meeting notes</div>
+      <div class="card-channel">#brazil-fy27-rfm-det · Oct 12</div>
+      <div class="card-title">ACTION: Create Mule-based spike story for in-flight BR contracts</div>
+      <div class="card-body">Apoorav explicitly asked: "could you please create a similar story to explore the Mule-based approach as well? This will help us compare both options and determine the best solution." Story should parallel the Apex spike on LE Type Code &amp; Simples Nacional for in-flight BR contracts. Not yet done.</div>
+      <span class="tag tag-red">Action Needed</span>
+      <span class="tag tag-purple">Linear Story</span>
+      <div class="card-meta">Oct 12, 2026 · Apoorav Rai → Prathibha Naik</div>
+    </div>
+
+    <div class="card sev-p2">
+      <div class="card-channel">DM Sandhiya · TODAY</div>
+      <div class="card-title">ACTION: Create additional Linear story — "Test Scenarios Preparation and upload to Linear"</div>
+      <div class="card-body">Sandhiya asked Prathibha to create one more Linear story for "Test Scenarios Preparation and upload to Linear." The story already created by Prathibha will be used for Test Execution. This new one is for scenario prep tracking.</div>
+      <span class="tag tag-red">Action Needed</span>
+      <span class="tag tag-purple">Linear Story</span>
+      <div class="card-meta">Oct 13, 2026 · Sandhiya Arulpragash → Prathibha Naik</div>
+    </div>
+
+    <div class="card sev-action">
+      <div class="card-channel">#brazil-fy27-rfm-det · Oct 12</div>
+      <div class="card-title">ACTION: Add deployment and data load stories to the Linear board</div>
+      <div class="card-body">Apoorav said he has assigned user stories to developers and "will work with Prathibha to add more stories to the wall which are required for deployment and data load." Coordination needed to complete the sprint wall.</div>
+      <span class="tag tag-orange">In Progress</span>
+      <span class="tag tag-purple">Sprint 10</span>
+      <div class="card-meta">Oct 12, 2026 · Apoorav Rai, Pratap Singh, Vineela Parsi</div>
+    </div>
+
+    <div class="card sev-action">
+      <div class="card-channel">#brazil-tax-reform-e2e-validation · Oct 8</div>
+      <div class="card-title">ACTION: Confirm timelines for all changes to QA6 and pre-data setup</div>
+      <div class="card-body">Prathibha created the E2E channel and outlined two pre-reqs: (1) When will all changes be available in QA6? (2) Agree on pre-data for specific scenarios (existing quotes/orders). The QA6 target is now Oct 19 — team needs to confirm coverage and pre-data availability.</div>
+      <span class="tag tag-orange">Owner: Prathibha</span>
+      <span class="tag tag-blue">QA Planning</span>
+      <div class="card-meta">Oct 8, 2026 · Iffath Kokan, Vineela Parsi, Syam Mandava</div>
+    </div>
+
+    <div class="card sev-action">
+      <div class="card-channel">DM with Pradeep · TODAY</div>
+      <div class="card-title">Follow up on E-Invoicing dependencies tracker (Quip)</div>
+      <div class="card-body">Pradeep shared the dependency tracker at salesforce.quip.com/LkpxAmbgSARx and indicated Prathibha should take over tracking from here. Also noted Sovos vendor dependencies need her attention as risk owner. Prathibha acknowledged and will look into it.</div>
+      <span class="tag tag-purple">Onboarding</span>
+      <span class="tag tag-orange">Dependency Tracking</span>
+      <div class="card-meta">Oct 13, 2026 · Pradeep Venkateshaiah</div>
+    </div>
+
+  </div>
+
+
+  <!-- SECTION 4: RISKS & DECISIONS -->
+  <div class="section-title">Risks &amp; Decisions from Conversations</div>
+  <div class="grid">
+
+    <div class="card sev-p1">
+      <div class="card-channel">Production Risk · TODAY</div>
+      <div class="card-title">RISK: EI layer returning null response causing duplicate invoice submissions</div>
+      <div class="card-body">A production invoice was submitted twice because the EI layer returned null at first call, so the record stayed in "Ready" status and was picked up again by the scheduler. No deduplication guard in place for null responses. Root cause investigation ongoing. <strong>Decision needed:</strong> Should a null-response lock/retry guard be added to prevent re-pickup?</div>
+      <span class="tag tag-red">Production</span>
+      <span class="tag tag-orange">Unresolved</span>
+      <div class="card-meta">#det-einvoicing-rev-fin-collab · Oct 13</div>
     </div>
 
     <div class="card sev-p1">
-      <div class="card-channel">#rfm-quoting-team-brazil-tax</div>
-      <div class="card-title">CPQ Bug: Saving Tax Info card erases hidden tax fields (CPQX-191)</div>
-      <div class="card-body">Bug found by Vineela Parsi: Tax Information card Save replaces all tax info with only the country-specific fields shown, erasing any other stored tax details without warning — affects both quotes and contracts. Impact: data disappearing from Oracle.
-        <br><br>CPQX-191 in Backlog (CPQ team), unassigned, marked "needs refinement". Root cause: ATV updates Quote twice; TRN root check flag blocks on second update. Two fix options documented.</div>
-      <span class="tag tag-red">Bug · CPQX-191</span>
-      <span class="tag tag-orange">Backlog</span>
-      <div class="card-meta">Oct 8 · Vineela Parsi flagged; Gautam Daga wrote TDD content for Prathibha</div>
+      <div class="card-channel">Vendor Risk · TODAY</div>
+      <div class="card-title">RISK: Sovos support only via email/scheduled calls — not responsive enough for Jan 1 deadline</div>
+      <div class="card-body">Pradeep flagged in DM: "Sovos is where we need help — all communications happening through email and scheduled calls, where we are not getting proper support." This is a critical vendor risk for Germany E-Invoicing go-live on Jan 1, 2027. <strong>Decision needed:</strong> Escalation path for Sovos support issues — should this be raised to leadership?</div>
+      <span class="tag tag-red">Critical Risk</span>
+      <span class="tag tag-orange">Jan 1 Deadline</span>
+      <div class="card-meta">DM Pradeep → Prathibha · Oct 13</div>
     </div>
 
     <div class="card sev-p2">
-      <div class="card-channel">#rfm-quoting-team-brazil-tax</div>
-      <div class="card-title">Serpro + Serasa architecture confirmed — no conflict</div>
-      <div class="card-body">Emilce Fernandez confirmed BTRFM-49 (Serpro CNPJ — adds legalEntityType from naturezaJuridica, simplesNacionalFlag) and CPQX-55 (Serasa REST for CPF credit score) work together without conflict. Combined path: Serpro handles cadastral/tax, Serasa handles credit score. Sparta PR created to support REST messages.</div>
-      <span class="tag tag-green">Architecture</span>
-      <span class="tag tag-blue">BTRFM-49</span>
-      <div class="card-meta">Sep 29 · Emilce Fernandez, Gautam Daga, Veera Maddukuri</div>
+      <div class="card-channel">Architecture Decision · Oct 12</div>
+      <div class="card-title">DECISION NEEDED: Mule vs Apex for in-flight BR contracts LE Type &amp; Simples Nacional</div>
+      <div class="card-body">Two spike stories are being created to compare Mule-based vs Apex approaches for populating LE Type Code and Simples Nacional on in-flight Brazil contracts. Once both spikes complete LOE, team needs to decide the approach. This directly impacts the December release timeline.</div>
+      <span class="tag tag-orange">Decision Pending</span>
+      <span class="tag tag-purple">Dec Release Impact</span>
+      <div class="card-meta">#brazil-fy27-rfm-det · Apoorav, Vineela, Patangay Nagaraju</div>
     </div>
 
     <div class="card sev-p2">
-      <div class="card-channel">#brazil-tax-reform-a10-discussion</div>
-      <div class="card-title">CBS/IBS (Dual VAT) — AP Impact — A10 Mapping Session complete</div>
-      <div class="card-body">Brazil CBS/IBS VAT becomes standard Jan 1 for all purchases. Manual processing required initially; Oracle updates for net payment amount pending. Split payment targeted mid-next year.
-        <br><br><strong>Actions:</strong> Julia Paiva / Alexandre Costa — validate bank process. Kathy Buzon — clean vendor master data (CPF/CNPJ identifiers). Team — configure Oracle CBS/IBS tax codes. Sabeina Harris — follow up with DET on requirements (done).</div>
-      <span class="tag tag-orange">CBS/IBS VAT</span>
-      <span class="tag tag-blue">Jan 1 Deadline</span>
-      <div class="card-meta">Sep 10 · Sabeina Harris A10 mapping session summary</div>
+      <div class="card-channel">Timeline Risk · Oct 9</div>
+      <div class="card-title">RISK: 3 open E2E bugs in E-Invoicing likely to carry into next sprint</div>
+      <div class="card-body">Neelima informed Pradeep that 3 open E2E bugs on EI are unlikely to close in the current sprint. Test data (SIREN/SIRET/BCN) still not received, blocking retesting. Pradeep asked for confirmation on spillover comfort. <strong>Unconfirmed assumption:</strong> bugs will be prioritized in the next sprint (Oct 12–23).</div>
+      <span class="tag tag-orange">Spillover Risk</span>
+      <span class="tag tag-yellow">Data Dependency</span>
+      <div class="card-meta">#det-rev-rfm-einvoice-team · Neelima Kulkarni, Pradeep, Karthik Gudivada</div>
+    </div>
+
+    <div class="card sev-p2">
+      <div class="card-channel">Timeline Risk · Oct 12</div>
+      <div class="card-title">RISK: QA6 readiness by Oct 19 depends on all Sprint 3 changes merging on time</div>
+      <div class="card-body">Prathibha's QA plan assumes all Brazil FY27 Sprint 3 changes are in QA6 by Oct 19. PRs from Apoorav were raised to the Dec work branch (5 repos) but merge conflicts were resolved as of Oct 9. Any new conflicts or dev delays could push QA start and compress the testing window before the December release.</div>
+      <span class="tag tag-orange">Timeline Risk</span>
+      <span class="tag tag-blue">QA6 Oct 19</span>
+      <div class="card-meta">#brazil-fy27-rfm-det · Apoorav Rai, Vineela Parsi</div>
+    </div>
+
+    <div class="card sev-yellow">
+      <div class="card-channel">Germany Decision · Oct 9</div>
+      <div class="card-title">DECISION PENDING: Germany MTD go-live Nov 12 vs Nov 19</div>
+      <div class="card-body">Fatema proposed moving MTD Germany go-live from Nov 12 to Nov 19 because the UAT window (Nov 12) conflicts with quarter end. Asked Ashlaisha/DET team to confirm if Nov 12 is still feasible or what the alternative date would be. No confirmed decision in the channel as of latest messages.</div>
+      <span class="tag tag-yellow">Date Unconfirmed</span>
+      <span class="tag tag-blue">Germany MTD</span>
+      <div class="card-meta">#mtd-germany-requirement-finalization · Fatema Tuz Zohra, Ashlaisha Singh, Priscillia Stevenson</div>
+    </div>
+
+    <div class="card sev-yellow">
+      <div class="card-channel">Unconfirmed Assumption · Oct 6</div>
+      <div class="card-title">ASSUMPTION UNCONFIRMED: All in-scope MTD Germany requirements ready for Nov 25–Dec 8 UAT</div>
+      <div class="card-body">Fatema asked Ashlaisha and Pradeep: will all in-scope MTD Germany requirements be available for the Nov 25–Dec 8 window? Business wants to confirm testing scope. No explicit confirmation posted yet in the channel.</div>
+      <span class="tag tag-yellow">Awaiting Confirmation</span>
+      <span class="tag tag-blue">Germany MTD UAT</span>
+      <div class="card-meta">#mtd-germany-requirement-finalization · Fatema Tuz Zohra, Ashlaisha Singh</div>
     </div>
 
     <div class="card sev-info">
-      <div class="card-channel">#brazil-tax-reform-hypercare</div>
-      <div class="card-title">Synchro plugin migration postponed — compliant on current version</div>
-      <div class="card-body">Team decided to postpone Synchro new plugin migration and remain on current version. Key reasons: current plugin allows replacement Nota Fiscals for tax values &lt;10 BRL, prevents incorrect IBS/CBS calculations at City Hall. Compliance maintained — April 1 deadline not yet applicable (IBS/CBS ruling not published).</div>
-      <span class="tag tag-green">Decision</span>
-      <span class="tag tag-gray">Synchro</span>
-      <div class="card-meta">Mar 31 · Casi Abner confirmed team agreement</div>
-    </div>
-
-    <div class="card sev-info">
-      <div class="card-channel">#brazil-fy27-rfm-det</div>
-      <div class="card-title">NBS Code implementation in progress — PRs under review</div>
-      <div class="card-body">Multiple PRs submitted for NBS Code column addition to Order Legal View. Sprint closing today — Sagnik Banik updated exception handling, parsing logic, moved custom labels to Om-Shared repo. Vineela aligning on consistent NBS code label across all PRs, translations tab updated. Partner quote container width overflow issue flagged by Mani Jain.</div>
-      <span class="tag tag-purple">NBS Code</span>
-      <span class="tag tag-blue">PR Review</span>
-      <div class="card-meta">Oct 5–8 · Sagnik Banik, Vineela Parsi, Mani Jain</div>
-    </div>
-
-    <div class="card sev-info">
-      <div class="card-channel">#brazil-fy27-rfm-det</div>
-      <div class="card-title">Spike: tpEntGov mapping — 5 Natureza Jurídica codes need Serpro payload</div>
-      <div class="card-body">Syam Mandava: Deloitte mapped all codes to tpEntGov except 5 (119-8, 121-0, 122-8, 201-1, 203-8). Apoorav Rai / Gautam Daga asked to pull full payload from new Serpro API endpoint for these codes to complete the mapping.</div>
-      <span class="tag tag-gray">Spike</span>
-      <span class="tag tag-blue">Serpro</span>
-      <div class="card-meta">Sep 25 · Syam Mandava, Apoorav Rai, Prathibha tagged</div>
+      <div class="card-channel">Compliance Risk · Oct 6</div>
+      <div class="card-title">RISK: ZUGFeRD → XRechnung reissue may create dual VAT liability under sec. 14c UStG</div>
+      <div class="card-body">Deloitte warned: if Salesforce/Sovos cannot reliably reproduce the original invoice when converting ZUGFeRD to XRechnung (Mehrst&uuml;ck approach), a cancellation-and-reissue process is safer. Dual invoice = double VAT due. Business and DET still need to align on the preferred path forward. Ashlaisha confirmed awaiting Sovos on timesheet attachment capability.</div>
+      <span class="tag tag-red">Compliance Risk</span>
+      <span class="tag tag-yellow">Deloitte Guidance</span>
+      <div class="card-meta">#ar-germany-requirement-finalization · Fatema, Ashlaisha, Priscillia, Shrey Soni</div>
     </div>
 
   </div>
 
-  <!-- SECTION 3: GERMANY E-INVOICING -->
-  <div class="section-title">Germany E-Invoicing &amp; MTD</div>
-  <div class="grid">
 
-    <div class="card sev-p2">
-      <div class="card-channel">#mtd-germany-requirement-finalization</div>
-      <div class="card-title">PEPPOL preference field — POC buy-in in progress</div>
-      <div class="card-body">Ashlaisha Singh asked Ivy Relles / Shrey Soni to confirm if E_Invoicing_System__c field can capture customer PEPPOL preference for Germany. Shrey confirmed POC discussions in progress, certain buy-in received, pending POC discussion Monday. Need confirmation by next week to finalize mapping sheet for dev team.</div>
-      <span class="tag tag-orange">Open Item</span>
-      <span class="tag tag-blue">PEPPOL</span>
-      <div class="card-meta">Oct 8–9 · Ashlaisha Singh, Shrey Soni, Ivy Relles, Fatema</div>
-    </div>
-
-    <div class="card sev-p2">
-      <div class="card-channel">#mtd-germany-requirement-finalization</div>
-      <div class="card-title">Go-live date moved: Nov 12 → Nov 19 (quarter-end conflict)</div>
-      <div class="card-body">Fatema Tuz Zohra: proposed UAT window (Nov 12) conflicts with quarter end. Business recommendation to move Germany MTD go-live to Nov 19. Awaiting DET confirmation if Nov 19 is achievable.</div>
-      <span class="tag tag-orange">Date Change</span>
-      <span class="tag tag-red">Timeline Risk</span>
-      <div class="card-meta">Sep 28 · Fatema Tuz Zohra, Ashlaisha Singh, Priscillia Stevenson</div>
-    </div>
-
-    <div class="card sev-info">
-      <div class="card-channel">#mtd-germany-requirement-finalization</div>
-      <div class="card-title">Row 23 Duplication check — 2 proposals documented</div>
-      <div class="card-body">Ashlaisha Singh documented 2 proposals for MTD duplication check (direct vs partner accounts with same LEN/VAT). Priscillia confirmed Ashlaisha is checking with Sandeep Nayini and Pradeep whether MTD partner account logic can change for DE go-live. If not, new field based on Sold To Account record type.</div>
-      <span class="tag tag-blue">MTD Design</span>
-      <span class="tag tag-gray">Row 23</span>
-      <div class="card-meta">Oct 6 · Ashlaisha Singh, Priscillia Stevenson, Fatema</div>
-    </div>
-
-    <div class="card sev-info">
-      <div class="card-channel">#mtd-germany-requirement-finalization</div>
-      <div class="card-title">Address fields: Deloitte confirms State optional, umlauts acceptable</div>
-      <div class="card-body">Deloitte response: BT-54 (Buyer Country Subdivision) is technically optional under ZUGFeRD. German VAT does not require State. Umlauts and their alternatives (ä=ae, ö=oe, ü=ue) both acceptable provided applied consistently. Priscillia suggested graying out State field for Germany — Cian O'Brien confirmed no VAT issue.</div>
-      <span class="tag tag-green">Deloitte Confirmed</span>
-      <span class="tag tag-blue">Address Validation</span>
-      <div class="card-meta">Oct 1–2 · Deloitte, Cian O'Brien, Priscillia Stevenson</div>
-    </div>
-
-    <div class="card sev-info">
-      <div class="card-channel">#ar-germany-requirement-finalization</div>
-      <div class="card-title">ZUGFeRD default confirmed; XRechnung manual process — Mehrst​ück analysis</div>
-      <div class="card-body">Decision: ZUGFeRD is default format via automated process. Manual XRechnung for B2B customers who can't process ZUGFeRD. Deloitte analysis: treating XRechnung as a Mehrst​ück (copy) is credible if content unchanged, but risky if Sovos creates a new invoice number. Conservative alternative: cancellation-and-reissue. Fatema closing Row 2 requirement.</div>
-      <span class="tag tag-green">Row 2 Closed</span>
-      <span class="tag tag-orange">XRechnung Risk</span>
-      <div class="card-meta">Oct 6 · Fatema Tuz Zohra, Deloitte, Ashlaisha Singh</div>
-    </div>
-
-    <div class="card sev-p2">
-      <div class="card-channel">#ar-germany-requirement-finalization</div>
-      <div class="card-title">CM/DM scope — awaiting Deloitte confirmation on Debit Memos</div>
-      <div class="card-body">Deloitte meeting held Oct 5 on CM/DM. Still awaiting confirmation on whether Debit Memos are in scope for Germany e-invoicing (Row 27). Row 21 (PDF timesheet attachment) — awaiting Sovos confirmation from Ashlaisha. Bad Debt CM meeting Oct 6 for rows 29-32 finalization.</div>
-      <span class="tag tag-orange">Pending</span>
-      <span class="tag tag-blue">DM Scope</span>
-      <div class="card-meta">Oct 6 · Ashlaisha Singh, Fatema Tuz Zohra</div>
-    </div>
-
-    <div class="card sev-info">
-      <div class="card-channel">#einvoice-germany-transmission-method</div>
-      <div class="card-title">Security review 4 areas identified for ZUGFeRD email delivery</div>
-      <div class="card-body">Ashlaisha Singh assessment: 4 key security review areas — (1) Secure Sovos integration, (2) Invoice integrity (ZUGFeRD not modified), (3) Marketing Cloud email security controls for B2B delivery, (4) Retention for German regulatory/audit. Areas 1, 2, 4 expected to be fine. Area 3 needs confirmation from CSG/Brandt Wagner to validate ZUGFeRD email security controls.</div>
-      <span class="tag tag-orange">Security Review</span>
-      <span class="tag tag-blue">ZUGFeRD</span>
-      <div class="card-meta">Sep 18 · Ashlaisha Singh, Fatema Tuz Zohra, Kash Rengasamy</div>
-    </div>
-
-  </div>
-
-  <!-- SECTION 4: E-INVOICING SPRINT / DELIVERY -->
-  <div class="section-title">E-Invoicing Sprint &amp; Delivery (France / Germany)</div>
-  <div class="grid">
-
-    <div class="card sev-p2">
-      <div class="card-channel">#det-rev-rfm-einvoice-team</div>
-      <div class="card-title">Sprint closes today — Oct release QA freeze</div>
-      <div class="card-body">Pratap Singh: last day of sprint 2026.10a-BT-REV-Government-Einvoicing. Karthik Viswakumar to complete all Oct release QA items. Pradeep travelling, reachable on cell. Nov sprint (2026.10b) runs Oct 12–23 — capacity tracker to be updated.</div>
-      <span class="tag tag-orange">Sprint Close</span>
-      <span class="tag tag-red">Today</span>
-      <div class="card-meta">Oct 9 · Pratap Singh, Pradeep Venkateshaiah</div>
-    </div>
-
-    <div class="card sev-p2">
-      <div class="card-channel">#det-rev-rfm-einvoice-team</div>
-      <div class="card-title">France E-Reporting partial solution — Oct 15 release scope</div>
-      <div class="card-body">Oct 15 partial release: forward journey + partial reverse journey (get status 102/401). Manual process for obtaining invoice status from Sovos portal. E2E testing Sep 28–Oct 8, UAT Oct 9–13 (3 days), Go-live Oct 15. Risk: QA6 env (apsqa6sb1) instability; potential Sovos bugs.</div>
-      <span class="tag tag-orange">Oct 15 Release</span>
-      <span class="tag tag-red">Timeline Risk</span>
-      <div class="card-meta">Sep 22 · Pratap Singh, Ashlaisha Singh, Pradeep</div>
-    </div>
-
-    <div class="card sev-info">
-      <div class="card-channel">#det-rev-rfm-einvoice-team</div>
-      <div class="card-title">France E-Invoicing Status Job null fix deployed to UAT</div>
-      <div class="card-body">Shravani Guruswamy: sciGovtStatusCode null fix changes deployed to UAT successfully. cc Sankalan Gain.</div>
-      <span class="tag tag-green">Deployed</span>
-      <span class="tag tag-blue">France E-Invoicing</span>
-      <div class="card-meta">Oct 7 · Shravani Guruswamy</div>
-    </div>
-
-    <div class="card sev-info">
-      <div class="card-channel">#det-rev-rfm-einvoice-team</div>
-      <div class="card-title">Nov release Linear view shared — Germany E-Invoicing 264.store.3</div>
-      <div class="card-body">Pooja Jadhav shared Nov 12 release Linear view for Government E-Invoicing (Appstore 264.store.3). Team to align deliverables to project timeline for France E-Reporting, Germany MTD and Germany E-Invoicing.</div>
-      <span class="tag tag-blue">Nov 12 Release</span>
-      <span class="tag tag-gray">Linear</span>
-      <div class="card-meta">Oct 7 · Pooja Jadhav, Pratap Singh</div>
-    </div>
-
-    <div class="card sev-info">
-      <div class="card-channel">#det-rev-rfm-einvoice-team</div>
-      <div class="card-title">Germany B2B Tax ID rules clarified — Steuernummer</div>
-      <div class="card-body">Pradeep aligned B2B rules: Primary Tax ID (VAT) only sent to Fonoa for validation; MTD created when validated. At any time, Quote/Contract has either Primary OR Secondary Tax ID (SOPS only), not both. SOPS can only enter Secondary Tax ID; non-SOPS can only enter Primary. Leitweg-ID format validated and stored on Quote/Contract only.</div>
-      <span class="tag tag-blue">Germany B2B</span>
-      <span class="tag tag-green">Design Confirmed</span>
-      <div class="card-meta">Sep 29 · Pradeep Venkateshaiah, Ashutosh Singh</div>
-    </div>
-
-  </div>
-
-  <!-- SECTION 5: HIGHLIGHTS & WINS -->
-  <div class="section-title">Highlights &amp; Upcoming</div>
+  <!-- SECTION 5: RECENT MILESTONES & PROGRAM UPDATES -->
+  <div class="section-title">Recent Milestones &amp; Program Updates</div>
   <div class="grid">
 
     <div class="card sev-green">
-      <div class="card-channel">#brazil-fy27-rfm-det</div>
-      <div class="card-title">Brazil FY27 branching strategy established</div>
-      <div class="card-body">Vineela Parsi set work branches across all repos: Appstore_Basebiz/work-brazilFY27, Appstore_InvoiceManagement/work-brazilFY27, Appstore_Om/work-brazilFY27, Appstore_Cpq/work-brazilFY27. All devs to retarget PRs and resolve conflicts. Brazil FY27 runlist + translations tab shared.</div>
-      <span class="tag tag-green">Branching</span>
-      <span class="tag tag-blue">Dec Release</span>
+      <div class="card-channel">#det-einvoicing-rev-fin-collab · TODAY</div>
+      <div class="card-title">FR E-Invoicing: EI layer endpoint changes deployed to PRODUCTION (Oct 13)</div>
+      <div class="card-body">Rupp Santos deployed EI layer endpoint changes to production on Oct 13 as planned. Fixes: endpointCode = SIREN mismatch and handling of 503 intermittent Sovos errors. UAT was completed in apsqa6sb1 with 250 and 1,000 invoice batches successfully submitted.</div>
+      <span class="tag tag-green">Production Deploy</span>
+      <span class="tag tag-blue">FR E-Invoicing</span>
+      <div class="card-meta">Oct 13, 2026 · Rupp Santos S, Pradeep Venkateshaiah, Sankalan Gain</div>
     </div>
 
     <div class="card sev-green">
-      <div class="card-channel">#brazil-fy27-rfm-det</div>
-      <div class="card-title">Det-RFM Brazil Linear project updates channel created</div>
-      <div class="card-body">Vineela set up #det-rfm-brazil-fy27-linear-project-updates (private) for automated Linear status changes, milestones, and progress for RFM Brazil FY27 initiative.</div>
-      <span class="tag tag-green">New Channel</span>
-      <span class="tag tag-gray">Linear Automation</span>
+      <div class="card-channel">#brazil-fy27-rfm-det · Oct 12</div>
+      <div class="card-title">Brazil FY27 Sprint 10 started: All stories estimated, assigned to developers</div>
+      <div class="card-body">Sprint kicked off with all user stories added to Linear. Developers estimated and self-assigned. Syam will correct descriptions before tonight's DSU. Dec work branch PRs (5 repos: InvoiceManagement, Basebiz, CPQ, OM, OmShared) merged with all conflicts resolved by Apoorav.</div>
+      <span class="tag tag-green">Sprint Start</span>
+      <span class="tag tag-purple">Brazil FY27</span>
+      <div class="card-meta">Oct 12, 2026 · Apoorav Rai, Prathibha Naik, Pratap Singh</div>
     </div>
 
     <div class="card sev-green">
-      <div class="card-channel">#brazil-tax-reform-a10-discussion</div>
-      <div class="card-title">Brazil Dual VAT PRD and AP Impact Guide pinned</div>
-      <div class="card-body">Key documents pinned in #brazil-tax-reform-a10-discussion: Brazil Tax Reform Year 2 – S2P/AP Supplier Invoice Compliance PRD (Oracle EBS) and Brazil Dual VAT (CBS/IBS) — AP Impact Guide. Channel is now home for A10 Mapping Session discussion.</div>
-      <span class="tag tag-blue">Documentation</span>
-      <span class="tag tag-green">Resources Pinned</span>
+      <div class="card-channel">#det-rev-rfm-einvoice-team · Oct 7</div>
+      <div class="card-title">France E-Invoicing: Status Job (sciGovtStatusCode null fix) deployed to UAT</div>
+      <div class="card-body">Shravani confirmed the France E-Invoicing Status Job fix for null sciGovtStatusCode is successfully deployed to UAT (apsqa6sb1). Sankalan Gain co-owned this deployment.</div>
+      <span class="tag tag-green">UAT Deploy</span>
+      <span class="tag tag-blue">FR E-Invoicing</span>
+      <div class="card-meta">Oct 7, 2026 · Shravani Guruswamy, Sankalan Gain, Pradeep Venkateshaiah</div>
+    </div>
+
+    <div class="card sev-green">
+      <div class="card-channel">#brazil-tax-reform-e2e-validation · Oct 8</div>
+      <div class="card-title">New E2E validation channel created by Prathibha for Brazil post-QA6 testing</div>
+      <div class="card-body">Prathibha created #brazil-tax-reform-e2e-validation to plan and track E2E flows after changes move to QA6. Key team members onboarded: Iffath Kokan, Vineela Parsi, Syam Mandava, Sandhiya Arulpragash, Jayashree Gurumurthy, Apoorav Rai, Karthik Gudivada.</div>
+      <span class="tag tag-green">Channel Created</span>
+      <span class="tag tag-purple">Brazil E2E</span>
+      <div class="card-meta">Oct 8, 2026 · Prathibha Naik</div>
     </div>
 
     <div class="card sev-info">
-      <div class="card-channel">#det-rev-rfm-einvoice-team</div>
-      <div class="card-title">Upcoming: Sprint 2026.10b starts Oct 12 — capacity tracker update needed</div>
-      <div class="card-body">Next sprint (2026.10b-BT-REV-Government-Einvoicing) runs Oct 12–23. Neelima Kulkarni reminded team to update PTO details in PI planning capacity tracker before sprint starts.</div>
-      <span class="tag tag-blue">Oct 12–23</span>
-      <span class="tag tag-purple">Sprint Planning</span>
+      <div class="card-channel">#bt-revenue-govt-einvoicing · TODAY (Onboarding)</div>
+      <div class="card-title">Prathibha taking over Shreya Pai's TPM role for Germany &amp; France E-Invoicing</div>
+      <div class="card-body">Prathibha confirmed in DM with Pradeep today: she will take over as TPM for E-Invoicing (Germany/France), transitioning from Shreya Pai. Official start date TBD — expecting to be fully on Jan 1 release. Joined #det-rev-rfm-einvoice-team, #det-einvoicing-rev-fin-collab, #bt-revenue-govt-einvoicing, and #einvoice-germany-transmission-method this week.</div>
+      <span class="tag tag-blue">TPM Transition</span>
+      <span class="tag tag-purple">Onboarding Oct 13</span>
+      <div class="card-meta">Oct 7–13, 2026 · Pradeep Venkateshaiah, Shreya Pai</div>
     </div>
 
     <div class="card sev-info">
-      <div class="card-channel">#rfm-quoting-team-brazil-tax</div>
-      <div class="card-title">Reporting model audit needed — Brazil tax model impact on dashboards</div>
-      <div class="card-body">Prathibha raised: with change in Brazil tax model, need to check if any reporting models (metrics/dashboards for Business and Finance teams) consuming RFM data need correction. Goal: avoid redesign/revalidation of Phase 1 changes when reporting requirements surface later.</div>
-      <span class="tag tag-orange">Risk Flag</span>
-      <span class="tag tag-gray">Reporting</span>
-      <div class="card-meta">Sep 16 · Prathibha raised with Apoorav, Syam, Vineela</div>
+      <div class="card-channel">#ar-germany-requirement-finalization · Sep 25 / Oct 6</div>
+      <div class="card-title">Germany AR: ZUGFeRD format decision closed; Mehrst&uuml;ck analysis received from Deloitte</div>
+      <div class="card-body">Row 2 (default ZUGFeRD format) is now closed — ZUGFeRD is the default, with a manual XRechnung process for customers who cannot accept ZUGFeRD. Deloitte provided full Mehrst&uuml;ck analysis on the legal risks of issuing both formats. Transmission KDD was prepared by Fatema. Business alignment on preferred path still in progress.</div>
+      <span class="tag tag-green">Requirement Closed</span>
+      <span class="tag tag-blue">Germany AR</span>
+      <div class="card-meta">Sep 25 – Oct 6, 2026 · Fatema Tuz Zohra, Ashlaisha Singh, Priscillia Stevenson</div>
+    </div>
+
+    <div class="card sev-info">
+      <div class="card-channel">#brazil-tax-reform-a10-discussion · Sep 10</div>
+      <div class="card-title">Brazil A10 Mapping Session: CBS/IBS Oracle configuration and split payment scoped</div>
+      <div class="card-body">Sep 9 session summary: Oracle updates for net payment amount calculation are still pending; split payment targeted for mid-next year. Action items: Julia Paiva &amp; Alexandre Costa to validate bank process; Kathy Buzon team to clean vendor master data; configure Oracle for CBS/IBS tax codes. All Sabeina's action items marked complete.</div>
+      <span class="tag tag-green">Session Complete</span>
+      <span class="tag tag-purple">Brazil A10</span>
+      <div class="card-meta">Sep 10, 2026 · Sabeina Harris, Julia Paiva, Alexandre Costa, Kathy Buzon</div>
     </div>
 
   </div>
 
 </div>
 
-<footer>Generated October 9, 2026 · Channels: Brazil Tax Reform (×4), RFM Brazil FY27, RFM Quoting Brazil Tax, Germany Transmission, Germany MTD, Germany AR, DET Rev E-Invoicing</footer>
+<footer>
+  Auto-generated · October 13, 2026 · Channels: Brazil Tax Reform, Brazil FY27 RFM DET, Germany MTD/AR/Transmission, Government E-Invoicing, DET E-Invoicing Rev Fin
+</footer>
 
 </body>
 </html>
