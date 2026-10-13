@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brazil Tax Reform – Backlog Grooming Summary</title>
+<style>
+  :root {
+    --purple-dark: #3d1f6e;
+    --purple-mid: #5c2d9e;
+    --purple-light: #7c4dbf;
+    --purple-pale: #f3eeff;
+    --bg: #f5f5f7;
+    --card-bg: #ffffff;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --border: #e2e2e7;
+    --action: #5c2d9e;
+    --action-bg: #f3eeff;
+    --decision: #0070c9;
+    --decision-bg: #e8f4fd;
+    --topic: #1d8348;
+    --topic-bg: #eafaf1;
+    --owner: #e07b00;
+    --owner-bg: #fff4e0;
+    --pending: #c0392b;
+    --pending-bg: #fdf3f3;
+    --shadow: 0 2px 8px rgba(0,0,0,.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); }
+
+  header {
+    background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple-mid) 60%, var(--purple-light) 100%);
+    color: white;
+    padding: 32px 40px 28px;
+  }
+  header h1 { font-size: 1.7rem; font-weight: 700; letter-spacing: -.3px; }
+  header .subtitle { margin-top: 6px; font-size: .9rem; opacity: .85; }
+  header .meta { margin-top: 14px; display: flex; gap: 20px; flex-wrap: wrap; }
+  header .meta-item { background: rgba(255,255,255,.15); border-radius: 6px; padding: 5px 12px; font-size: .8rem; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+  .meeting-block { margin-bottom: 48px; }
+  .meeting-header {
+    background: linear-gradient(90deg, var(--purple-dark) 0%, var(--purple-mid) 100%);
+    color: white;
+    border-radius: 10px 10px 0 0;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .meeting-header h2 { font-size: 1.15rem; font-weight: 700; }
+  .meeting-header .date-badge {
+    background: rgba(255,255,255,.2);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: .82rem;
+    font-weight: 600;
+  }
+  .meeting-body { border: 1px solid var(--border); border-top: none; border-radius: 0 0 10px 10px; background: var(--card-bg); overflow: hidden; }
+
+  .section-tabs { display: flex; border-bottom: 2px solid var(--border); overflow-x: auto; }
+  .tab-label { padding: 12px 20px; font-size: .83rem; font-weight: 700; color: var(--muted); white-space: nowrap; letter-spacing: .3px; text-transform: uppercase; }
+
+  .section { padding: 20px 24px; }
+  .section + .section { border-top: 1px solid var(--border); }
+  .section-title {
+    font-size: .78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .7px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title.topics { color: var(--topic); }
+  .section-title.actions { color: var(--action); }
+  .section-title.decisions { color: var(--decision); }
+  .section-title .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .section-title.topics .dot { background: var(--topic); }
+  .section-title.actions .dot { background: var(--action); }
+  .section-title.decisions .dot { background: var(--decision); }
+
+  /* Topics grid */
+  .topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+  .topic-card {
+    border: 1px solid #d0ebd8;
+    background: var(--topic-bg);
+    border-radius: 8px;
+    padding: 13px 15px;
+  }
+  .topic-card h4 { font-size: .88rem; font-weight: 700; color: var(--topic); margin-bottom: 5px; }
+  .topic-card p { font-size: .83rem; color: #444; line-height: 1.5; }
+
+  /* Action items */
+  .action-list { display: flex; flex-direction: column; gap: 8px; }
+  .action-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border: 1px solid #ddd5f7;
+    background: var(--action-bg);
+    border-radius: 8px;
+    padding: 10px 14px;
+  }
+  .action-item .checkbox { width: 16px; height: 16px; border: 2px solid var(--action); border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+  .action-item .content { flex: 1; }
+  .action-item .owner-tag {
+    display: inline-block;
+    background: var(--owner-bg);
+    color: var(--owner);
+    border: 1px solid #f5c97a;
+    border-radius: 12px;
+    padding: 2px 10px;
+    font-size: .75rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .action-item p { font-size: .84rem; color: #333; line-height: 1.45; }
+
+  /* Decisions */
+  .decision-list { display: flex; flex-direction: column; gap: 10px; }
+  .decision-item {
+    border: 1px solid #bee3f8;
+    background: var(--decision-bg);
+    border-radius: 8px;
+    padding: 12px 15px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .decision-item .status-badge {
+    flex-shrink: 0;
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 10px;
+    margin-top: 1px;
+  }
+  .decision-item .status-badge.aligned { background: #d4edda; color: #155724; }
+  .decision-item .status-badge.pending { background: var(--pending-bg); color: var(--pending); }
+  .decision-item h4 { font-size: .86rem; font-weight: 700; color: #1a3a5c; margin-bottom: 3px; }
+  .decision-item p { font-size: .82rem; color: #444; line-height: 1.45; }
+
+  /* Placeholder */
+  .placeholder {
+    border: 2px dashed #c0c0c8;
+    background: #fafafa;
+    border-radius: 10px;
+    padding: 40px 24px;
+    text-align: center;
+    color: var(--muted);
+  }
+  .placeholder h3 { font-size: 1rem; margin-bottom: 8px; color: #888; }
+  .placeholder p { font-size: .85rem; }
+
+  footer { text-align: center; padding: 24px; font-size: .78rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Brazil Tax Reform · Backlog Grooming Summary</h1>
+  <div class="subtitle">Latest 2 meeting notes · Generated October 13, 2026</div>
+  <div class="meta">
+    <span class="meta-item">Meeting 1: Oct 7, 2026</span>
+    <span class="meta-item">Meeting 2: Sep 16, 2026</span>
+    <span class="meta-item">Program: Brazil Tax Reform (BTR)</span>
+    <span class="meta-item">TPM: Prathibha Naik</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ═══════════════════════════════════════════════════
+       MEETING 1: OCTOBER 7, 2026
+  ════════════════════════════════════════════════════ -->
+  <div class="meeting-block">
+    <div class="meeting-header">
+      <h2>Brazil Tax Reform – Backlog Grooming</h2>
+      <span class="date-badge">October 7, 2026</span>
+    </div>
+    <div class="meeting-body">
+
+      <!-- TOPICS DISCUSSED -->
+      <div class="section">
+        <div class="section-title topics"><span class="dot"></span>Topics Discussed</div>
+        <div class="topics-grid">
+
+          <div class="topic-card">
+            <h4>Phase 1 Legal Disclaimer Changes</h4>
+            <p>Apoorav flagged that disclaimer language changed in Phase 1, requiring a separate user story. Syam agreed to split it from the current story for next sprint.</p>
+          </div>
+
+          <div class="topic-card">
+            <h4>Courtesy Code Validation & Term Limits</h4>
+            <p>Sanja was able to create duplicate courtesy codes with no system validation. Discussed whether to add a hard stop or warning banner when terms exceed 30 days. Under Brazil's new law, codes totaling >30 days become taxable. Syam to confirm with Ashlin on approach.</p>
+          </div>
+
+          <div class="topic-card">
+            <h4>Courtesy Code Approval Routing</h4>
+            <p>Warning banner on quote header page (not blocking). When AE submits, approval triggers for terms >30 days. Apoorav connecting with Gotham (approval team) to add condition to existing approval process. Business decides tax treatment case-by-case.</p>
+          </div>
+
+          <div class="topic-card">
+            <h4>Column Merging & UI Label Localization</h4>
+            <p>Mani clarified: Services and SKU columns are being merged (not Services/NBS). Renaming filter labels to "quantity" was proposed for space saving but rejected — same label used globally would cause cross-country impact for a non-mandatory change.</p>
+          </div>
+
+          <div class="topic-card">
+            <h4>Active Contract Tax Attribute Updates</h4>
+            <p>Active Brazil contracts need Legal Entity Type and Simple National Flag populated before Jan go-live. SPRO cannot support bulk updates. Vineela proposed a code spike: dummy update triggers contract sync, feature-flagged sepro callout populates null fields. SOX compliance check required. Spike to be completed in 2–3 days.</p>
+          </div>
+
+          <div class="topic-card">
+            <h4>Reduction Order Tax Spike</h4>
+            <p>Apoorav created a spike to analyze estimated tax calculation for reduction orders. Orders from Dec converted in Jan must use PIS/COFINS (old regime), not CBS/IBS (new regime). Need to verify current system calculation logic.</p>
+          </div>
+
+          <div class="topic-card">
+            <h4>Contributor Class UI Removal</h4>
+            <p>Business confirmation not yet received to remove Contributor Class field from UI. Apoorav to add question to user story and await confirmation before proceeding.</p>
+          </div>
+
+          <div class="topic-card">
+            <h4>NBS Code Data Mapping (O62 → Service Codes)</h4>
+            <p>NBS code data exists in O62 and needs mapping to service codes using format <code>service_NBScode</code>. Currently one-to-one, but future mappings may be one-to-many based on product SKUs. Code should handle one-to-many. Syam to create a backlog story for data update + QA execution.</p>
+          </div>
+
+          <div class="topic-card">
+            <h4>Credit Memo Tax & Oracle Coordination</h4>
+            <p>Unbounded credit memos are no longer required (cancelled). Transition credit memo tax: Oracle still needs time to define what data they need to identify prior PIS/COFINS invoices. Follow-up Oracle call scheduled for Oct 8.</p>
+          </div>
+
+          <div class="topic-card">
+            <h4>Mule Stories Dev Progress</h4>
+            <p>Development underway in current sprint. Code not yet deployed to QAX — blocked on Oracle readiness. Testing possible only in QAX once code is deployed. Nag confirmed no Oracle connectivity in Dev6. Gautam offered temporary QA6 deploy for unit testing if needed.</p>
+          </div>
+
+          <div class="topic-card">
+            <h4>QA6 Product Data Load — Reversion Required</h4>
+            <p>Pankaj had loaded product data to QA6 before code deployment, risking all Brazil-related orders/codes failing. Team agreed to revert immediately. Pankaj to revert and notify on channel.</p>
+          </div>
+
+          <div class="topic-card">
+            <h4>Sprint Capacity & CPQ Team Availability</h4>
+            <p>Vineela has spare capacity in next sprint. CPQ team needed for validation changes and payload adjustments. Gautam to share technical design document. Legal view stories from Phase 1 will add to next sprint load.</p>
+          </div>
+
+          <div class="topic-card">
+            <h4>Follow-Up Stories: CPQ Tax Attribute & Save Bug</h4>
+            <p>Gautam requested 2 new stories: (1) continuation of new tax attribute work; (2) fix component bug where saving existing text info erases already-populated tax attributes. Prathibha assigned Pankaj to create stories based on Gautam's write-up.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ACTION ITEMS -->
+      <div class="section">
+        <div class="section-title actions"><span class="dot"></span>Action Items</div>
+        <div class="action-list">
+
+          <div class="action-item">
+            <div class="checkbox"></div>
+            <div class="content">
+              <span class="owner-tag">Syam Mandava</span>
+              <p>Separate user story for Phase 1 legal views disclaimer changes for next sprint.</p>
+            </div>
+          </div>
+
+          <div class="action-item">
+            <div class="checkbox"></div>
+            <div class="content">
+              <span class="owner-tag">Syam Mandava</span>
+              <p>Confirm with Ashlin: implement hard stop or calculate taxes for recurring courtesy codes exceeding 30-day threshold.</p>
+            </div>
+          </div>
+
+          <div class="action-item">
+            <div class="checkbox"></div>
+            <div class="content">
+              <span class="owner-tag">Apoorav Rai</span>
+              <p>Connect with Gotham (approval team) to configure new approval condition for courtesy codes with term > 1. Update and close spike once details received.</p>
+            </div>
+          </div>
+
+          <div class="action-item">
+            <div class="checkbox"></div>
+            <div class="content">
+              <span class="owner-tag">Apoorav Rai</span>
+              <p>Add questions to courtesy code user story: validation logic placement and which quote configurator page to display the warning banner.</p>
+            </div>
+          </div>
+
+          <div class="action-item">
+            <div class="checkbox"></div>
+            <div class="content">
+              <span class="owner-tag">Apoorav Rai · Syam Mandava</span>
+              <p>Verify if filter label is consistent across all countries before deciding on renaming to "quantity."</p>
+            </div>
+          </div>
+
+          <div class="action-item">
+            <div class="checkbox"></div>
+            <div class="content">
+              <span class="owner-tag">Patangay Nagaraju</span>
+              <p>Review all Mule stories — confirm nothing is missing, flag questions or gaps.</p>
+            </div>
+          </div>
+
+          <div class="action-item">
+            <div class="checkbox"></div>
+            <div class="content">
+              <span class="owner-tag">Syam Mandava</span>
+              <p>Create backlog story for NBS code data update (O62 → service code mapping) including QA execution.</p>
+            </div>
+          </div>
+
+          <div class="action-item">
+            <div class="checkbox"></div>
+            <div class="content">
+              <span class="owner-tag">Prathibha Naik</span>
+              <p>Add comment to Oracle-related ticket: instruct Syam to verify required data details with Oracle and update story once confirmed.</p>
+            </div>
+          </div>
+
+          <div class="action-item">
+            <div class="checkbox"></div>
+            <div class="content">
+              <span class="owner-tag">Pankaj Singh Rawat</span>
+              <p>Revert product data load changes in QA6 environment immediately. Notify team on channel when complete.</p>
+            </div>
+          </div>
+
+          <div class="action-item">
+            <div class="checkbox"></div>
+            <div class="content">
+              <span class="owner-tag">Vineela Parsi</span>
+              <p>Update active contract spike story with: required checks, contract volume estimate, and technical approach details. Prioritize to complete within 2–3 days.</p>
+            </div>
+          </div>
+
+          <div class="action-item">
+            <div class="checkbox"></div>
+            <div class="content">
+              <span class="owner-tag">Prathibha Naik</span>
+              <p>Confirm timeline with Oracle team for their required system changes. Align internal project changes with Oracle's update schedule.</p>
+            </div>
+          </div>
+
+          <div class="action-item">
+            <div class="checkbox"></div>
+            <div class="content">
+              <span class="owner-tag">Prathibha Naik · Gautam Daga</span>
+              <p>Create 2 user stories based on Gautam's write-up: (1) new tax attribute continuation work; (2) fix save behavior that erases existing tax attributes.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DECISIONS -->
+      <div class="section">
+        <div class="section-title decisions"><span class="dot"></span>Decisions Made</div>
+        <div class="decision-list">
+
+          <div class="decision-item">
+            <span class="status-badge aligned">Aligned</span>
+            <div>
+              <h4>Do NOT rename filter labels to "quantity"</h4>
+              <p>The existing label is used globally across all countries. Renaming would require per-country conditional logic for a non-mandatory business request (space saving only). Team agreed to keep existing label.</p>
+            </div>
+          </div>
+
+          <div class="decision-item">
+            <span class="status-badge aligned">Aligned</span>
+            <div>
+              <h4>Cancel and drop the unbounded credit memos task</h4>
+              <p>No longer required by business. Task to be cancelled in backlog with appropriate comments.</p>
+            </div>
+          </div>
+
+          <div class="decision-item">
+            <span class="status-badge aligned">Aligned</span>
+            <div>
+              <h4>Revert QA6 product data load immediately</h4>
+              <p>Data was loaded to QA6 before code deployment, which would cause all Brazil-related orders and code to fail. Team aligned to revert immediately to prevent environment failures.</p>
+            </div>
+          </div>
+
+          <div class="decision-item">
+            <span class="status-badge aligned">Aligned</span>
+            <div>
+              <h4>Courtesy code approval: business decides case-by-case</h4>
+              <p>No universal system rule for approving courtesy codes exceeding 30 days. Whether to treat tax as a business expense is a business-level decision made per customer/situation by the approver. System only routes for approval — no automated enforcement.</p>
+            </div>
+          </div>
+
+          <div class="decision-item">
+            <span class="status-badge pending">Needs Discussion</span>
+            <div>
+              <h4>Transition credit memo tax requirements</h4>
+              <p>Oracle still needs time to define what data they require to identify prior PIS/COFINS invoices. No user story can be written until Oracle confirms their requirements. Follow-up call scheduled with Oracle.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /meeting-body -->
+  </div><!-- /meeting-block -->
+
+
+  <!-- ═══════════════════════════════════════════════════
+       MEETING 2: SEPTEMBER 16, 2026
+  ════════════════════════════════════════════════════ -->
+  <div class="meeting-block">
+    <div class="meeting-header">
+      <h2>Brazil Tax Reform – Backlog Grooming</h2>
+      <span class="date-badge">September 16, 2026</span>
+    </div>
+    <div class="meeting-body">
+      <div class="section">
+        <div class="placeholder">
+          <h3>Content pending — Google Workspace reconnect needed</h3>
+          <p>Please run <strong>/mcp</strong> to reconnect Google Workspace, then ask me to fetch the Sep 16 meeting notes (Doc ID: <code>1oRcylRvwAQCAiyGPhCmaZPmMl-kLojfTMG8dcoKzcuc</code>).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<footer>Brazil Tax Reform · Backlog Grooming Summary · Generated by Claude on October 13, 2026</footer>
+
+</body>
+</html>
