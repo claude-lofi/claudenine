@@ -153,7 +153,7 @@
 
 <header>
   <h1>Slack Dashboard — Prathibha Naik</h1>
-  <p>As of October 13, 2026 &nbsp;·&nbsp; New TPM onboarding for E-Invoicing · Active channels across Brazil, Germany &amp; E-Invoicing</p>
+  <p>As of October 14, 2026 &nbsp;·&nbsp; tpEntGov decision call today · Govt E-Invoicing TPM handover to Prathibha</p>
   <div class="channels">
     #brazil-tax-reform · #brazil-tax-reform-e2e-validation · #brazil-tax-reform-hypercare · #brazil-tax-reform-a10-discussion ·
     #rfm-quoting-team-brazil-tax · #brazil-fy27-rfm-det · #einvoice-germany-transmission-method ·
@@ -167,7 +167,7 @@
 
     <div class="tab-bar">
       <button class="tab-btn active-open" onclick="switchTab('open', this)">
-        Open Threads <span class="count">8</span>
+        Open Threads <span class="count">9</span>
       </button>
       <button class="tab-btn" onclick="switchTab('waiting', this)">
         Awaiting Response <span class="count">5</span>
@@ -176,16 +176,26 @@
         Pending Action On You <span class="count">5</span>
       </button>
       <button class="tab-btn" onclick="switchTab('risks', this)">
-        Risks &amp; Decisions <span class="count">8</span>
+        Risks &amp; Decisions <span class="count">9</span>
       </button>
       <button class="tab-btn" onclick="switchTab('updates', this)">
-        Milestones &amp; Updates <span class="count">7</span>
+        Milestones &amp; Updates <span class="count">8</span>
       </button>
     </div>
 
     <!-- ══════════ TAB: OPEN THREADS ══════════ -->
     <div class="tab-panel active" id="panel-open">
       <div class="grid-full">
+
+        <div class="card sev-p1">
+          <div class="card-channel">#brazil-tax-reform · TODAY</div>
+          <div class="card-title">CRITICAL BLOCKER: tpEntGov classification — no agreed process, decision call scheduled TODAY</div>
+          <div class="card-body">Syam Mandava posted urgent alert Oct 13 22:56 IST: no agreed, reliable process for determining the correct tpEntGov value for unresolved cases, and no confirmed ownership for supplying and validating it. Critical build dependency — if not resolved, the build will be delayed and the planned milestone missed. Decision call scheduled for Oct 14 (today). Sabeina Harris has a conflict but agreed to proceed; asked Syam to record. CC: Prathibha Naik.</div>
+          <span class="tag tag-red">P1 Blocker</span>
+          <span class="tag tag-orange">Decision Call: Today</span>
+          <span class="tag tag-purple">Brazil Tax Reform</span>
+          <div class="card-meta">Oct 13, 2026 · Syam Mandava, Sabeina Harris, Prathibha Naik</div>
+        </div>
 
         <div class="card sev-p1">
           <div class="card-channel">#det-einvoicing-rev-fin-collab · TODAY</div>
@@ -373,6 +383,16 @@
       <div class="grid">
 
         <div class="card sev-p1">
+          <div class="card-channel">Critical Risk · TODAY</div>
+          <div class="card-title">RISK: tpEntGov classification unresolved — build delay and milestone miss if no decision today</div>
+          <div class="card-body">No agreed process for determining the correct tpEntGov value for unresolved Brazilian tax entity government classification cases; no confirmed ownership for supplying and validating it. Decision call scheduled Oct 14 — Sabeina Harris has a conflict but agreed to proceed. If not resolved today, the build milestone is at risk. Prathibha Naik is CC'd as stakeholder.</div>
+          <span class="tag tag-red">Critical Risk</span>
+          <span class="tag tag-orange">Decision: Today</span>
+          <span class="tag tag-purple">Build Delay Risk</span>
+          <div class="card-meta">#brazil-tax-reform · Oct 13 · Syam Mandava, Sabeina Harris</div>
+        </div>
+
+        <div class="card sev-p1">
           <div class="card-channel">Production Risk · TODAY</div>
           <div class="card-title">RISK: EI layer returning null response causing duplicate invoice submissions</div>
           <div class="card-body">A production invoice was submitted twice because the EI layer returned null at first call, so the record stayed in "Ready" status and was picked up again by the scheduler. No deduplication guard in place for null responses. Root cause investigation ongoing. <strong>Decision needed:</strong> Should a null-response lock/retry guard be added to prevent re-pickup?</div>
@@ -452,6 +472,15 @@
       <div class="grid">
 
         <div class="card sev-green">
+          <div class="card-channel">#bt-revenue-govt-einvoicing · TODAY</div>
+          <div class="card-title">Prathibha officially introduced as TPM for Govt E-Invoicing to Ashlaisha Singh (Senior PM)</div>
+          <div class="card-body">Shreya Pai introduced Prathibha to Ashlaisha Singh (Senior PM, E-Invoicing) in a group DM at 00:04 IST Oct 14. Ashlaisha is Prathibha's go-to for product direction and priorities. Prathibha has shadowed transition sessions with Shreya and will shadow a couple more calls before formally taking over as TPM.</div>
+          <span class="tag tag-green">TPM Handover</span>
+          <span class="tag tag-blue">Govt E-Invoicing</span>
+          <div class="card-meta">Oct 14, 2026 · Shreya Pai, Ashlaisha Singh, Prathibha Naik</div>
+        </div>
+
+        <div class="card sev-green">
           <div class="card-channel">#det-einvoicing-rev-fin-collab · TODAY</div>
           <div class="card-title">FR E-Invoicing: EI layer endpoint changes deployed to PRODUCTION (Oct 13)</div>
           <div class="card-body">Rupp Santos deployed EI layer endpoint changes to production on Oct 13 as planned. Fixes: endpointCode = SIREN mismatch and handling of 503 intermittent Sovos errors. UAT was completed in apsqa6sb1 with 250 and 1,000 invoice batches successfully submitted.</div>
@@ -521,7 +550,7 @@
 </div><!-- /container -->
 
 <footer>
-  Auto-generated · October 13, 2026 · Channels: Brazil Tax Reform, Brazil FY27 RFM DET, Germany MTD/AR/Transmission, Government E-Invoicing, DET E-Invoicing Rev Fin
+  Auto-generated · October 14, 2026 · Channels: Brazil Tax Reform, Brazil FY27 RFM DET, Germany MTD/AR/Transmission, Government E-Invoicing, DET E-Invoicing Rev Fin
 </footer>
 
 <script>
