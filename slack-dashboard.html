@@ -153,7 +153,7 @@
 
 <header>
   <h1>Slack Dashboard — Prathibha Naik</h1>
-  <p>As of October 14, 2026 &nbsp;·&nbsp; tpEntGov decision call today · Govt E-Invoicing TPM handover to Prathibha</p>
+  <p>As of October 15, 2026 &nbsp;·&nbsp; tpEntGov decision held Oct 14 (discussions still in progress) · UAT test cases due Nov 2</p>
   <div class="channels">
     #brazil-tax-reform · #brazil-tax-reform-e2e-validation · #brazil-tax-reform-hypercare · #brazil-tax-reform-a10-discussion ·
     #rfm-quoting-team-brazil-tax · #brazil-fy27-rfm-det · #einvoice-germany-transmission-method ·
@@ -167,19 +167,19 @@
 
     <div class="tab-bar">
       <button class="tab-btn active-open" onclick="switchTab('open', this)">
-        Open Threads <span class="count">9</span>
+        Open Threads <span class="count">10</span>
       </button>
       <button class="tab-btn" onclick="switchTab('waiting', this)">
         Awaiting Response <span class="count">5</span>
       </button>
       <button class="tab-btn" onclick="switchTab('action', this)">
-        Pending Action On You <span class="count">5</span>
+        Pending Action On You <span class="count">6</span>
       </button>
       <button class="tab-btn" onclick="switchTab('risks', this)">
-        Risks &amp; Decisions <span class="count">9</span>
+        Risks &amp; Decisions <span class="count">10</span>
       </button>
       <button class="tab-btn" onclick="switchTab('updates', this)">
-        Milestones &amp; Updates <span class="count">8</span>
+        Milestones &amp; Updates <span class="count">10</span>
       </button>
     </div>
 
@@ -188,13 +188,13 @@
       <div class="grid-full">
 
         <div class="card sev-p1">
-          <div class="card-channel">#brazil-tax-reform · TODAY</div>
-          <div class="card-title">CRITICAL BLOCKER: tpEntGov classification — no agreed process, decision call scheduled TODAY</div>
-          <div class="card-body">Syam Mandava posted urgent alert Oct 13 22:56 IST: no agreed, reliable process for determining the correct tpEntGov value for unresolved cases, and no confirmed ownership for supplying and validating it. Critical build dependency — if not resolved, the build will be delayed and the planned milestone missed. Decision call scheduled for Oct 14 (today). Sabeina Harris has a conflict but agreed to proceed; asked Syam to record. CC: Prathibha Naik.</div>
+          <div class="card-channel">#brazil-tax-reform · Oct 14–15</div>
+          <div class="card-title">tpEntGov classification — decision call held Oct 14, outcome summary shared, discussions still in progress</div>
+          <div class="card-body">Syam Mandava posted the meeting summary Oct 14 23:29 IST following the decision call. Separately, Patangay Nagaraju flagged on Oct 14 20:55 IST: Oracle SP now requires three new fields (legalEntityType → iLegalNature, simplesNacionalFlag → iNatSimp, itpEnteGov). Asked whether to send NULL for itpEnteGov. Syam responded: "please hold off on tpEntGov — discussions still in progress." Contributor class mapping still outstanding: Syam pointed Patangay to BTRFM-73. Build remains blocked pending final tpEntGov classification decision.</div>
           <span class="tag tag-red">P1 Blocker</span>
-          <span class="tag tag-orange">Decision Call: Today</span>
+          <span class="tag tag-orange">Still In Progress</span>
           <span class="tag tag-purple">Brazil Tax Reform</span>
-          <div class="card-meta">Oct 13, 2026 · Syam Mandava, Sabeina Harris, Prathibha Naik</div>
+          <div class="card-meta">Oct 14, 2026 · Syam Mandava, Patangay Nagaraju, Prathibha Naik</div>
         </div>
 
         <div class="card sev-p1">
@@ -262,6 +262,15 @@
           <span class="tag tag-yellow">Awaiting Confirmation</span>
           <span class="tag tag-blue">Germany MTD Req #13</span>
           <div class="card-meta">Oct 8–9, 2026 · Ashlaisha Singh, Priscillia Stevenson, Ivy Relles, Shrey Soni, Peter Vizcaino</div>
+        </div>
+
+        <div class="card sev-p2">
+          <div class="card-channel">#brazil-tax-reform · TODAY</div>
+          <div class="card-title">UAT Prep: Everyone must add test cases with data to Year 2 Dataloader by Nov 2</div>
+          <div class="card-body">Sabeina Harris posted Oct 15 05:56 IST: UAT for Brazil Tax Reform is being prepared. Action required from all teams: add test cases with the data needed to run them to the shared Year 2 Dataloader file, and confirm any existing cases needing changes. Hard deadline: Monday, November 2nd. Sabeina shared the Google Sheets link in channel.</div>
+          <span class="tag tag-orange">Deadline: Nov 2</span>
+          <span class="tag tag-purple">Brazil UAT Prep</span>
+          <div class="card-meta">Oct 15, 2026 · Sabeina Harris (to Syam, Lakshmi, Casi, Amjad)</div>
         </div>
 
         <div class="card sev-info">
@@ -366,6 +375,15 @@
           <div class="card-meta">Oct 8, 2026 · Iffath Kokan, Vineela Parsi, Syam Mandava</div>
         </div>
 
+        <div class="card sev-p2">
+          <div class="card-channel">#brazil-tax-reform · TODAY</div>
+          <div class="card-title">ACTION: Add Brazil UAT test cases to Year 2 Dataloader by Nov 2</div>
+          <div class="card-body">Sabeina Harris requested all teams add their test cases (with test data) to the shared Year 2 Dataloader Google Sheet. As TPM for Brazil FY27, Prathibha should coordinate with Vineela, Apoorav, and Sandhiya to identify which Revenue/RFM scenarios need to be covered, and ensure they are submitted before the Nov 2 cutoff.</div>
+          <span class="tag tag-red">Due: Nov 2</span>
+          <span class="tag tag-purple">Brazil UAT</span>
+          <div class="card-meta">Oct 15, 2026 · Sabeina Harris → all teams incl. Prathibha Naik</div>
+        </div>
+
         <div class="card sev-action">
           <div class="card-channel">DM with Pradeep · TODAY</div>
           <div class="card-title">Follow up on E-Invoicing dependencies tracker (Quip)</div>
@@ -383,13 +401,13 @@
       <div class="grid">
 
         <div class="card sev-p1">
-          <div class="card-channel">Critical Risk · TODAY</div>
-          <div class="card-title">RISK: tpEntGov classification unresolved — build delay and milestone miss if no decision today</div>
-          <div class="card-body">No agreed process for determining the correct tpEntGov value for unresolved Brazilian tax entity government classification cases; no confirmed ownership for supplying and validating it. Decision call scheduled Oct 14 — Sabeina Harris has a conflict but agreed to proceed. If not resolved today, the build milestone is at risk. Prathibha Naik is CC'd as stakeholder.</div>
+          <div class="card-channel">Critical Risk · Oct 15</div>
+          <div class="card-title">RISK: tpEntGov classification — decision call held Oct 14 but outcome NOT finalized; Oracle integration held</div>
+          <div class="card-body">Decision call ran Oct 14 and Syam posted a meeting summary. However, as of Oct 14 evening, Syam told Patangay Nagaraju to "hold off on tpEntGov — discussions still in progress." Oracle Mule integration has new fields (iLegalNature, iNatSimp) ready but itpEnteGov is blocked pending classification decision. Build risk continues until tpEntGov classification rules, ownership, and exception handling are finalized. Contributor class lookup (BTRFM-73) also outstanding.</div>
           <span class="tag tag-red">Critical Risk</span>
-          <span class="tag tag-orange">Decision: Today</span>
-          <span class="tag tag-purple">Build Delay Risk</span>
-          <div class="card-meta">#brazil-tax-reform · Oct 13 · Syam Mandava, Sabeina Harris</div>
+          <span class="tag tag-orange">Still In Progress</span>
+          <span class="tag tag-purple">Build Blocked</span>
+          <div class="card-meta">#brazil-tax-reform · Oct 14–15 · Syam Mandava, Patangay Nagaraju</div>
         </div>
 
         <div class="card sev-p1">
@@ -464,6 +482,15 @@
           <div class="card-meta">#ar-germany-requirement-finalization · Fatema, Ashlaisha, Priscillia, Shrey Soni</div>
         </div>
 
+        <div class="card sev-p2">
+          <div class="card-channel">Process Risk · Oct 15</div>
+          <div class="card-title">RISK: Courtesy Quote 30-day validity — approval routing process for exceptions not yet defined</div>
+          <div class="card-body">Peter Vizcaino raised a Courtesy Quote that's 56 days old (past the 30-day validity window). Syam confirmed the 30-day rule is a warning, not a hard block — the quote can still be sent — but it will require going through the approval routing process to get an exception. That routing process is not yet defined or documented for Brazil tax-related quotes. If teams start hitting this in volume, there is a risk of delays in customer-facing quote delivery.</div>
+          <span class="tag tag-orange">Process Gap</span>
+          <span class="tag tag-purple">Approval Routing TBD</span>
+          <div class="card-meta">#rfm-quoting-team-brazil-tax · Oct 15 · Peter Vizcaino, Syam Mandava</div>
+        </div>
+
       </div>
     </div>
 
@@ -534,6 +561,33 @@
           <div class="card-meta">Sep 25 – Oct 6, 2026 · Fatema Tuz Zohra, Ashlaisha Singh, Priscillia Stevenson</div>
         </div>
 
+        <div class="card sev-green">
+          <div class="card-channel">#brazil-tax-reform · Oct 14</div>
+          <div class="card-title">tpEntGov Decision Call held Oct 14 — Syam posted meeting summary; Oracle integration for itpEnteGov still held</div>
+          <div class="card-body">Syam Mandava posted a detailed meeting summary on Oct 14 at 23:29 IST. The decision call covered tpEntGov classification rules for Brazilian government entities. However, in a follow-up message the same evening, Syam told Patangay Nagaraju to "hold off on tpEntGov — discussions still in progress," indicating no final consensus was reached. The Oracle Mule integration has new fields (iLegalNature, iNatSimp) ready but itpEnteGov remains blocked. BTRFM-73 (contributor class lookup) also outstanding.</div>
+          <span class="tag tag-green">Meeting Summary Shared</span>
+          <span class="tag tag-orange">Decision Still In Progress</span>
+          <div class="card-meta">#brazil-tax-reform · Oct 14 · Syam Mandava, Patangay Nagaraju</div>
+        </div>
+
+        <div class="card sev-info">
+          <div class="card-channel">#brazil-tax-reform · Oct 15</div>
+          <div class="card-title">Deferred/Out-of-Scope Requirements Register created by Iffath Kokan</div>
+          <div class="card-body">Iffath Kokan posted at Oct 15 01:12 IST announcing creation of a Deferred/Out-of-Scope Requirements Register for the Brazil Tax Reform project. This document is intended to track requirements that have been explicitly deferred or determined to be out of scope, ensuring they are not lost and can be revisited in future releases. No link shared in the Slack message at time of capture.</div>
+          <span class="tag tag-green">New Artifact</span>
+          <span class="tag tag-purple">Requirements Tracking</span>
+          <div class="card-meta">#brazil-tax-reform · Oct 15 · Iffath Kokan</div>
+        </div>
+
+        <div class="card sev-green">
+          <div class="card-channel">#rfm-quoting-team-brazil-tax · Oct 14</div>
+          <div class="card-title">CPQ TRN bugs BTRFM-87 and CPQX confirmed for Nov 12 release by Veera Maddukuri</div>
+          <div class="card-body">Veera Maddukuri confirmed at Oct 14 20:28 IST that both outstanding CPQ TRN bugs — BTRFM-87 and the CPQX item — are targeted for the Nov 12 release. This resolves ambiguity about whether they would slip to a later release. The Tax Information card bug (saving erases hidden tax fields) is also actively being investigated with DJ Banerjee.</div>
+          <span class="tag tag-green">Release Confirmed</span>
+          <span class="tag tag-purple">Nov 12 Target</span>
+          <div class="card-meta">#rfm-quoting-team-brazil-tax · Oct 14 · Veera Maddukuri</div>
+        </div>
+
         <div class="card sev-info">
           <div class="card-channel">#brazil-tax-reform-a10-discussion · Sep 10</div>
           <div class="card-title">Brazil A10 Mapping Session: CBS/IBS Oracle configuration and split payment scoped</div>
@@ -550,7 +604,7 @@
 </div><!-- /container -->
 
 <footer>
-  Auto-generated · October 14, 2026 · Channels: Brazil Tax Reform, Brazil FY27 RFM DET, Germany MTD/AR/Transmission, Government E-Invoicing, DET E-Invoicing Rev Fin
+  Auto-generated · October 15, 2026 · Channels: Brazil Tax Reform, Brazil FY27 RFM DET, Germany MTD/AR/Transmission, Government E-Invoicing, DET E-Invoicing Rev Fin
 </footer>
 
 <script>
