@@ -3,353 +3,266 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brazil Tax Reform — Backlog Grooming Summary</title>
+<title>Brazil Backlog Grooming Summary — October 22, 2026</title>
 <style>
-  :root {
-    --purple-dark: #3d1f6e;
-    --purple-mid: #5c2d9e;
-    --purple-light: #7c4dbf;
-    --bg: #0e0b1a;
-    --bg-card: #1a1530;
-    --bg-card2: #201b3a;
-    --text-primary: #e8e0ff;
-    --text-secondary: #b0a8d0;
-    --border: #2e2850;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text-primary); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; line-height: 1.5; }
-
-  header {
-    background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple-mid) 60%, var(--purple-light) 100%);
-    padding: 28px 32px 22px;
-  }
-  header h1 { font-size: 20px; font-weight: 700; letter-spacing: 0.3px; }
-  header p { color: #d8c8ff; font-size: 12px; margin-top: 6px; }
-
-  .container { max-width: 1100px; margin: 0 auto; padding: 28px 20px; }
-
-  .meeting-block { margin-bottom: 48px; }
-  .meeting-header {
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 20px; padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
-  }
-  .meeting-date-badge {
-    background: linear-gradient(135deg, var(--purple-mid), var(--purple-light));
-    color: #fff; font-size: 11px; font-weight: 700;
-    padding: 4px 12px; border-radius: 20px; white-space: nowrap;
-  }
-  .meeting-title { font-size: 16px; font-weight: 700; color: var(--text-primary); }
-  .meeting-attendees { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
-
-  .section { margin-bottom: 28px; }
-  .section-label {
-    font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
-    margin-bottom: 12px; padding: 4px 10px; border-radius: 4px; display: inline-block;
-  }
-  .section-label.topics { background: #0d2e1a; color: #5be898; }
-  .section-label.actions { background: #1e0e35; color: #b97aff; }
-  .section-label.decisions { background: #0d1e38; color: #5ab0ff; }
-
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-  .grid-wide { display: grid; grid-template-columns: 1fr; gap: 10px; }
-
-  .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
-  .card.topic { border-left: 3px solid #2a8f55; }
-  .card.action { border-left: 3px solid #7c4dbf; }
-  .card.decision-aligned { border-left: 3px solid #2a6bbf; }
-  .card.decision-open { border-left: 3px solid #c07a20; }
-
-  .card-title { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; }
-  .card-body { font-size: 12px; color: var(--text-secondary); line-height: 1.55; }
-
-  .owner-badge {
-    display: inline-block; background: #2a1550; color: #c096ff;
-    font-size: 10px; font-weight: 600; padding: 2px 8px;
-    border-radius: 10px; margin-top: 7px; margin-right: 4px;
-  }
-  .verdict-badge {
-    display: inline-block; font-size: 10px; font-weight: 700;
-    padding: 2px 8px; border-radius: 10px; margin-top: 7px;
-  }
-  .verdict-badge.aligned { background: #0d2e3a; color: #5ab0ff; }
-  .verdict-badge.open { background: #2e1c05; color: #f0a030; }
-
-  footer { text-align: center; color: #aaa8c0; font-size: 11px; padding: 32px 20px 20px; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f3f4f6;color:#111827;font-size:14px}
+.header{background:linear-gradient(135deg,#3d1f6e 0%,#5c2d9e 50%,#4c1d95 100%);color:#fff;padding:28px 32px 24px}
+.header h1{font-size:22px;font-weight:700;letter-spacing:-0.3px}
+.header p{margin-top:6px;opacity:.8;font-size:13px}
+.body{padding:24px 28px;display:flex;flex-direction:column;gap:32px}
+.meeting-block{display:flex;flex-direction:column;gap:20px}
+.meeting-title{font-size:16px;font-weight:700;color:#1f2937;padding:14px 18px;background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.08);border-left:5px solid #5c2d9e;display:flex;align-items:center;gap:10px}
+.meeting-date-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:#f3e8ff;color:#5c2d9e;letter-spacing:.04em}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6b7280}
+.section-date-badge{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:12px}
+.section-date-badge.green{background:#dcfce7;color:#166534}
+.section-date-badge.purple{background:#f3e8ff;color:#6b21a8}
+.section-date-badge.blue{background:#dbeafe;color:#1e40af}
+.card{background:#fff;border-radius:8px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.08);border-left:4px solid #e5e7eb;margin-bottom:10px}
+.card:last-child{margin-bottom:0}
+.card.green{border-left-color:#16a34a}
+.card.purple{border-left-color:#7c3aed}
+.card.blue{border-left-color:#2563eb}
+.card-title{font-weight:600;font-size:13px;margin-bottom:5px;line-height:1.4}
+.card-body{font-size:12.5px;color:#374151;line-height:1.6}
+.badge{display:inline-block;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:4px;margin-right:5px;margin-bottom:4px;letter-spacing:.03em;vertical-align:middle}
+.badge.owner{background:#f3e8ff;color:#6b21a8}
+.badge.aligned{background:#dcfce7;color:#166534}
+.badge.discuss{background:#fef9c3;color:#854d0e}
+.badge.green{background:#dcfce7;color:#166534}
+.badge.purple{background:#f3e8ff;color:#6b21a8}
+.badge.blue{background:#dbeafe;color:#1e40af}
+.badge.orange{background:#ffedd5;color:#9a3412}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+@media(max-width:900px){.grid-3{grid-template-columns:1fr}}
+.divider{border:none;border-top:2px dashed #e5e7eb;margin:4px 0}
 </style>
 </head>
 <body>
 
-<header>
+<div class="header">
   <h1>Brazil Tax Reform — Backlog Grooming Summary</h1>
-  <p>Generated October 15, 2026 &nbsp;·&nbsp; Latest 2 meetings &nbsp;·&nbsp; Gemini AI Notes</p>
-</header>
+  <p>Latest 2 Sessions &nbsp;·&nbsp; Brazil FY27 RFM &nbsp;·&nbsp; Generated October 22, 2026</p>
+</div>
 
-<div class="container">
+<div class="body">
 
-  <!-- ══════════ MEETING 1: Oct 14 ══════════ -->
-  <div class="meeting-block">
-    <div class="meeting-header">
-      <span class="meeting-date-badge">Oct 14, 2026</span>
-      <div>
-        <div class="meeting-title">Backlog Grooming — Sprint Planning &amp; Tax Validations</div>
-        <div class="meeting-attendees">Sandhiya Arulpragash · Apoorav Rai · Pratap Singh · Syam Mandava · Vineela Parsi · Pankaj Singh Rawat · Patangay Nagaraju · Mani Jain · Kishore Reddy Kuppuru · Tushar Shende · Neha Goel · Jayasurya Gopinathan · Sagnik Banik · Prathibha Naik · Gautam Daga · Ashutosh Singh · Sucharita Das · Sandeep Mandavilly · Vaibhav Bhagwat · Mahima Singh · Karthik Gudivada</div>
-      </div>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- MEETING 1: OCT 14, 2026                                -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="meeting-block">
+
+  <div class="meeting-title">
+    <span class="meeting-date-badge">Oct 14, 2026</span>
+    Grooming Connect — Sprint 4 Kickoff &amp; QA6 Readiness
+  </div>
+
+  <!-- TOPICS DISCUSSED — GREEN -->
+  <div>
+    <div class="section-header">
+      <span class="section-label">Topics Discussed</span>
+      <span class="section-date-badge green">Oct 14</span>
     </div>
+    <div class="grid-3">
 
-    <div class="section">
-      <div class="section-label topics">Topics Discussed</div>
-      <div class="grid">
-        <div class="card topic">
-          <div class="card-title">NQE Approval Process — 5,000+ Codes Stuck</div>
-          <div class="card-body">Codes not moving into approval after NQE go-live; auto-approval not triggering. CPQ team migrating approval flow from Salesforce Flow Orchestration to Apex + AWS. Syam exploring whether business is willing to skip approval or validation entirely. Will talk to Ashton to confirm.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">Courtesy Quote 30-Day Term Validation Logic</div>
-          <div class="card-body">Warning message fires after 30 days. Calculation discrepancy in months with 31 days vs. calendar month end dates. Syam confirmed limit must be strictly 30 days; will check with business on months with 31 days. Consecutive usage = &gt;30 days in one instance, not separate quotes across months.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">Brazil ATV / TRN Validation Bugs (SE Pro Integration)</div>
-          <div class="card-body">TRN validation fires after callout but blocks save — actual data not persisted. Bypass validation shows UI success but retains old backend data. Saving tax info without changing TRN overrides legal entity attributes. Team needs functional clarification from business + CPQ on bypass and save override behaviors.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">Legal Entity &amp; Simple National Flag on Invoices</div>
-          <div class="card-body">Confirmed: these attributes are required on invoices and contracts, but NOT on credit memos. Values flow automatically from tax information to invoices/credit memos as part of as-is process.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">QA6 Environment Testing &amp; Code Merging</div>
-          <div class="card-body">All changes deployed to QA6; data loads for tax metrics and product data complete. Sandhiya found table overflow bug on order legal view. Gautam's happy path code (SE Pro callout + tax info) to be merged; open issues logged as separate story. Syam planning initial business demo next week.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">Date Logic on Quote Review vs. Legal View Page</div>
-          <div class="card-body">Date logic on legal view shows as-is columns (pre-Jan 1) vs. to-be CBS/IBS/ISS columns (post-Jan 1). Whether quote review needs same logic depends on whether business restarts inflight quotes. Syam to confirm "starting over" definition with business.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">SE Pro Credentials &amp; Reduction Order User Story</div>
-          <div class="card-body">Apoorav needs client ID + client secret for SE Pro endpoint (required for Nagaraju's Mule work). Syam suggested Mahima Singh should have these. Reduction order user story has Ashutosh + Tushar comments — Apoorav to follow up.</div>
-        </div>
+      <div class="card green">
+        <div class="card-title">Sprint 4 Kickoff — 28 Issues, 60 Points</div>
+        <div class="card-body">Sprint 4 (Oct 12–26) officially kicked off with 28 issues totalling 60 story points. Stories reviewed and assigned to developers during grooming. Oct 30 is the hard build deadline (code-freeze).</div>
       </div>
-    </div>
 
-    <div class="section">
-      <div class="section-label actions">Action Items with Owners</div>
-      <div class="grid-wide">
-        <div class="card action">
-          <div class="card-title">Consult Ashton — explore skipping NQE approval or validation entirely</div>
-          <span class="owner-badge">Syam Mandava</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Inquire CPQ — permanent solution for NQE approval process failures</div>
-          <span class="owner-badge">Syam Mandava</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Clarify 30-day selling logic — define business requirements for term + courtesy code behavior (incl. months with 31 days)</div>
-          <span class="owner-badge">Syam Mandava</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Resolve tax registration — engage RCO for functional clarification on bypass validation and save override behaviors</div>
-          <span class="owner-badge">Syam Mandava</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Clarify "Start Over" — confirm with business whether restarting a quote = new quote or reuse existing record</div>
-          <span class="owner-badge">Syam Mandava</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Document happy path — update user story with precise steps for tax SE Pro call functionality</div>
-          <span class="owner-badge">Apoorav Rai</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Obtain SE Pro credentials — reach out to Mahima Singh for endpoint client ID + client secret</div>
-          <span class="owner-badge">Apoorav Rai</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Share SE Pro credentials with Nagaraju</div>
-          <span class="owner-badge">Apoorav Rai</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Clarify reduction order user story — contact Syam; review Ashutosh + Tushar comments</div>
-          <span class="owner-badge">Apoorav Rai</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Log table overflow bug on order legal view in Linear</div>
-          <span class="owner-badge">Sandhiya Arulpragash</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Log open TRN/save-override issues from Gautam's code as a separate story; track business responses</div>
-          <span class="owner-badge">Prathibha Naik</span>
-        </div>
+      <div class="card green">
+        <div class="card-title">QA6 Readiness as Week's Priority</div>
+        <div class="card-body">Brazil Sprint 3 changes deployed to QA6 sandbox on Oct 14. QA6 readiness confirmed as the team's top priority for the week. Feature flag can now be enabled for targeted validation. Prerequisite for scheduling Org62 demo.</div>
       </div>
-    </div>
 
-    <div class="section">
-      <div class="section-label decisions">Decisions Made</div>
-      <div class="grid">
-        <div class="card decision-aligned">
-          <div class="card-title">Warning message = strict 30-day limit</div>
-          <div class="card-body">Term validation must use a hard 30-day limit, not variable calendar month end dates.</div>
-          <span class="verdict-badge aligned">Aligned</span>
-        </div>
-        <div class="card decision-aligned">
-          <div class="card-title">Legal entity + simple national flag: invoices &amp; contracts YES, credit memos NO</div>
-          <div class="card-body">Confirmed — these attributes required on both invoices and contracts, explicitly excluded from credit memos.</div>
-          <span class="verdict-badge aligned">Aligned</span>
-        </div>
-        <div class="card decision-aligned">
-          <div class="card-title">Merge Gautam's happy path code; log open issues separately</div>
-          <div class="card-body">Merge completed SE Pro callout + tax info happy path code into current story. Create a new story for unresolved technical issues (TRN validation gap, save override bug).</div>
-          <span class="verdict-badge aligned">Aligned</span>
-        </div>
-        <div class="card decision-open">
-          <div class="card-title">Date logic on quote review page — deferred</div>
-          <div class="card-body">Finalizing whether date logic is required on the quote review page is deferred pending business confirmation on in-flight quote handling approach.</div>
-          <span class="verdict-badge open">Needs Further Discussion</span>
-        </div>
+      <div class="card green">
+        <div class="card-title">tpEnteGov Scope — 5 Codes Still Open</div>
+        <div class="card-body">At time of grooming, 5 legal nature codes (119-8, 121-0, 122-8, 201-1, 203-8) were still under review by Deloitte. Business decision on whether to block/validate or treat as out-of-scope was pending. Team discussed fast-follow delivery option if Deloitte confirms not required.</div>
       </div>
+
+      <div class="card green">
+        <div class="card-title">CPQ / NQE Approval Process Dependency</div>
+        <div class="card-body">NQE team's approval process introduces a dependency on Brazil go-live. Syam to follow up on whether approval can be fast-followed post go-live vs. blocking. CPQ change scope (Standard → Custom AWS-based approval) was not yet raised at this point.</div>
+      </div>
+
+      <div class="card green">
+        <div class="card-title">Contributor Class Removal Analysis</div>
+        <div class="card-body">Backlog story for removing Contributor class requires LOE analysis and impact assessment before team can commit. Ashutosh to document the analysis. Tied to deciding if Mule-side refactoring is in scope for Sprint 4 or deferred.</div>
+      </div>
+
+      <div class="card green">
+        <div class="card-title">BTRFM-102 — OLV Gross Amount Column Trim</div>
+        <div class="card-body">Sagnik/Apoorav identified OLV Gross Amount column being trimmed incorrectly in the output. Flagged as a bug needing fix before the upcoming Tuesday demo. Classified as high priority due to visible data impact in demo environment.</div>
+      </div>
+
     </div>
   </div>
 
-  <!-- ══════════ MEETING 2: Oct 7 ══════════ -->
-  <div class="meeting-block">
-    <div class="meeting-header">
-      <span class="meeting-date-badge">Oct 7, 2026</span>
-      <div>
-        <div class="meeting-title">Backlog Grooming — Legal Views, Active Contracts &amp; Sprint Capacity</div>
-        <div class="meeting-attendees">Sandhiya Arulpragash · Apoorav Rai · Sandeep Mandavilly · Pratap Singh · Syam Mandava · Vineela Parsi · Pankaj Singh Rawat · Patangay Nagaraju · Mani Jain · Tushar Shende · Neha Goel · Jayasurya Gopinathan · Sagnik Banik · Prathibha Naik · Karthik Gudivada · Gautam Daga · Ashutosh Singh · Sucharita Das · Vaibhav Bhagwat · Mahima Singh · Kishore Reddy Kuppuru</div>
-      </div>
+  <!-- ACTION ITEMS — PURPLE -->
+  <div>
+    <div class="section-header">
+      <span class="section-label">Action Items with Owners</span>
+      <span class="section-date-badge purple">Oct 14</span>
     </div>
 
-    <div class="section">
-      <div class="section-label topics">Topics Discussed</div>
-      <div class="grid">
-        <div class="card topic">
-          <div class="card-title">Phase 1 Legal Disclaimer — Separate User Story for Next Sprint</div>
-          <div class="card-body">Disclaimer language changed in phase 1. Current user story already complete. Apoorav requested a new user story for next sprint to cover the disclaimer language updates. Syam agreed.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">Courtesy Code Validation Gap — Duplicate Codes Allowed</div>
-          <div class="card-body">No current system validation prevents duplicate courtesy codes for same product/customer. Syam to confirm with Ashlin: hard stop or calculate taxes when a second code is created. If second code = 15 days and first was 30 days, total = 45 days — Brazil law requires taxing the additional 15 days.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">Courtesy Code Approval Routing (&gt;30 Days)</div>
-          <div class="card-body">Warning banner on quote header page (not a hard stop). On quote submission, approval process triggers if courtesy code term &gt; 1 month. Apoorav adding condition to existing approval process. Business decides per scenario whether to approve or treat tax as an expense.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">Column Merging — Services + SKU; Filter Label NOT Renamed</div>
-          <div class="card-body">Mani clarified: services and SKU columns are merging (not services + NBS). Renaming filter labels to "quantity" rejected — would impact all countries globally, not a mandatory requirement.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">Active Contract Update Spike — Legal Entity Type &amp; Simple National Flag</div>
-          <div class="card-body">SPRO cannot do bulk updates; external data team unreliable. Vineela proposed: dummy update on active contracts → triggers Oracle sync → feature-flagged SE Pro call if tax fields are null → stamp the two attributes. SOX compliance concern for activated contract modifications. Spike to be prioritized in 2–3 days. Must get production volume before scoping.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">Reduction Order Tax Spike — PIS/COFINS vs CBS/IBS</div>
-          <div class="card-body">Reduction orders created in January from December originals must calculate taxes using PIS/COFINS (old regime), not CBS/IBS. Spike created to analyze current estimated tax calculation flow for reduction orders.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">Credit Memo Tax — Unbounded CMs Cancelled; Transition CM Needs Oracle Input</div>
-          <div class="card-body">Unbounded credit memos task cancelled — no longer required. Transition credit memos: Oracle still determining what data they need to identify previous PIS/COFINS invoices. Syam follow-up call with Oracle scheduled.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">QA6 Data Load Reverted — Premature Load Before Code Deploy</div>
-          <div class="card-body">Pankaj had loaded product data into QA6 before code deployment — would cause all Brazil-related orders to fail. Vineela and Apoorav flagged immediately. Pankaj reverted the data load after the call and notified the team channel.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">NBS Code Mapping — service_NBS Format; One-to-Many Future</div>
-          <div class="card-body">Format confirmed: service_NBS code. Currently one-to-one in data from O62. Future: single service code can map to multiple NBS codes based on product SKU. Code must be written to handle one-to-many. Syam to create backlog story for NBS data update and QA execution.</div>
-        </div>
-        <div class="card topic">
-          <div class="card-title">Sprint Capacity &amp; CPQ Team Coordination</div>
-          <div class="card-body">CPQ team availability needed next sprint for validation changes + payload adjustments. Gautam to share Technical Design Document. Mule dev underway; QAX deployment blocked on Oracle store procedure signatures. Patangay to align deployment with Oracle readiness.</div>
-        </div>
-      </div>
+    <div class="card purple">
+      <div class="card-title"><span class="badge owner">Apoorav</span> Prioritize QA6 Over Spike Stories</div>
+      <div class="card-body">Deprioritize all spike and investigative stories for the week. Focus dev bandwidth entirely on QA6 validation and any blocking bugs. Spike work to resume once QA6 sign-off is obtained.</div>
     </div>
 
-    <div class="section">
-      <div class="section-label actions">Action Items with Owners</div>
-      <div class="grid-wide">
-        <div class="card action">
-          <div class="card-title">Separate legal views phase 1 user story for next sprint</div>
-          <span class="owner-badge">Syam Mandava</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Confirm courtesy code policy with Ashlin — hard stop or tax calculation for duplicate codes totaling &gt;30 days</div>
-          <span class="owner-badge">Syam Mandava</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Create NBS code data update backlog story</div>
-          <span class="owner-badge">Syam Mandava</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Connect with Gotham — configure approval condition for courtesy codes &gt;30 days; close spike ticket</div>
-          <span class="owner-badge">Apoorav Rai</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Verify filter labels across all countries before deciding on "quantity" rename</div>
-          <span class="owner-badge">Apoorav Rai &amp; Syam</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Add courtesy code validation questions (term definition, warning message page) to user story</div>
-          <span class="owner-badge">Apoorav Rai</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Review all Mule stories — confirm nothing missing, provide questions</div>
-          <span class="owner-badge">Patangay Nagaraju</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Update active contract spike story — add required checks, contract volume estimate, and approach context from Robert call recording</div>
-          <span class="owner-badge">Vineela Parsi</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Revert QA6 product data load; update comments and notify team channel</div>
-          <span class="owner-badge">Pankaj Singh Rawat</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Add comment to Oracle-related ticket — instruct Syam to verify details with Oracle</div>
-          <span class="owner-badge">Prathibha Naik</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Verify Oracle readiness timeline; align internal changes with Oracle update schedule</div>
-          <span class="owner-badge">Prathibha Naik</span>
-        </div>
-        <div class="card action">
-          <div class="card-title">Create 2 user stories from Gautam's write-up: (1) continuation of existing attribute work; (2) prevent tax info erasure on save</div>
-          <span class="owner-badge">Prathibha Naik</span><span class="owner-badge">Gautam Daga</span>
-        </div>
-      </div>
+    <div class="card purple">
+      <div class="card-title"><span class="badge owner">Sandhiya</span> Add Targeted Use Cases to QA Story by Oct 19</div>
+      <div class="card-body">Include targeted test scenarios for Sprint 3 changes in the QA story. Due Oct 19 to allow enough time for QA6 execution before the Org62 demo is scheduled. Finance system scenarios sheet to be ready in parallel.</div>
     </div>
 
-    <div class="section">
-      <div class="section-label decisions">Decisions Made</div>
-      <div class="grid">
-        <div class="card decision-aligned">
-          <div class="card-title">Filter labels NOT renamed to "quantity"</div>
-          <div class="card-body">Changing labels would affect all countries globally. Not a mandatory requirement — extra country-check work not justified.</div>
-          <span class="verdict-badge aligned">Aligned</span>
-        </div>
-        <div class="card decision-aligned">
-          <div class="card-title">Unbounded credit memos task cancelled</div>
-          <div class="card-body">This task is no longer required. Syam confirmed and agreed to cancel.</div>
-          <span class="verdict-badge aligned">Aligned</span>
-        </div>
-        <div class="card decision-aligned">
-          <div class="card-title">Revert premature QA6 product data load immediately</div>
-          <div class="card-body">Loading product data before code deployment causes all Brazil-related orders to fail in QA. Pankaj to revert and notify team channel.</div>
-          <span class="verdict-badge aligned">Aligned</span>
-        </div>
-        <div class="card decision-open">
-          <div class="card-title">Transition credit memo tax — Oracle input still pending</div>
-          <div class="card-body">Oracle still determining what data they need to identify previous PIS/COFINS invoices. Cannot finalize approach until Oracle confirms requirements.</div>
-          <span class="verdict-badge open">Needs Further Discussion</span>
-        </div>
-      </div>
+    <div class="card purple">
+      <div class="card-title"><span class="badge owner">Syam</span> Follow Up with NQE Team on Approval Process</div>
+      <div class="card-body">Engage NQE team to determine if approval process dependency can be treated as a fast-follow post go-live. Communicate outcome to Aislinn and document decision for RAIDD tracking. If delayed beyond go-live window, escalate to Iffath.</div>
     </div>
+
+    <div class="card purple">
+      <div class="card-title"><span class="badge owner">Ashutosh</span> Complete Contributor Class Removal Analysis Doc</div>
+      <div class="card-body">Document full impact analysis of contributor class removal from Mule-side code. LOE assessment required before team can accept or defer the story. Share with Syam/Prathibha before next grooming for a decision on scope.</div>
+    </div>
+
+    <div class="card purple">
+      <div class="card-title"><span class="badge owner">Sagnik / Apoorav</span> Fix BTRFM-102 Before Tuesday Demo</div>
+      <div class="card-body">OLV Gross Amount column trim issue in BTRFM-102 must be resolved before the Tuesday Org62 demo. Sagnik leads fix; Apoorav to review and merge. Hard deadline: Monday EOD to allow QA verification before demo.</div>
+    </div>
+
+  </div>
+
+  <!-- DECISIONS — BLUE -->
+  <div>
+    <div class="section-header">
+      <span class="section-label">Decisions Made</span>
+      <span class="section-date-badge blue">Oct 14</span>
+    </div>
+
+    <div class="card blue">
+      <div class="card-title"><span class="badge aligned">Aligned</span> QA6 Readiness Is Gate for Demo Scheduling</div>
+      <div class="card-body">Team unanimously agreed that Org62 demo cannot be scheduled until QA6 environment is validated and feature flag confirmed working. No exceptions. Demo date to be set by Syam once QA6 sign-off obtained.</div>
+    </div>
+
+    <div class="card blue">
+      <div class="card-title"><span class="badge aligned">Aligned</span> NQE Approval — Fast-Follow If Delayed</div>
+      <div class="card-body">If NQE approval process cannot be resolved in time for Jan 1 go-live, the team agreed to treat it as a fast-follow post go-live. Syam to communicate this decision to Aislinn. Decision documented and accepted at team level pending Aislinn confirmation.</div>
+    </div>
+
+    <div class="card blue">
+      <div class="card-title"><span class="badge aligned">Aligned</span> Sprint 4 Stories Assigned to Developers</div>
+      <div class="card-body">All 28 Sprint 4 stories reviewed and distributed to developers during grooming. Assignments locked for the sprint. Mid-sprint re-prioritization requires Syam/Prathibha sign-off. QA6 stories take absolute precedence over spike work.</div>
+    </div>
+
   </div>
 
 </div>
 
-<footer>
-  Auto-generated · October 15, 2026 · Brazil Tax Reform - Backlog Grooming (Oct 14 &amp; Oct 7, 2026) · Gemini AI Notes
-</footer>
+<hr class="divider">
 
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- MEETING 2: SEP 30, 2026                                -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="meeting-block">
+
+  <div class="meeting-title">
+    <span class="meeting-date-badge">Sep 30, 2026</span>
+    Grooming Connect — Sprint 9B Backlog &amp; NBS / Contributor Spikes
+  </div>
+
+  <!-- TOPICS DISCUSSED — GREEN -->
+  <div>
+    <div class="section-header">
+      <span class="section-label">Topics Discussed</span>
+      <span class="section-date-badge green">Sep 30</span>
+    </div>
+    <div class="grid-3">
+
+      <div class="card green">
+        <div class="card-title">Contributor Class Mule Changes — Backlog Stories</div>
+        <div class="card-body">Team reviewed backlog stories for Mule-side contributor class changes required for Brazil Tax Reform. Discussion covered both RFM-native and Mule-based approaches for LE Type Code and Simples Nacional handling. Both paths to run in parallel as spikes before committing to one approach.</div>
+      </div>
+
+      <div class="card green">
+        <div class="card-title">Legal Form Language Update — BTRFM-74</div>
+        <div class="card-body">Quote review page and legal form language updates reviewed. BTRFM-74 covers the UI text changes required for Brazil legal entity classification. Pending design confirmation from Prathibha before development walkthrough can begin. Story groomed but not sized until design is locked.</div>
+      </div>
+
+      <div class="card green">
+        <div class="card-title">Sprint 9B Backlog Review</div>
+        <div class="card-body">Full backlog review for Sprint 9B (running into early October). Team prioritized stories, identified candidates for carry-over into Sprint 4, and flagged stories awaiting LOE estimates. Apoorav to finalize developer assignments after grooming session.</div>
+      </div>
+
+      <div class="card green">
+        <div class="card-title">LOE: Virtual CM Spike (BTRFM-77) &amp; Trials Spike (BTRFM-76)</div>
+        <div class="card-body">Both BTRFM-76 (Trials spike) and BTRFM-77 (Virtual CM spike) flagged as requiring LOE estimates before they can be accepted into a sprint. Team discussed complexity of each — Trials spike involves multi-system data flow, Virtual CM spike has dependency on credit memo permanent fix.</div>
+      </div>
+
+      <div class="card green">
+        <div class="card-title">NBS Code Label Consistency Across PRs</div>
+        <div class="card-body">Multiple PRs using different label strings for NBS code field. Inconsistency identified across Revenue, Mule, and CPQ-side implementations. Vineela tasked with establishing single canonical label and ensuring it is added to the L10n translations tab for all locales.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ACTION ITEMS — PURPLE -->
+  <div>
+    <div class="section-header">
+      <span class="section-label">Action Items with Owners</span>
+      <span class="section-date-badge purple">Sep 30</span>
+    </div>
+
+    <div class="card purple">
+      <div class="card-title"><span class="badge owner">Apoorav</span> Assign Sprint 9B Stories to Developers</div>
+      <div class="card-body">Finalize developer assignments for all accepted Sprint 9B stories following grooming session. Distribute based on current capacity and carry-over workload. Ensure spike stories (BTRFM-76, BTRFM-77) are clearly marked as needing LOE before work begins.</div>
+    </div>
+
+    <div class="card purple">
+      <div class="card-title"><span class="badge owner">Prathibha</span> Create Mule-Based Spike Story for LE Type Code / Simples Nacional</div>
+      <div class="card-body">Write and file a new spike story in Linear for the Mule-based approach to LE Type Code and Simples Nacional data retrieval. To run in parallel with existing RFM-native spike. Story to include acceptance criteria, key questions to answer, and time-box (1 sprint max).</div>
+    </div>
+
+    <div class="card purple">
+      <div class="card-title"><span class="badge owner">Vineela</span> Align NBS Code Label Across All PRs + Add to Translations Tab</div>
+      <div class="card-body">Identify all active PRs using an NBS code label string. Consolidate to a single canonical label. Add the canonical label and its translations (EN, PT-BR at minimum) to the L10n repo translations tab. Communicate final label to all contributors before next sprint cutoff.</div>
+    </div>
+
+    <div class="card purple">
+      <div class="card-title"><span class="badge owner">Prathibha</span> Confirm Design Before BTRFM-74 Walkthrough</div>
+      <div class="card-body">Review recent design updates for quote review page and legal form language changes. Confirm final copy/wording with Product before conducting dev walkthrough for BTRFM-74. Block on design confirmation prevents story from being fully groomed and sized.</div>
+    </div>
+
+  </div>
+
+  <!-- DECISIONS — BLUE -->
+  <div>
+    <div class="section-header">
+      <span class="section-label">Decisions Made</span>
+      <span class="section-date-badge blue">Sep 30</span>
+    </div>
+
+    <div class="card blue">
+      <div class="card-title"><span class="badge aligned">Aligned</span> RFM + Mule Approaches Run in Parallel for LE Type Code Spike</div>
+      <div class="card-body">Team agreed not to prematurely commit to one technical approach. Both RFM-native and Mule-based spikes to run concurrently. Outcomes compared after one sprint, then team chooses the approach to productionize. Avoids costly rework if chosen approach hits unexpected complexity.</div>
+    </div>
+
+    <div class="card blue">
+      <div class="card-title"><span class="badge discuss">Needs Discussion</span> LOE Required Before BTRFM-76 &amp; BTRFM-77 Accepted</div>
+      <div class="card-body">Neither BTRFM-76 (Trials spike) nor BTRFM-77 (Virtual CM spike) accepted into a sprint without a completed LOE estimate. Engineers who will own these stories must provide sizing before Prathibha/Syam can formally accept them. Revisit at next grooming once LOEs are available.</div>
+    </div>
+
+    <div class="card blue">
+      <div class="card-title"><span class="badge aligned">Aligned</span> NBS Code Label Must Be Consistent — L10n Tab Required</div>
+      <div class="card-body">All PRs must use a single agreed label string for the NBS code field. Inconsistent labels across PRs block L10n sign-off and create translation debt. Decision: Vineela owns the canonical label and adds it to translations tab before any PR touching the field is merged.</div>
+    </div>
+
+  </div>
+
+</div>
+
+</div><!-- /body -->
 </body>
 </html>
