@@ -124,6 +124,19 @@
   .dot-blue   { background: var(--blue); }
   .card-full { display: block; margin-bottom: 10px; }
   .card-full .card-header { background: linear-gradient(90deg, var(--purple-soft), var(--white)); }
+  .new-badge {
+    display: inline-block;
+    background: #ff4757;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
   .footer {
     text-align: center;
     color: var(--gray);
@@ -138,11 +151,11 @@
 
 <div class="header">
   <h1>&#x1F514; Prathibha's Slack Dashboard</h1>
-  <div class="sub">As of <strong>November 3, 2026</strong> &middot; Last 7 days across 12 channels</div>
+  <div class="sub">As of <strong>November 4, 2026</strong> &middot; Last 7 days across 12 channels</div>
   <div class="channels">
     <span class="ch-tag">#brazil-tax-reform</span>
     <span class="ch-tag">#brazil-tax-reform-e2e-validation</span>
-    <span class="ch-tag">#brazil-tax-reform-hypercare</span>
+    <span class="ch-tag">#brazil-tax-reform-uat-year2</span>
     <span class="ch-tag">#brazil-tax-reform-a10-discussion</span>
     <span class="ch-tag">#rfm-quoting-team-brazil-tax</span>
     <span class="ch-tag">#brazil-fy27-rfm-det</span>
@@ -164,29 +177,29 @@
     <div class="card-header">
       <span class="icon">&#x1F534;</span>
       <div>
-        <div class="title">Bypass Validation Escalation &mdash; No Hard Block, Manual Fix Path Undefined (NEW Nov 3)</div>
-        <div class="meta">#brazil-tax-reform &middot; Nov 3 (Syam)</div>
+        <div class="title">Bypass Validation &mdash; Still No Manual Fix Path; Casi Asked to Assess Impact<span class="new-badge">Nov 4</span></div>
+        <div class="meta">#brazil-tax-reform &middot; Nov 4 (Syam &rarr; Casi)</div>
       </div>
       <span class="badge badge-red" style="margin-left:auto">Decision Needed</span>
     </div>
     <div class="card-body">
-      <p>Syam posted today: Business (Aislinn) <strong>rejected DET's hard block</strong> on bypass validation &mdash; prioritizing ACV and avoiding sales blockages. Without the hard block, quotes can convert with missing LE Type Code and Simples Nacional Flag, creating downstream Oracle impacts with no defined manual fix.</p>
-      <p>Syam now asking Casi Abner, Lakshmi, Renata Araujo, Marcio Mendes: <em>"How do we address impacted contracts/transactions if this scenario happens?"</em> Prathibha is cc'd. Volume may be low but impact is real.</p>
+      <p>Syam posted Nov 4: <em>"Can you please check this and outline what could be the impact and if there is any workaround for fixing these one off cases?"</em> &mdash; directed at Casi Abner with cc to Lakshmi and Pat Rock. This follows Aislinn's Nov 3 rejection of the hard block on bypass validation.</p>
+      <p>Background: Quotes can convert with missing LE Type Code / Simples Nacional Flag due to bypass. No Oracle-side manual fix process defined. Volume low; downstream impact real.</p>
     </div>
   </div>
 
   <div class="card card-full">
     <div class="card-header">
-      <span class="icon">&#x1F6AB;</span>
+      <span class="icon">&#x23F0;</span>
       <div>
-        <div class="title">Courtesy Quote Approval Rule &mdash; PUSHED TO FEBRUARY (Not Jan 1)</div>
-        <div class="meta">#brazil-tax-reform &middot; Nov 3 (Syam &mdash; post Nov 2 alignment call)</div>
+        <div class="title">Credit Memo Fix &mdash; Lakshmi Must Confirm UAT &amp; Go-live Date by TOMORROW Nov 5<span class="new-badge">Nov 4</span></div>
+        <div class="meta">#brazil-tax-reform &middot; Nov 4 (Iffath &rarr; Lakshmi)</div>
       </div>
-      <span class="badge badge-orange" style="margin-left:auto">Scope Change</span>
+      <span class="badge badge-red" style="margin-left:auto">Due Tomorrow</span>
     </div>
     <div class="card-body">
-      <p><strong>Decision confirmed Nov 3:</strong> New approval rule for courtesy quotes &gt;31 days will NOT ship for 1/1/27. Business process not fully defined; Deal desk won't sign off without a documented exception process. Will be part of the <strong>February release</strong> after deal desk sign-off per Tony Milata (CPQ approvals owner).</p>
-      <p><strong>Still in scope for 1/1/27:</strong> Warning message on quoting screen only. Next step: Syam to schedule follow-up call with Alexandre Costa / Aislinn to define exceptions process.</p>
+      <p>Iffath posted Nov 4: <em>"Lakshmi, please confirm the UAT and go-live dates for this RAID item by Nov 5th, and update the RAID Tracker accordingly."</em> &mdash; RAID item: <strong>Credit Memo fix for fully-paid overpayment scenarios</strong> (Finance team, addresses ~80% of $27M risk, currently targeting early January).</p>
+      <p>If Lakshmi does not respond by Nov 5, RAID tracker will remain stale heading into UAT prep week.</p>
     </div>
   </div>
 
@@ -194,43 +207,44 @@
     <div class="card-header">
       <span class="icon">&#x1F527;</span>
       <div>
-        <div class="title">Oracle QA Env &mdash; PIS/Cofins Legacy Records Needed for E2E Testing</div>
-        <div class="meta">#brazil-tax-reform-e2e-validation &middot; Nov 2 (Prathibha)</div>
+        <div class="title">E2E Testing &mdash; AMER Oracle Coverage Gap; Vaibhav Being Onboarded<span class="new-badge">Nov 4</span></div>
+        <div class="meta">DM Prathibha &harr; Vineela &middot; Nov 3 / E2E channel Nov 4</div>
       </div>
-      <span class="badge badge-red" style="margin-left:auto">Awaiting Reply</span>
+      <span class="badge badge-teal" style="margin-left:auto">In Progress</span>
     </div>
     <div class="card-body">
-      <p>Prathibha asked Pat Rock and Casi Abner on Nov 2 to help with old invoice records (PIS &amp; Cofins) in test env to validate legacy transaction flow. Three options proposed: (1) create records with older tax model, (2) update data in backend, (3) revert test env changes temporarily.</p>
-      <p><strong>No response yet from Pat Rock or Casi Abner.</strong></p>
+      <p>Prathibha asked Vineela Nov 3: is there an onsite developer with bandwidth to back Sandhiya in AMER time? Vineela confirmed <strong>Vaibhav Bhagwat</strong> can help &mdash; Vineela to give him context and add him to the E2E channel with the Oracle team. Vaibhav joined #brazil-tax-reform-e2e-validation on Nov 4.</p>
+      <p>Separate: Lakshmi asked Prathibha Nov 3 who can help on Finance-side E2E test data creation during AMER and IST hours. Still needs a clear answer.</p>
     </div>
   </div>
 
   <div class="card card-full">
     <div class="card-header">
-      <span class="icon">&#x23F3;</span>
+      <span class="icon">&#x1F6AB;</span>
       <div>
-        <div class="title">Kevin Spry &mdash; Informatica SKU Timeline (Steerco Decision Expected Today Nov 3)</div>
-        <div class="meta">DM &middot; Oct 30 + Nov 2</div>
+        <div class="title">Courtesy Quote Approval Rule &mdash; Pushed to February; Warning Only for Jan 1</div>
+        <div class="meta">#brazil-tax-reform &middot; Nov 3 (Syam)</div>
       </div>
-      <span class="badge badge-orange" style="margin-left:auto">Partial Reply</span>
+      <span class="badge badge-orange" style="margin-left:auto">Scope Change</span>
     </div>
     <div class="card-body">
-      <p>Kevin Spry replied Nov 2: <em>"We are actually awaiting decision from Steerco on Tuesday [Nov 3] on our implementation plan timeline. I will follow up in a couple days."</em></p>
-      <p>Watch for Kevin's follow-up later this week. Timeline impacts Brazil Tax Reform SKU sync and go-live date alignment with NPI push.</p>
+      <p><strong>Confirmed Nov 3:</strong> New approval rule for courtesy quotes &gt;31 days ships in February (not Jan 1). Business process not fully defined; deal desk won't sign off without documented exception process per Tony Milata. Warning message only remains in Jan 1 scope.</p>
+      <p>Next step: Syam to schedule follow-up next week with Alexandre/Aislinn to define exception process and approval criteria. BTRFM-85 remains Blocked/Unassigned.</p>
     </div>
   </div>
 
   <div class="card card-full">
     <div class="card-header">
-      <span class="icon">&#x1F4CB;</span>
+      <span class="icon">&#x1F4B9;</span>
       <div>
-        <div class="title">OEL 8 Upgrade &mdash; D-013 Business Sign-off DUE TODAY (Nov 3)</div>
-        <div class="meta">#brazil-tax-reform &middot; Sabeina RAID check Nov 2</div>
+        <div class="title">Oracle Invoice Finalization Errors in E2E &mdash; Pat Rock Engaged</div>
+        <div class="meta">#brazil-tax-reform-e2e-validation &middot; Nov 3 (Sandhiya)</div>
       </div>
-      <span class="badge badge-red" style="margin-left:auto">Due Today</span>
+      <span class="badge badge-orange" style="margin-left:auto">Active</span>
     </div>
     <div class="card-body">
-      <p>Sabeina Harris flagged RAID item D-013 is due today. Alexandre Costa must provide formal business sign-off for OEL 7&rarr;8 upgrade. <strong>Upgrade window: Nov 14, 00:00&ndash;15:00 PST.</strong> DET informal approval from Santanu/Anoop already obtained; business (Julia Paiva, Hera Ng, Sabeina) sign-off still pending.</p>
+      <p>Sandhiya created two test invoices (38632237, 38632296) that are stuck: one in "Error Sending To Oracle" status, one in "Sent to Oracle" awaiting finalization. Pat Rock is engaged. Patangay also asked Pat to confirm required fields for the CM stored procedure (<code>iQuoteType</code>, <code>iReplacementOrderNum</code>).</p>
+      <p>Legacy records (pre-2027 PIS/Cofins) still unresolved &mdash; Prathibha still awaiting Pat Rock's answer on whether older records exist or if Oracle changes need reversion.</p>
     </div>
   </div>
 
@@ -238,14 +252,41 @@
     <div class="card-header">
       <span class="icon">&#x1F1E9;&#x1F1EA;</span>
       <div>
-        <div class="title">Germany E-Reporting Go-live for Dec &mdash; Ashlaisha to Align with Ram</div>
-        <div class="meta">DM Prathibha &harr; Ashlaisha &middot; Nov 2</div>
+        <div class="title">Germany &mdash; Legal Entity Name Mismatch Data Shared by Pradeep<span class="new-badge">Nov 4</span></div>
+        <div class="meta">DM Pradeep &harr; Prathibha &middot; Nov 4, 8:37 AM</div>
       </div>
-      <span class="badge badge-blue" style="margin-left:auto">In Progress</span>
+      <span class="badge badge-blue" style="margin-left:auto">New Context</span>
     </div>
     <div class="card-body">
-      <p>Prathibha asked Ashlaisha: <em>"Is the decision on e-reporting go-live agreed for Dec?"</em> Ashlaisha: <em>"I've to connect with Ram, I'm not sure if something changed while I was away."</em></p>
-      <p>Pradeep's stated plan (Oct 28): MTD eReporting go-live Nov 12. B2Bi/B2C UAT paused Nov 11 (no go-live Nov 12), re-deploy post dot release &rarr; go-live <strong>Dec 10.</strong></p>
+      <p>Pradeep DM'd Prathibha this morning: <em>"this is the data which we were referring to on legal entity name mismatch in Germany."</em> Context likely relates to MTD Germany e-invoicing testing (PSA team testing MTD Germany in QA this week per Pradeep's Nov 3 message). Follow up if action needed.</p>
+    </div>
+  </div>
+
+  <div class="card card-full">
+    <div class="card-header">
+      <span class="icon">&#x1F1E9;&#x1F1EA;</span>
+      <div>
+        <div class="title">Germany MTD &mdash; PSA Team Testing in QA This Week; Jobs Re-enabled Nov 3</div>
+        <div class="meta">#det-rev-rfm-einvoice-team &middot; Nov 3 (Pradeep)</div>
+      </div>
+      <span class="badge badge-blue" style="margin-left:auto">Active</span>
+    </div>
+    <div class="card-body">
+      <p>Pradeep alerted Karthik Viswakumar and Pooja Rajpurohit: <em>"PSA team would be testing MTD for Germany in QA this week, hence they might need help."</em> He also asked Sankalan Gain to re-enable the e-invoicing and reporting jobs that were disabled after the UAT deployment for the Nov release.</p>
+    </div>
+  </div>
+
+  <div class="card card-full">
+    <div class="card-header">
+      <span class="icon">&#x1F527;</span>
+      <div>
+        <div class="title">Oracle QA Env &mdash; PIS/Cofins Legacy Records Needed for E2E (No Reply Yet)</div>
+        <div class="meta">#brazil-tax-reform-e2e-validation &middot; Nov 2 (Prathibha)</div>
+      </div>
+      <span class="badge badge-red" style="margin-left:auto">Awaiting Reply</span>
+    </div>
+    <div class="card-body">
+      <p>Prathibha asked Pat Rock and Casi Abner on Nov 2 for one of 3 options to enable legacy PIS/Cofins records in Oracle test env to validate the existing-order flow. <strong>No response yet.</strong> Prathibha confirmed Nov 3 still awaiting &mdash; only option if records don't exist is to revert Oracle changes, create data, then redeploy. Sandhiya is on standby.</p>
     </div>
   </div>
 
@@ -253,27 +294,13 @@
     <div class="card-header">
       <span class="icon">&#x1F4B8;</span>
       <div>
-        <div class="title">CBS Rate 11.35% &mdash; Senate Approval Pending by Dec 15</div>
+        <div class="title">CBS Rate 11.35% &mdash; Senate Approval Expected Dec 15</div>
         <div class="meta">#brazil-tax-reform &middot; Oct 29</div>
       </div>
       <span class="badge badge-orange" style="margin-left:auto">Watch</span>
     </div>
     <div class="card-body">
-      <p>TCU approved CBS rate of 11.35% for 2027 (up from expected 9.21%). Federal Senate approval expected by Dec 15. If rate changes after Dec 15 (post Dec 18 Finance dark release), another system update would be needed. Proceed with 11.35% update now per Renata's guidance.</p>
-    </div>
-  </div>
-
-  <div class="card card-full">
-    <div class="card-header">
-      <span class="icon">&#x1F1E9;&#x1F1EA;</span>
-      <div>
-        <div class="title">Germany SOVOS &mdash; Sample Payload with Null Mandatory Fields (Oct 29)</div>
-        <div class="meta">#det-einvoicing-rev-fin-collab &middot; Oct 29 (Logeswari)</div>
-      </div>
-      <span class="badge badge-orange" style="margin-left:auto">Pending Fix</span>
-    </div>
-    <div class="card-body">
-      <p>Logeswari Sekar asked Shikhar Bhatnagar / Sankalan Gain for a sample Germany e-invoicing payload with all mandatory fields populated. The existing sample has null values for several mandatory fields. No confirmed response yet.</p>
+      <p>TCU approved CBS reference rate of 11.35% for 2027 (up from expected 9.21%). Federal Senate approval expected by Dec 15. Proceed with 11.35% update now per Renata. If rate changes after Dec 15 (post Dec 18 Finance dark release), another update would be needed.</p>
     </div>
   </div>
 
@@ -286,51 +313,25 @@
       <div class="card-header">
         <span class="icon">&#x1F4AC;</span>
         <div>
-          <div class="title">Pat Rock / Casi Abner &mdash; Oracle PIS/Cofins Records</div>
+          <div class="title">Lakshmi &mdash; Credit Memo UAT/Go-live Date (DUE NOV 5)</div>
+          <div class="meta">#brazil-tax-reform &middot; Nov 4 (Iffath ask)</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Iffath asked Lakshmi to confirm delivery date for credit memo fix by tomorrow. <span class="badge badge-red">Due Nov 5</span></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="icon">&#x1F4AC;</span>
+        <div>
+          <div class="title">Casi / Pat Rock &mdash; PIS/Cofins Legacy Records</div>
           <div class="meta">#brazil-tax-reform-e2e-validation &middot; Nov 2</div>
         </div>
       </div>
       <div class="card-body">
-        <p>Asked Nov 2 for one of 3 options to enable legacy PIS/Cofins records in Oracle test env for E2E. <span class="badge badge-red">No Reply</span></p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="icon">&#x1F4AC;</span>
-        <div>
-          <div class="title">Kevin Spry &mdash; Follow-up Post Steerco (Nov 3)</div>
-          <div class="meta">DM &middot; Steerco today</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <p>Steerco meets today (Nov 3) on INFA implementation plan. Kevin to follow up in a couple days with SKU timeline. <span class="badge badge-orange">Pending Steerco</span></p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="icon">&#x1F4AC;</span>
-        <div>
-          <div class="title">Alexandre Costa &mdash; D-013 OEL 8 Sign-off</div>
-          <div class="meta">RAID Due Today Nov 3</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <p>Formal business approval required for Nov 14 OEL 7&rarr;8 upgrade downtime. Due today per Sabeina's RAID check. <span class="badge badge-red">Due Today</span></p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="icon">&#x1F4AC;</span>
-        <div>
-          <div class="title">Ashlaisha &mdash; eReporting Dec Go-live Decision</div>
-          <div class="meta">DM &middot; Nov 2</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <p>Ashlaisha to connect with Ram to confirm eReporting Dec go-live plan alignment. <span class="badge badge-blue">In Progress</span></p>
+        <p>3 options requested for older Oracle test data to validate legacy transaction scenarios. Still no reply. <span class="badge badge-red">2 Days</span></p>
       </div>
     </div>
 
@@ -339,11 +340,11 @@
         <span class="icon">&#x1F4AC;</span>
         <div>
           <div class="title">Casi / Lakshmi / Renata / Marcio &mdash; Bypass Validation Manual Fix</div>
-          <div class="meta">#brazil-tax-reform &middot; Nov 3 (Syam)</div>
+          <div class="meta">#brazil-tax-reform &middot; Nov 3+4 (Syam)</div>
         </div>
       </div>
       <div class="card-body">
-        <p>Syam asking for inputs on manual remediation path for missing LE Type Code on contracts/transactions post bypass. Prathibha cc'd. <span class="badge badge-red">No Reply Yet</span></p>
+        <p>How do we manually fix contracts/transactions with missing LE Type Code? Syam asked Nov 3 + follow-up Nov 4. Prathibha cc'd. <span class="badge badge-red">No Reply</span></p>
       </div>
     </div>
 
@@ -351,12 +352,64 @@
       <div class="card-header">
         <span class="icon">&#x1F4AC;</span>
         <div>
-          <div class="title">Vineela / Apoorav &mdash; Courtesy Quotes Demo Recording</div>
-          <div class="meta">#brazil-fy27-rfm-det &middot; Nov 2</div>
+          <div class="title">Lakshmi &mdash; Who Can Help Finance E2E Test Data (AMER + IST)</div>
+          <div class="meta">#brazil-tax-reform-e2e-validation &middot; Nov 3</div>
         </div>
       </div>
       <div class="card-body">
-        <p>Syam asked Apoorav / Vineela to record a short demo of the courtesy quotes validation behavior instead of a live meeting. Vineela noted deployment was still in progress Nov 2 evening. <span class="badge badge-orange">In Progress</span></p>
+        <p>Lakshmi asked Prathibha who on Org62 team can assist Finance with test data creation during AMER and IST hours. Needs a specific name or plan. <span class="badge badge-orange">Needs Answer</span></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="icon">&#x1F4AC;</span>
+        <div>
+          <div class="title">Tushar / Apoorav &mdash; Courtesy Quotes in USD for Brazil?</div>
+          <div class="meta">#brazil-fy27-rfm-det &middot; Nov 3 (Sandhiya)</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Sandhiya asked whether courtesy quotes for Brazil can be created with USD currency (product selection page was disabled). Needs confirmation to scope testing. <span class="badge badge-orange">No Reply</span></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="icon">&#x1F4AC;</span>
+        <div>
+          <div class="title">Alexandre Costa &mdash; D-013 OEL 8 Sign-off (Was Due Nov 3)</div>
+          <div class="meta">RAID &middot; Due Nov 3</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Formal business approval required for Nov 14 OEL 7&rarr;8 upgrade (00:00&ndash;15:00 PST). Due date was Nov 3 &mdash; no confirmation seen. <span class="badge badge-red">Overdue</span></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="icon">&#x1F4AC;</span>
+        <div>
+          <div class="title">Ashlaisha &mdash; eReporting Dec Go-live Decision (via Ram)</div>
+          <div class="meta">DM &middot; Nov 2</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Ashlaisha to connect with Ram to confirm eReporting Dec go-live alignment. No update yet. <span class="badge badge-blue">In Progress</span></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="icon">&#x1F4AC;</span>
+        <div>
+          <div class="title">Kevin Spry &mdash; INFA SKU Timeline Post-Steerco</div>
+          <div class="meta">DM &middot; Steerco was Nov 3</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Kevin said he'd follow up in a couple days after Steerco decision on Nov 3 implementation plan. Expect response by Nov 5&ndash;6. <span class="badge badge-blue">Watch</span></p>
       </div>
     </div>
 
@@ -369,15 +422,29 @@
 
     <div class="card">
       <div class="card-header">
-        <span class="icon">&#x2705;</span>
+        <span class="icon">&#x1F465;</span>
         <div>
-          <div class="title">Finance RM + Mule Deployment Alignment &mdash; COMPLETED Nov 2</div>
-          <div class="meta">#brazil-fy27-rfm-det &middot; Nov 2</div>
+          <div class="title">Coordinate AMER Oracle Support for E2E with Vaibhav<span class="new-badge">Nov 4</span></div>
+          <div class="meta">DM Vineela / E2E channel &middot; Nov 3&ndash;4</div>
         </div>
-        <span class="badge badge-green" style="margin-left:auto">Done</span>
+        <span class="badge badge-orange" style="margin-left:auto">Action</span>
       </div>
       <div class="card-body">
-        <p>Prathibha posted Nov 2: <em>"Connected with Finance RM and agreed that Mule changes will be deployed to UAT and Prod post Finance changes are deployed."</em> Prem Chand Chakrala confirmed Dec 18 Finance release as the deployment date for Org62 Mule changes.</p>
+        <p>Vineela confirmed Vaibhav Bhagwat can back Sandhiya in AMER time. Prathibha to ensure Vaibhav is connected with the Oracle team (Pat Rock, Casi Abner) and has context on the legacy record issue. Vaibhav joined the channel Nov 4.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="icon">&#x1F4CB;</span>
+        <div>
+          <div class="title">Confirm Finance E2E Test Data Coverage Plan for Lakshmi</div>
+          <div class="meta">#brazil-tax-reform-e2e-validation &middot; Nov 3</div>
+        </div>
+        <span class="badge badge-red" style="margin-left:auto">Action</span>
+      </div>
+      <div class="card-body">
+        <p>Lakshmi asked who can assist with Finance E2E test data creation in AMER and IST hours. Provide names or schedule a coordination call. Vaibhav Bhagwat is a candidate for AMER; Sandhiya/Karthik for IST.</p>
       </div>
     </div>
 
@@ -385,27 +452,27 @@
       <div class="card-header">
         <span class="icon">&#x1F4CA;</span>
         <div>
-          <div class="title">Confirm Oracle QA Deployment Status for E2E</div>
-          <div class="meta">#brazil-fy27-rfm-det &middot; Oct 27 (Karthik)</div>
+          <div class="title">Grooming Slot Nov 4 &mdash; Confirm Whether Needed</div>
+          <div class="meta">#brazil-fy27-rfm-det &middot; Nov 3 (Prathibha)</div>
         </div>
-        <span class="badge badge-red" style="margin-left:auto">Overdue</span>
+        <span class="badge badge-blue" style="margin-left:auto">Decide</span>
       </div>
       <div class="card-body">
-        <p>Karthik asked: confirm all Oracle changes are in QA. E2E kicked off Nov 2 &mdash; Prathibha asked Pat/Casi for legacy record support (Nov 2). Confirm once Pat/Casi respond.</p>
+        <p>Prathibha asked the team Nov 3 whether the grooming slot for Nov 4 is needed (no new stories). Team response pending &mdash; decide whether to hold or cancel.</p>
       </div>
     </div>
 
     <div class="card">
       <div class="card-header">
-        <span class="icon">&#x1F4C4;</span>
+        <span class="icon">&#x1F1E9;&#x1F1EA;</span>
         <div>
-          <div class="title">Get ETA from Finance Team on E2E Test Scenario Docs</div>
-          <div class="meta">#brazil-fy27-rfm-det &middot; Oct 27 (Karthik)</div>
+          <div class="title">Review Germany Legal Entity Name Mismatch Data from Pradeep</div>
+          <div class="meta">DM &middot; Nov 4 morning</div>
         </div>
-        <span class="badge badge-orange" style="margin-left:auto">Still Open</span>
+        <span class="badge badge-blue" style="margin-left:auto">New</span>
       </div>
       <div class="card-body">
-        <p>E2E test scenarios spreadsheet still has Oracle-side steps awaiting input from Finance team. Karthik asked Prathibha to get ETA. Still pending.</p>
+        <p>Pradeep DM'd Prathibha this morning with data on legal entity name mismatches in Germany. Review and confirm whether any action is needed on Org62/Mule side.</p>
       </div>
     </div>
 
@@ -413,13 +480,27 @@
       <div class="card-header">
         <span class="icon">&#x1F553;</span>
         <div>
-          <div class="title">Submit Overdue Timesheets</div>
-          <div class="meta">DET-Time Tracker &middot; Nov 2</div>
+          <div class="title">Overdue Timesheets &mdash; Oct 18&ndash;31</div>
+          <div class="meta">DET-Time Tracker &middot; Reminder</div>
         </div>
         <span class="badge badge-orange" style="margin-left:auto">Reminder</span>
       </div>
       <div class="card-body">
-        <p>Overdue entries for weeks <strong>Oct 18&ndash;24</strong> and <strong>Oct 25&ndash;31</strong>. Please submit.</p>
+        <p>Overdue entries for weeks <strong>Oct 18&ndash;24</strong> and <strong>Oct 25&ndash;31</strong>. Submit before end of week.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="icon">&#x1F4C4;</span>
+        <div>
+          <div class="title">Dec Finance Release Runlist &mdash; Complete Mule Entries</div>
+          <div class="meta">#brazil-tax-reform &middot; Oct 27 (Prem Chand)</div>
+        </div>
+        <span class="badge badge-blue" style="margin-left:auto">Pending</span>
+      </div>
+      <div class="card-body">
+        <p>Prem Chand asked all leads to fill the DET Finance Release Runlist for Dec 2026 and tag Linear issues to the Dec Finance release. Confirm Mule-side entries are complete.</p>
       </div>
     </div>
 
@@ -428,26 +509,26 @@
         <span class="icon">&#x1F4DD;</span>
         <div>
           <div class="title">UAT Scope Write-up for Peter Vizcaino</div>
-          <div class="meta">#brazil-fy27-rfm-det &middot; Oct 30</div>
+          <div class="meta">#brazil-tax-reform &middot; Oct 30</div>
         </div>
         <span class="badge badge-blue" style="margin-left:auto">Pending</span>
       </div>
       <div class="card-body">
-        <p>Peter Vizcaino (in PCT) wants a write-up on what is in scope and what will be validated in UAT. Prathibha asked Syam if Iffath had already reached out / if a program deck covers this. Confirm and share with Peter.</p>
+        <p>Peter Vizcaino (in PCT) wants a write-up on UAT scope. Iffath added PCT links Nov 3 for reference. Confirm if this is covered or still needs a direct response to Peter.</p>
       </div>
     </div>
 
     <div class="card">
       <div class="card-header">
-        <span class="icon">&#x1F4CB;</span>
+        <span class="icon">&#x1F4C4;</span>
         <div>
-          <div class="title">Dec Finance Release Runlist &mdash; Complete Entries</div>
-          <div class="meta">#brazil-tax-reform &middot; Oct 27 (Prem Chand)</div>
+          <div class="title">Confirm Oracle QA Deployment Status for E2E</div>
+          <div class="meta">#brazil-fy27-rfm-det &middot; Oct 27 (Karthik)</div>
         </div>
-        <span class="badge badge-blue" style="margin-left:auto">Pending</span>
+        <span class="badge badge-orange" style="margin-left:auto">Still Open</span>
       </div>
       <div class="card-body">
-        <p>Prem Chand asked all leads to fill the DET Finance Release Runlist for Dec 2026 and tag linear issues to the Dec Finance release. Confirm Mule-side entries are complete.</p>
+        <p>Karthik asked for confirmation that all Oracle changes are in QA. Blocked on Pat/Casi response about legacy records. Confirm once resolved.</p>
       </div>
     </div>
 
@@ -462,13 +543,13 @@
       <div class="card-header">
         <span class="icon">&#x1F6A8;</span>
         <div>
-          <div class="title">Bypass Validation &mdash; No Hard Block, Manual Fix Undefined</div>
-          <div class="meta">#brazil-tax-reform &middot; Nov 3</div>
+          <div class="title">Bypass Validation &mdash; No Hard Block, No Manual Fix Path</div>
+          <div class="meta">#brazil-tax-reform &middot; Nov 3&ndash;4</div>
         </div>
         <span class="badge badge-red" style="margin-left:auto">Risk</span>
       </div>
       <div class="card-body">
-        <p>Aislinn rejected hard block to prioritize ACV. Quotes can now convert with missing LE Type Code / Simples Nacional Flag. <strong>No documented manual fix path</strong> for downstream Oracle impact. Volume may be low; severity is high if it occurs. Decision thread ongoing with Casi, Lakshmi, Renata, Marcio.</p>
+        <p>Aislinn rejected hard block to protect ACV. Quotes can convert with missing LE Type Code / Simples Nacional Flag. No documented manual fix for downstream Oracle impact. Syam escalating to Casi/Lakshmi/Renata/Marcio on Nov 4. No resolution yet.</p>
       </div>
     </div>
 
@@ -482,7 +563,35 @@
         <span class="badge badge-orange" style="margin-left:auto">Decision Made</span>
       </div>
       <div class="card-body">
-        <p>New approval rule removed from 1/1/27 scope (February instead). Warning message still ships. Note: Courtesy <em>contracts</em> &gt;1 term still have no dev stories (BTRFM-84/85 are quotes only) &mdash; Sandhiya flagged on Oct 23, Syam to confirm.</p>
+        <p>New approval rule removed from Jan 1 scope. Warning message still ships. Courtesy <em>contracts</em> &gt;1 term still have no dev stories (BTRFM-85 blocked/unassigned). Courtesy quotes with USD currency for Brazil also unconfirmed.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="icon">&#x1F6A8;</span>
+        <div>
+          <div class="title">E2E Legacy Transaction Scenarios &mdash; Blocked on Oracle Records</div>
+          <div class="meta">#brazil-tax-reform-e2e-validation &middot; Nov 2&ndash;3</div>
+        </div>
+        <span class="badge badge-red" style="margin-left:auto">Risk</span>
+      </div>
+      <div class="card-body">
+        <p>Cannot validate renewal/upgrade quotes on pre-2027 PIS/Cofins orders without legacy test data. Pat/Casi not yet responding. E2E schedule at risk if this drags past this week.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="icon">&#x1F6A8;</span>
+        <div>
+          <div class="title">Credit Memo Fix &mdash; Low Confidence for UAT, Early Jan Target</div>
+          <div class="meta">#brazil-fy27-rfm-det &middot; Oct 29</div>
+        </div>
+        <span class="badge badge-red" style="margin-left:auto">Risk</span>
+      </div>
+      <div class="card-body">
+        <p>Finance team has low confidence on delivering credit memo netting changes before UAT. Now formally flagged: Lakshmi must confirm exact UAT + go-live date by <strong>Nov 5</strong>. Addresses ~80% of $27M overpayment risk. Oracle-only changes (no Org62 integration impact).</p>
       </div>
     </div>
 
@@ -491,40 +600,12 @@
         <span class="icon">&#x1F4C5;</span>
         <div>
           <div class="title">Org62 Mule Changes Locked to Dec 18 Finance Release</div>
-          <div class="meta">#brazil-tax-reform &middot; Nov 2 (Prem Chand)</div>
+          <div class="meta">#brazil-tax-reform &middot; Nov 2 (Confirmed)</div>
         </div>
         <span class="badge badge-blue" style="margin-left:auto">Confirmed</span>
       </div>
       <div class="card-body">
-        <p>Confirmed by Prem Chand: Mule changes deploy on Dec 18 with Finance release (Oracle dependency). Prathibha completed alignment call Nov 2. ESC Release record and Runlist details to follow from Prem Chand.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="icon">&#x1F6A8;</span>
-        <div>
-          <div class="title">Credit Memo Netting Fix &mdash; Low Confidence for Jan 1</div>
-          <div class="meta">#brazil-fy27-rfm-det &middot; Oct 29</div>
-        </div>
-        <span class="badge badge-red" style="margin-left:auto">Risk</span>
-      </div>
-      <div class="card-body">
-        <p>Finance team has low confidence on delivering credit memo netting changes before UAT. Targeted early January. Purely Oracle changes &mdash; no Org62 integration impact confirmed by Lakshmi. Addresses ~80% of $27M risk.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="icon">&#x1F1F7;&#x1F1F4;</span>
-        <div>
-          <div class="title">Brazil E2E &mdash; Legacy Transaction Testing Blocked on Oracle Records</div>
-          <div class="meta">#brazil-tax-reform-e2e-validation &middot; Nov 2</div>
-        </div>
-        <span class="badge badge-red" style="margin-left:auto">Risk</span>
-      </div>
-      <div class="card-body">
-        <p>E2E testing requires validation of renewal/upgrade quotes on top of pre-2027 orders (PIS/Cofins tax model). Oracle QA env currently has new model only. Pat/Casi response on creating legacy records needed to unblock this scenario class.</p>
+        <p>Prathibha completed Finance RM alignment Nov 2. Mule changes deploy Dec 18 with Finance release. ESC Release record and Runlist details to follow from Prem Chand.</p>
       </div>
     </div>
 
@@ -532,13 +613,13 @@
       <div class="card-header">
         <span class="icon">&#x1F1EB;&#x1F1F7;</span>
         <div>
-          <div class="title">France eReporting UAT &mdash; PO# Sign-off Needed to Proceed</div>
+          <div class="title">France eReporting UAT &mdash; PO# Business Sign-off Pending</div>
           <div class="meta">#det-einvoicing-rev-fin-collab &middot; Nov 2</div>
         </div>
         <span class="badge badge-orange" style="margin-left:auto">Dependency</span>
       </div>
       <div class="card-body">
-        <p>EI layer + PO# fix deployed to UAT Nov 2. eReporting UAT deployment is <strong>dependent on business sign-off of the PO# change</strong>. Akshay Jain flagged Pradeep must work with business to get sign-off urgently (Oct 30 ask).</p>
+        <p>EI layer + PO# fix deployed to UAT Nov 2. eReporting UAT deployment dependent on business sign-off of PO# change. Akshay Jain asked Pradeep to update status and work with business on Nov 30 ask. <strong>Nov 12 MTD go-live</strong> at risk if sign-off stalls.</p>
       </div>
     </div>
 
@@ -546,13 +627,13 @@
       <div class="card-header">
         <span class="icon">&#x1F1E9;&#x1F1EA;</span>
         <div>
-          <div class="title">Germany &mdash; ATV Address Validator URL Pending from Business</div>
+          <div class="title">Germany &mdash; ATV Address Validator URL Still Pending</div>
           <div class="meta">#det-rev-rfm-einvoice-team &middot; Oct 27</div>
         </div>
         <span class="badge badge-orange" style="margin-left:auto">Dependency</span>
       </div>
       <div class="card-body">
-        <p>Dec 10 Germany release includes "Adding URL on ATV for address validation" as a new item. URL still to be shared by business (Ashlaisha / Hadeel area). UAT starts Nov 25 &mdash; URL needed soon.</p>
+        <p>Dec 10 Germany release includes ATV address validator URL banner (new item). URL to be shared by business (Ashlaisha/Hadeel area). UAT starts Nov 25 &mdash; URL needed soon. Hadeel asked Ashlaisha about timeline Oct 22; no confirmation seen.</p>
       </div>
     </div>
 
@@ -560,13 +641,13 @@
       <div class="card-header">
         <span class="icon">&#x2696;&#xFE0F;</span>
         <div>
-          <div class="title">Germany &mdash; ZUGFeRD vs XRechnung Cancellation-and-Reissue vs Mehrst&uuml;ck</div>
+          <div class="title">Germany &mdash; ZUGFeRD vs XRechnung: Mehrst&uuml;ck vs Cancel-Reissue</div>
           <div class="meta">#ar-germany-requirement-finalization</div>
         </div>
         <span class="badge badge-blue" style="margin-left:auto">Decision</span>
       </div>
       <div class="card-body">
-        <p>Deloitte: if Salesforce/Sovos cannot faithfully reproduce the original invoice, <strong>cancellation-and-reissue is the safer approach</strong> over treating XRechnung as a Mehrst&uuml;ck. Risk: double VAT under &sect;14c UStG. Priscillia/Shrey/Ashlaisha need to align on which process to implement.</p>
+        <p>Deloitte: if Salesforce/Sovos cannot faithfully reproduce the original invoice, cancellation-and-reissue is the safer approach vs treating XRechnung as a Mehrst&uuml;ck (risk of double VAT under &sect;14c UStG). Priscillia/Shrey/Ashlaisha need to decide. Outstanding: PDF timesheet attachment, SOVOS capability for re-submission, naming convention for ZUGFeRD invoices.</p>
       </div>
     </div>
 
@@ -587,7 +668,7 @@
         <span class="badge badge-green" style="margin-left:auto">Done</span>
       </div>
       <div class="card-body">
-        <p>Prathibha completed Finance RM alignment. Mule changes deploy with Finance on Dec 18. Prem Chand confirmed runlist &amp; ESC Release record for DET-Fin-Brazil Tax-2026 to follow.</p>
+        <p>Prathibha completed Finance RM alignment. Mule changes deploy with Finance on Dec 18. Prem Chand to share ESC Release record and runlist details.</p>
       </div>
     </div>
 
@@ -601,7 +682,21 @@
         <span class="badge badge-green" style="margin-left:auto">Live in UAT</span>
       </div>
       <div class="card-body">
-        <p>Rupp Santos: <em>"EI layer FR eReporting changes + Missing PO# fix deployed to UAT. Apart from Sovos platform issues, good to start UAT testing."</em> PO# business sign-off still needed to fully unblock eReporting UAT.</p>
+        <p>FR eReporting changes + Missing PO# fix deployed to UAT. Good to start UAT testing (aside from Sovos platform issues). PO# business sign-off still needed to unblock full eReporting UAT scope.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="icon">&#x1F1E7;&#x1F1F7;</span>
+        <div>
+          <div class="title">Brazil UAT Channel Renamed &mdash; Now #brazil-tax-reform-uat-year2</div>
+          <div class="meta">Oct 30 (Sabeina)</div>
+        </div>
+        <span class="badge badge-blue" style="margin-left:auto">Note</span>
+      </div>
+      <div class="card-body">
+        <p>#brazil-tax-reform-hypercare was renamed to <strong>#brazil-tax-reform-uat-year2</strong> on Oct 30. UAT dates reposted Nov 4 by Sabeina. Key dates: Nov 6 (change mgmt), Nov 13 (test cases), Nov 16 (UAT kickoff), Nov 30&ndash;Dec 15 (UAT window &mdash; FIXED).</p>
       </div>
     </div>
 
@@ -619,7 +714,6 @@
           <li><span class="item-dot dot-blue"></span><span><strong>Nov 6:</strong> Change mgmt workflows (P2C Experience)</span></li>
           <li><span class="item-dot dot-blue"></span><span><strong>Nov 13:</strong> Business test case uploads complete</span></li>
           <li><span class="item-dot dot-blue"></span><span><strong>Nov 16:</strong> UAT Kickoff</span></li>
-          <li><span class="item-dot dot-blue"></span><span><strong>Nov 20:</strong> Scenario load &amp; test cases due</span></li>
           <li><span class="item-dot dot-red"></span><span><strong>Nov 30&ndash;Dec 15:</strong> UAT window (FIXED)</span></li>
           <li><span class="item-dot dot-orange"></span><span><strong>Dec 10:</strong> Org62 dark release</span></li>
           <li><span class="item-dot dot-orange"></span><span><strong>Dec 18:</strong> Finance dark release (+ Mule)</span></li>
@@ -632,13 +726,13 @@
       <div class="card-header">
         <span class="icon">&#x1F1E9;&#x1F1EA;</span>
         <div>
-          <div class="title">Germany E-Invoicing &mdash; Dec 10 Release Scope Locked</div>
-          <div class="meta">#det-rev-rfm-einvoice-team &middot; Oct 27</div>
+          <div class="title">Germany E-Invoicing &mdash; Dec 10 Release Scope &amp; PSA QA Testing Active</div>
+          <div class="meta">#det-rev-rfm-einvoice-team &middot; Oct 27 + Nov 3</div>
         </div>
-        <span class="badge badge-blue" style="margin-left:auto">Tracking</span>
+        <span class="badge badge-teal" style="margin-left:auto">Active</span>
       </div>
       <div class="card-body">
-        <p>Dec 10 Germany scope (in priority order): reverse journey, partner MTD flow, Invoice Dispatch (Peppol fwd/return), Remittance info to EI (new), ATV address validator URL (new, pending from business).</p>
+        <p>Dec 10 scope (priority order): reverse journey, partner MTD flow, Invoice Dispatch (Peppol fwd/return), Remittance info to EI, ATV address validator URL (pending from business). PSA team testing MTD Germany in QA this week.</p>
         <p><strong>UAT:</strong> Nov 25&ndash;Dec 8 &middot; <strong>Go-live:</strong> Jan 1, 2027</p>
       </div>
     </div>
@@ -647,14 +741,14 @@
       <div class="card-header">
         <span class="icon">&#x1F4CA;</span>
         <div>
-          <div class="title">France eReporting E2E &mdash; 90% Pass Rate</div>
+          <div class="title">France eReporting E2E &mdash; 90% Pass Rate (72/80)</div>
           <div class="meta">#det-einvoicing-rev-fin-collab &middot; Oct 27</div>
         </div>
-        <span class="badge badge-blue" style="margin-left:auto">In Progress</span>
+        <span class="badge badge-blue" style="margin-left:auto">Tracking</span>
       </div>
       <div class="card-body">
         <p>72/80 test cases passed (90%). 5 open bugs (IFEI-19, 20, 21, 29; DRGE-166). WDY IC &amp; Coupa at 100%. Org62: 39/44. Sovos Reporting: 3/6 (50%).</p>
-        <p><strong>Nov 12:</strong> eReporting MTD go-live (post business approval) &middot; <strong>Dec 10:</strong> B2Bi/B2C go-live</p>
+        <p><strong>Nov 12:</strong> eReporting MTD go-live (pending business approval) &middot; <strong>Dec 10:</strong> B2Bi/B2C go-live</p>
       </div>
     </div>
 
@@ -662,13 +756,13 @@
       <div class="card-header">
         <span class="icon">&#x1F3D7;&#xFE0F;</span>
         <div>
-          <div class="title">Brazil E2E Testing &mdash; Kicked Off Nov 2 (Deployment Catch-up Active)</div>
-          <div class="meta">#brazil-fy27-rfm-det &middot; Nov 2</div>
+          <div class="title">Brazil E2E &mdash; Active Testing; Missed Friday Merges Being Deployed</div>
+          <div class="meta">#brazil-fy27-rfm-det &middot; Nov 2&ndash;3</div>
         </div>
         <span class="badge badge-teal" style="margin-left:auto">Active</span>
       </div>
       <div class="card-body">
-        <p>E2E testing kicked off Nov 2. Apoorav deploying missed Friday merges to QA6 (some changes not yet in org). MuleSoft changes deployed to QA Oct 30. Monitor feature flag <code>IS_BRAZIL_TAX_REFORM_ENABLED</code> and Brazil Live Date setting after each deployment.</p>
+        <p>E2E testing kicked off Nov 2. Apoorav deploying missed Friday merges to QA6. MuleSoft changes deployed Oct 30. Monitor <code>IS_BRAZIL_TAX_REFORM_ENABLED</code> feature flag and Brazil Live Date setting after each deployment. Sandhiya encountering oracle finalization errors; Pat Rock engaged.</p>
       </div>
     </div>
 
@@ -677,7 +771,7 @@
 </div>
 
 <div class="footer">
-  Generated by Claude Code &middot; November 3, 2026 &middot; Data from Slack MCP (12 channels + DM searches)
+  Generated by Claude Code &middot; November 4, 2026 &middot; Data from Slack MCP (12 channels + DM searches)
 </div>
 
 </body>
